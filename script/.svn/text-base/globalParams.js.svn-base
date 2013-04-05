@@ -1,0 +1,16 @@
+// Parametro server IP/Indirizzo
+var server = "192.168.10.109";
+// Percorso server project
+var pathProject = "/home/mirko/Projects/webgis-custom/projects";
+// Nome Progetto
+var nameProject = "settimo_postgis.qgs";
+// EPSG 
+var epsgcode= "3003";
+// Unit (degree, m ..)
+var unit = "m";
+// Scala
+var maxScale = "200"; // Massima
+var minScale = "50000"; // Minima
+
+// WMS URI
+var serverURI = "http://"+server+"/cgi-bin/qgis_mapserv.fcgi?map="+pathProject+"/"+nameProject;

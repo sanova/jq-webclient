@@ -1,0 +1,80 @@
+.ui-accordion .ui-accordion-header a { font-size: 10pt; }
+.ui-state-pressed {opacity: 0.4; border: 1px solid gray}
+/* Override style header dell'accordion esteso (definito gradiente grigio) */
+/* Previsti i 3 casi per i diversi browser */
+h3.ui-corner-top {  background: -moz-linear-gradient(top, #FAFAFA, #E7E7E7) !important; /* Firefox */ 
+                    background: -webkit-gradient(linear, 
+                                left top, left bottom, from(#FAFAFA), to(#E7E7E7)) !important; /* Safari e Chrome */
+                    filter:   progid:DXImageTransform.Microsoft.Gradient(
+                              StartColorStr='#FAFAFA', EndColorStr='#E7E7E7', GradientType=0) !important;} /* IE */ 
+                    
+h3.ui-corner-top a {color:    #4C4C4C !important;}
+
+h3.ui-corner-top.ui-state-hover { background: -moz-linear-gradient(top, #F6F6F6, #D6D6D6) !important; 
+                                  background: -webkit-gradient(linear, 
+                                               left top, left bottom, from(#F6F6F6), to(#D6D6D6)) !important; 
+                                  filter:   progid:DXImageTransform.Microsoft.Gradient(
+                                            StartColorStr='#F6F6F6', EndColorStr='#D6D6D6', GradientType=0) !important;}
+
+h3.ui-corner-top.ui-state-hover a {color:    #000000 !important; }
+
+
+.bgGray{	background: -moz-linear-gradient(top, #FAFAFA, #E7E7E7) !important; /* Firefox */ 
+            background: -webkit-gradient(linear, 
+                        left top, left bottom, from(#FAFAFA), to(#E7E7E7)) !important; /* Safari e Chrome */
+            filter:   progid:DXImageTransform.Microsoft.Gradient(
+                      StartColorStr='#FAFAFA', EndColorStr='#E7E7E7', GradientType=0) !important;}
+                      
+.bgGrayRegular{	background: -moz-linear-gradient(top, #EDEDED, #D1D1D1) !important; /* Firefox */ 
+                background: -webkit-gradient(linear, 
+                           	left top, left bottom, from(#EDEDED), to(#D1D1D1)) !important; /* Safari e Chrome */
+                filter:   progid:DXImageTransform.Microsoft.Gradient(
+                          StartColorStr='#EDEDED', EndColorStr='#D1D1D1', GradientType=0) !important;}
+
+.leftPanel {width: 18%;position: absolute; background-color: White; left: 0px; bottom: 0px; top: 0px;}
+
+#wg-leftTabTop{position: absolute; bottom: 0px; top: 0px; left: 0px; right: 0px;}
+#wg-LayerListDiv{position: relative; margin-top: 5px; margin-bottom: 50%; margin-left: 1px; margin-right: 1px; display: none}
+#wg-LayerList{position:absolute; top: 0px; bottom: 0px; right: 0px; left: 0px;}
+#wg-layerLegendDiv{position: absolute; bottom: 0px; top:50%; right: 1px; left: 1px; display: none;}
+#wg-layerLegendContainer{position: absolute; bottom: 0px; top: 45px; right: 1px; left: 1px; overflow: auto;}
+#wg-layerLegendHeader{height: 30px; padding-top: 15px; padding-left: 5px;}
+.recordLegend{border-bottom: 1px solid lightGray;}
+
+.centerPanel {position: absolute; top: 0px; bottom: 0px; left: 18%; right: 0px; z-index: 0; overflow: auto;}
+.ui-tabs .ui-tabs-panel{padding-left: 1px !important; padding-right: 1px !important; padding-top: 4px !important; padding-bottom: 4px !important;}
+
+#toolbarMap{position: relative; height: 30px; margin-left: 4px; top: 0px;}             
+#wg-headerMapPanel	{position: relative;height: 25px;padding-top: 9px; padding-left: 5px;}
+#wg-MapPanel{position: absolute; top: 65px; bottom: 0px; right: 0px; left: 4px;}
+#outputDistance{position: absolute; right:10px; height: 15px; bottom: 10px; width: 200px; z-index: 3;padding-bottom: 4px; padding-left: 10px; padding-top: 7px; display: none;}
+#panelMod{	position: absolute; left:20px; height: 20px; bottom: 20px; width: 170px;z-index: 3;padding-bottom: 4px; padding-left: 30px; padding-top: 15px; display: none;}
+				
+#wg-layerInfoContainer{z-index:1; top: 95px; height: 250px; width: 300px; right: 0px; position:absolute;display: none}
+#wg-layerInfo { position: relative;overflow: auto;}
+
+.containerRowLayer{float: left}
+.layerCheckBox{display: inline; margin-top: 1px !important; margin-bottom: 1px !important; margin-left: 1px !important; margin-right: 1px !important;}
+.layerShowedText{display:inline}
+
+#infoButton{background-image: url('../images/gis_icons/infoMap.png') ; height: 25px; width: 25px; margin-left: 3px; margin-top: 3px;}
+#measureDistance{background-image: url('../images/gis_icons/measureDistance.png') ; height: 25px; width: 25px; margin-left: 3px; margin-top: 3px;}
+#measureArea{background-image: url('../images/gis_icons/measureArea.png') ; height: 25px; width: 25px; margin-left: 3px; margin-top: 3px;}
+#modFeature{background-image: url('../images/gis_icons/move_feature_off.png') ; height: 25px; width: 25px; margin-left: 3px; margin-top: 3px;}
+
+#closeInfoDiv{background-image: url('../images/closePanel.png') ; height: 32px; width: 30px;}
+                              
+.containerLayer{cursor: pointer;}
+#wb-formFilter{position: relative; top: 10px; right: 5px; margin-top: 10px;}
+#execFilter{position: relative; right: 5px; margin-top: 10px;}
+#wb-formSearch{position: relative; top: 10px; height: 70px;}
+#wb-SeacrhResultsDiv{position: absolute; border-top: 1px solid lightGray; margin-top: 30px; top:100px; bottom:0px; left: 1px; right: 0px;}
+#wb-filterResultsDiv{position: absolute; border-top: 1px solid lightGray; margin-top: 30px; top:170px; bottom:0px; left: 1px; right: 0px;}
+#wb-SeacrhResults{display: none; margin-top: 10px; margin-bottom: 3px;} /* IE */
+#wb-filterResults{display: none; margin-top: 10px; margin-bottom: 3px;} /* IE */
+#execSeacrh{position: relative; right: 5px; margin-top: 10px;}
+.itemForm{margin-bottom: 7px;}
+#wb-SeacrhResultsAcoordion{position: absolute; overflow: auto; left: 0px; right: 0px; top: 25px; bottom: 0px;}
+#wb-filterResultsAcoordion{position: absolute; overflow: auto; left: 0px; right: 0px; top: 0px; bottom: 0px;}
+.layerFindContainer{top: 0px; bottom: 0px; overflow: auto;}
+#divLoading{position:absolute; z-index: 4; background: white; top: 40%; left: 40%; right: 40%; display: none; height: 40px;}
