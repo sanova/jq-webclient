@@ -1,0 +1,40 @@
+<?php
+include $_SERVER['DOCUMENT_ROOT'].'/webgis-custom/app/config/globalPath.php';
+include $CHAMOIS_ROOT.'/app/dal/dalEditing.php';
+
+if(isset($_GET['layer']) && !empty($_GET['layer'])) {
+	if($_GET['layer'] == 'Aree_Faunistiche') {
+		$table = 'aree_faun_T017';
+	}
+}
+else {
+	$table = 'NULL';
+}
+
+if(isset($_GET['id']) && !empty($_GET['id'])) {
+	$idFeature		= $_GET['id'];
+}
+else {
+	$idFeature		= "NULL";
+}
+
+if(isset($_GET['longitudine']) && !empty($_GET['longitudine'])) {
+	$long					= $_GET['longitudine'];
+	$long					= str_replace(",", ".", $long);
+}
+else {
+	$long					= "NULL";
+}
+
+if(isset($_GET['latitudine']) && !empty($_GET['latitudine'])) {
+	$lat					= $_GET['latitudine'];
+	$lat					= str_replace(",", ".", $lat);
+}
+else {
+	$lat					= "NULL";
+}
+
+$objEditing = new dalEditingLayer();
+echo $objEditing-> updateGeomFeature($table, $idFeature, $lat, $long);
+
+?>

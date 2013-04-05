@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/mifido/!svn/ver/4/trunk/images/gis_icons
+END
+mActionZoomLast.png
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/mifido/!svn/ver/4/trunk/images/gis_icons/mActionZoomLast.png
+END
+mActionZoomIn.png
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/mifido/!svn/ver/4/trunk/images/gis_icons/mActionZoomIn.png
+END
+mActionZoomOut.png
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/mifido/!svn/ver/4/trunk/images/gis_icons/mActionZoomOut.png
+END
+mActionMapTips.png
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/mifido/!svn/ver/4/trunk/images/gis_icons/mActionMapTips.png
+END
+infoMap.png
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/mifido/!svn/ver/4/trunk/images/gis_icons/infoMap.png
+END
+measureArea.png
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/mifido/!svn/ver/4/trunk/images/gis_icons/measureArea.png
+END
+add_point_off.png
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/mifido/!svn/ver/4/trunk/images/gis_icons/add_point_off.png
+END
+mActionZoomNext.png
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/mifido/!svn/ver/4/trunk/images/gis_icons/mActionZoomNext.png
+END
+remove_point_off.png
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/mifido/!svn/ver/4/trunk/images/gis_icons/remove_point_off.png
+END
+mActionFilePrint.png
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/mifido/!svn/ver/4/trunk/images/gis_icons/mActionFilePrint.png
+END
+pan_off.png
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/mifido/!svn/ver/4/trunk/images/gis_icons/pan_off.png
+END
+mActionZoomBox.png
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/mifido/!svn/ver/4/trunk/images/gis_icons/mActionZoomBox.png
+END
+mActionZoomFullExtent.png
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/mifido/!svn/ver/4/trunk/images/gis_icons/mActionZoomFullExtent.png
+END
+move_feature_off.png
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/mifido/!svn/ver/4/trunk/images/gis_icons/move_feature_off.png
+END
+measureDistance.png
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/mifido/!svn/ver/4/trunk/images/gis_icons/measureDistance.png
+END
+mActionUndo.png
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/mifido/!svn/ver/4/trunk/images/gis_icons/mActionUndo.png
+END

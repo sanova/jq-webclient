@@ -1,0 +1,914 @@
+<!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
+<qgis projectname="" version="1.9.0-Master">
+    <title></title>
+    <mapcanvas>
+        <units>meters</units>
+        <extent>
+            <xmin>1399476.013081</xmin>
+            <ymin>4997125.495326</ymin>
+            <xmax>1406765.306904</xmax>
+            <ymax>5000947.929892</ymax>
+        </extent>
+        <projections>0</projections>
+        <destinationsrs>
+            <spatialrefsys>
+                <proj4>+proj=tmerc +lat_0=0 +lon_0=9 +k=0.9996 +x_0=1500000 +y_0=0 +ellps=intl +towgs84=-104.1,-49.1,-9.9,0.971,-2.917,0.714,-11.68 +units=m +no_defs</proj4>
+                <srsid>968</srsid>
+                <srid>3003</srid>
+                <authid>EPSG:3003</authid>
+                <description>Monte Mario / Italy zone 1</description>
+                <projectionacronym>tmerc</projectionacronym>
+                <ellipsoidacronym>intl</ellipsoidacronym>
+                <geographicflag>false</geographicflag>
+            </spatialrefsys>
+        </destinationsrs>
+    </mapcanvas>
+    <legend updateDrawingOrder="true">
+        <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="sit_ft_ct_edifici" showFeatureCount="0">
+            <filegroup open="true" hidden="false">
+                <legendlayerfile isInOverview="0" layerid="sit_ft_ct_edifici20120806193710140" visible="1"/>
+            </filegroup>
+        </legendlayer>
+        <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="sit_ft_ct_line" showFeatureCount="0">
+            <filegroup open="true" hidden="false">
+                <legendlayerfile isInOverview="0" layerid="sit_ft_ct_line20120806193454296" visible="1"/>
+            </filegroup>
+        </legendlayer>
+        <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="civ_ft_indirizzi" showFeatureCount="0">
+            <filegroup open="true" hidden="false">
+                <legendlayerfile isInOverview="0" layerid="civ_ft_indirizzi20120806192006250" visible="1"/>
+            </filegroup>
+        </legendlayer>
+        <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="sit_ft_ct_text" showFeatureCount="0">
+            <filegroup open="true" hidden="false">
+                <legendlayerfile isInOverview="0" layerid="sit_ft_ct_text20120806192001781" visible="1"/>
+            </filegroup>
+        </legendlayer>
+        <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="sit_ft_ct_strade" showFeatureCount="0">
+            <filegroup open="true" hidden="false">
+                <legendlayerfile isInOverview="0" layerid="sit_ft_ct_strade20120806191955843" visible="1"/>
+            </filegroup>
+        </legendlayer>
+    </legend>
+    <Composer title="A4 orizzontale" visible="0">
+        <Composition printResolution="300" paperWidth="297" snapGridOffsetX="0" snapGridResolution="0" snapGridOffsetY="0" alignmentSnap="1" snapping="0" numPages="1" paperHeight="210" alignmentSnapTolerance="2" printAsRaster="0">
+            <ComposerMap keepLayerSet="false" overviewFrameMap="-1" id="0" previewMode="Cache" drawCanvasItems="true">
+                <overviewFrame overviewFrameMap="-1">
+                    <symbol alpha="0.3" type="fill" name="">
+                        <layer pass="0" class="SimpleFill" locked="0">
+                            <prop k="border_width_unit" v="MM"/>
+                            <prop k="color" v="255,0,0,125"/>
+                            <prop k="color_border" v="0,0,0,255"/>
+                            <prop k="offset" v="0,0"/>
+                            <prop k="offset_unit" v="MM"/>
+                            <prop k="style" v="solid"/>
+                            <prop k="style_border" v="no"/>
+                            <prop k="width_border" v="0.26"/>
+                        </layer>
+                    </symbol>
+                </overviewFrame>
+                <Extent ymin="4.99918e+06" xmin="1.40078e+06" ymax="4.99935e+06" xmax="1.40104e+06"/>
+                <LayerSet/>
+                <Grid gridStyle="0" crossLength="3" intervalX="0" offsetX="0" intervalY="0" offsetY="0" gridFrameStyle="0" gridFrameWidth="2" show="0">
+                    <symbol alpha="1" type="line" name="">
+                        <layer pass="0" class="SimpleLine" locked="0">
+                            <prop k="capstyle" v="square"/>
+                            <prop k="color" v="0,0,0,255"/>
+                            <prop k="customdash" v="5;2"/>
+                            <prop k="customdash_unit" v="MM"/>
+                            <prop k="joinstyle" v="bevel"/>
+                            <prop k="offset" v="0"/>
+                            <prop k="offset_unit" v="MM"/>
+                            <prop k="penstyle" v="solid"/>
+                            <prop k="use_custom_dash" v="0"/>
+                            <prop k="width" v="0"/>
+                            <prop k="width_unit" v="MM"/>
+                        </layer>
+                    </symbol>
+                    <Annotation rightDirection="0" bottomDirection="0" format="0" topPosition="1" precision="3" leftDirection="0" rightPosition="1" bottomPosition="1" frameDistance="1" show="0" font="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" leftPosition="1" topDirection="0"/>
+                </Grid>
+                <ComposerItem width="271.883" x="5.2179" y="10.4358" rotation="0" height="176.724" positionMode="0" frame="true" outlineWidth="0.3" zValue="1" lastValidViewScaleFactor="1.31208" uuid="{95f7eeb4-5bed-4750-a4d1-3f6544c99e54}" id="" background="false" positionLock="false">
+                    <FrameColor alpha="255" red="0" blue="0" green="0"/>
+                    <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
+                </ComposerItem>
+            </ComposerMap>
+        </Composition>
+    </Composer>
+    <Composer title="A1" visible="0">
+        <Composition printResolution="300" paperWidth="841" snapGridOffsetX="0" snapGridResolution="0" snapGridOffsetY="0" alignmentSnap="1" snapping="0" numPages="1" paperHeight="594" alignmentSnapTolerance="2" printAsRaster="0">
+            <ComposerAttributeTable contentFont="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" gridStrokeWidth="0.5" gridColorGreen="0" maxFeatures="5" composerMap="0" showGrid="1" headerFont="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" gridColorBlue="0" lineTextDist="1" gridColorRed="0" showOnlyVisibleFeatures="1">
+                <displayAttributes/>
+                <attributeAliasMap/>
+                <sortColumns/>
+                <ComposerItem width="62" x="570.849" y="32.0102" rotation="0" height="529.7" positionMode="0" frame="true" outlineWidth="0.3" zValue="2" lastValidViewScaleFactor="1.31208" uuid="{2496103f-3332-4c17-9423-d5c346e1d6a9}" id="" background="false" positionLock="false">
+                    <FrameColor alpha="255" red="0" blue="0" green="0"/>
+                    <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
+                </ComposerItem>
+            </ComposerAttributeTable>
+            <ComposerMap keepLayerSet="false" overviewFrameMap="-1" id="0" previewMode="Cache" drawCanvasItems="true">
+                <overviewFrame overviewFrameMap="-1">
+                    <symbol alpha="0.3" type="fill" name="">
+                        <layer pass="0" class="SimpleFill" locked="0">
+                            <prop k="border_width_unit" v="MM"/>
+                            <prop k="color" v="255,0,0,125"/>
+                            <prop k="color_border" v="0,0,0,255"/>
+                            <prop k="offset" v="0,0"/>
+                            <prop k="offset_unit" v="MM"/>
+                            <prop k="style" v="solid"/>
+                            <prop k="style_border" v="no"/>
+                            <prop k="width_border" v="0.26"/>
+                        </layer>
+                    </symbol>
+                </overviewFrame>
+                <Extent ymin="4.99928e+06" xmin="1.40235e+06" ymax="4.9997e+06" xmax="1.40274e+06"/>
+                <LayerSet/>
+                <Grid gridStyle="0" crossLength="3" intervalX="0" offsetX="0" intervalY="0" offsetY="0" gridFrameStyle="0" gridFrameWidth="2" show="0">
+                    <symbol alpha="1" type="line" name="">
+                        <layer pass="0" class="SimpleLine" locked="0">
+                            <prop k="capstyle" v="square"/>
+                            <prop k="color" v="0,0,0,255"/>
+                            <prop k="customdash" v="5;2"/>
+                            <prop k="customdash_unit" v="MM"/>
+                            <prop k="joinstyle" v="bevel"/>
+                            <prop k="offset" v="0"/>
+                            <prop k="offset_unit" v="MM"/>
+                            <prop k="penstyle" v="solid"/>
+                            <prop k="use_custom_dash" v="0"/>
+                            <prop k="width" v="0"/>
+                            <prop k="width_unit" v="MM"/>
+                        </layer>
+                    </symbol>
+                    <Annotation rightDirection="0" bottomDirection="0" format="0" topPosition="1" precision="3" leftDirection="0" rightPosition="1" bottomPosition="1" frameDistance="1" show="0" font="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" leftPosition="1" topDirection="0"/>
+                </Grid>
+                <ComposerItem width="394.038" x="35.8132" y="44.393" rotation="0" height="424.328" positionMode="0" frame="true" outlineWidth="0.3" zValue="1" lastValidViewScaleFactor="1.31208" uuid="{9a9fdc0a-d71d-4493-87b7-61337e31875f}" id="" background="false" positionLock="false">
+                    <FrameColor alpha="255" red="0" blue="0" green="0"/>
+                    <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
+                </ComposerItem>
+            </ComposerMap>
+        </Composition>
+    </Composer>
+    <projectlayers layercount="5">
+        <maplayer minimumScale="0" maximumScale="1e+08" minLabelScale="0" maxLabelScale="2000" geometry="Point" type="vector" hasScaleBasedVisibilityFlag="0" scaleBasedLabelVisibilityFlag="1">
+            <id>civ_ft_indirizzi20120806192006250</id>
+            <datasource>dbname='settimo' host=192.168.10.54 port=5432 user='settimo' password='settimo' sslmode=disable key='id' srid=3003 type=POINT table="civ_ft_indirizzi" (geom) sql=</datasource>
+            <title></title>
+            <abstract></abstract>
+            <layername>civ_ft_indirizzi</layername>
+            <srs>
+                <spatialrefsys>
+                    <proj4>+proj=tmerc +lat_0=0 +lon_0=9 +k=0.9996 +x_0=1500000 +y_0=0 +ellps=intl +towgs84=-104.1,-49.1,-9.9,0.971,-2.917,0.714,-11.68 +units=m +no_defs</proj4>
+                    <srsid>968</srsid>
+                    <srid>3003</srid>
+                    <authid>EPSG:3003</authid>
+                    <description>Monte Mario / Italy zone 1</description>
+                    <projectionacronym>tmerc</projectionacronym>
+                    <ellipsoidacronym>intl</ellipsoidacronym>
+                    <geographicflag>false</geographicflag>
+                </spatialrefsys>
+            </srs>
+            <transparencyLevelInt>255</transparencyLevelInt>
+            <provider encoding="System">postgres</provider>
+            <vectorjoins/>
+            <singlesymbol>
+                <symbol>
+                    <lowervalue></lowervalue>
+                    <uppervalue></uppervalue>
+                    <label></label>
+                    <pointsymbol>hard:circle</pointsymbol>
+                    <pointsize>2</pointsize>
+                    <pointsizeunits>pixels</pointsizeunits>
+                    <rotationclassificationfieldname null="1"></rotationclassificationfieldname>
+                    <scaleclassificationfieldname null="1"></scaleclassificationfieldname>
+                    <symbolfieldname null="1"></symbolfieldname>
+                    <outlinecolor red="0" blue="0" green="0"/>
+                    <outlinestyle>SolidLine</outlinestyle>
+                    <outlinewidth>0.26</outlinewidth>
+                    <fillcolor red="242" blue="163" green="56"/>
+                    <fillpattern>NoBrush</fillpattern>
+                    <texturepath>.</texturepath>
+                </symbol>
+            </singlesymbol>
+            <customproperties/>
+            <blendMode>0</blendMode>
+            <displayfield>id</displayfield>
+            <label>1</label>
+            <labelfield>completo</labelfield>
+            <labelattributes>
+                <label fieldname="completo" text="Etichetta"/>
+                <family fieldname="" name="Verdana"/>
+                <size fieldname="" units="pt" value="10"/>
+                <bold fieldname="" on="1"/>
+                <italic fieldname="" on="0"/>
+                <underline fieldname="" on="0"/>
+                <strikeout fieldname="" on="0"/>
+                <color fieldname="" red="0" blue="0" green="0"/>
+                <x fieldname=""/>
+                <y fieldname=""/>
+                <offset x="0" y="0" units="pt" yfieldname="" xfieldname=""/>
+                <angle fieldname="" value="0" auto="0"/>
+                <alignment fieldname="" value="center"/>
+                <buffercolor fieldname="" red="255" blue="255" green="255"/>
+                <buffersize fieldname="" units="pt" value="1"/>
+                <bufferenabled fieldname="" on="1"/>
+                <multilineenabled fieldname="" on=""/>
+                <selectedonly on=""/>
+            </labelattributes>
+            <edittypes>
+                <edittype editable="1" type="0" name="categoria"/>
+                <edittype editable="1" type="0" name="cod_via"/>
+                <edittype editable="1" type="0" name="completo"/>
+                <edittype editable="1" type="0" name="esponente"/>
+                <edittype editable="1" type="0" name="id"/>
+                <edittype editable="1" type="0" name="livello"/>
+                <edittype editable="1" type="0" name="numero"/>
+                <edittype editable="1" type="0" name="scala"/>
+                <edittype editable="1" type="0" name="stato"/>
+            </edittypes>
+            <editform>.</editform>
+            <editforminit></editforminit>
+            <annotationform>.</annotationform>
+            <editorlayout>generatedlayout</editorlayout>
+            <excludeAttributesWMS/>
+            <excludeAttributesWFS/>
+            <attributeactions/>
+        </maplayer>
+        <maplayer minimumScale="0" maximumScale="1e+08" geometry="Polygon" type="vector" hasScaleBasedVisibilityFlag="0">
+            <id>sit_ft_ct_edifici20120806193710140</id>
+            <datasource>dbname='settimo' host=192.168.10.54 port=5432 user='settimo' password='settimo' sslmode=disable key='oid' srid=3003 type=POLYGON table="sit_ft_ct_edifici" (geom) sql=</datasource>
+            <title></title>
+            <abstract></abstract>
+            <layername>sit_ft_ct_edifici</layername>
+            <srs>
+                <spatialrefsys>
+                    <proj4>+proj=tmerc +lat_0=0 +lon_0=9 +k=0.9996 +x_0=1500000 +y_0=0 +ellps=intl +towgs84=-104.1,-49.1,-9.9,0.971,-2.917,0.714,-11.68 +units=m +no_defs</proj4>
+                    <srsid>968</srsid>
+                    <srid>3003</srid>
+                    <authid>EPSG:3003</authid>
+                    <description>Monte Mario / Italy zone 1</description>
+                    <projectionacronym>tmerc</projectionacronym>
+                    <ellipsoidacronym>intl</ellipsoidacronym>
+                    <geographicflag>false</geographicflag>
+                </spatialrefsys>
+            </srs>
+            <transparencyLevelInt>255</transparencyLevelInt>
+            <provider encoding="System">postgres</provider>
+            <vectorjoins/>
+            <renderer-v2 symbollevels="0" type="RuleRenderer">
+                <rules>
+                    <rule scalemaxdenom="5000" filter="TIPO = 'EDIF_CIVILE'" symbol="0" label="edifici civili"/>
+                    <rule scalemaxdenom="5000" filter="TIPO = 'EDIF_COMM'" symbol="1" label="edifici commerciali"/>
+                    <rule scalemaxdenom="5000" filter="TIPO = 'EDIF_PRODUT'" symbol="2" label="edifici produttivi"/>
+                    <rule filter="TIPO = 'EDIF_AGRICOLO'" symbol="3" label="edifici agricoli"/>
+                    <rule filter="TIPO = 'EDIF_PUBBLICI' OR TIPO = 'STAZIONE_FFSS' OR TIPO = 'SCUOLE_BIBLIOTECHE' OR TIPO = 'EDIF_DI_CULTO'" symbol="4" label="edifici pubblici"/>
+                    <rule scalemaxdenom="5000" filter="TIPO = 'BARACCA' OR TIPO = 'BASSI_FABBRICATI' OR TIPO = 'BAS_IN_CLS' OR TIPO = 'CABINE_IMP_TECN' OR TIPO = 'CIMITERO' OR TIPO = 'COP_BOX_INT' OR TIPO = 'EDIF_A_PARCHEG' OR TIPO = 'EDIF_SPECIALI' OR TIPO ='PISCINA' OR TIPO = 'AREA_PD'" symbol="5" label="altri edifici"/>
+                    <rule filter="TIPO = 'RUDERI_SEMIDIR'" symbol="6" label="ruderi"/>
+                    <rule scalemaxdenom="5000" filter="TIPO = 'EDIF_IN_COSTR' OR TIPO = 'EDIF_IND_IN_COSTR'" symbol="7" label="edifici in costruzione"/>
+                </rules>
+                <symbols>
+                    <symbol alpha="1" type="fill" name="0">
+                        <layer pass="0" class="SimpleFill" locked="0">
+                            <prop k="border_width_unit" v="MM"/>
+                            <prop k="color" v="255,255,217,255"/>
+                            <prop k="color_border" v="0,0,0,255"/>
+                            <prop k="offset" v="0,0"/>
+                            <prop k="offset_unit" v="MM"/>
+                            <prop k="style" v="solid"/>
+                            <prop k="style_border" v="solid"/>
+                            <prop k="width_border" v="0.15"/>
+                        </layer>
+                    </symbol>
+                    <symbol alpha="1" type="fill" name="1">
+                        <layer pass="0" class="SimpleFill" locked="0">
+                            <prop k="border_width_unit" v="MM"/>
+                            <prop k="color" v="252,182,189,255"/>
+                            <prop k="color_border" v="0,0,0,255"/>
+                            <prop k="offset" v="0,0"/>
+                            <prop k="offset_unit" v="MM"/>
+                            <prop k="style" v="solid"/>
+                            <prop k="style_border" v="solid"/>
+                            <prop k="width_border" v="0.15"/>
+                        </layer>
+                    </symbol>
+                    <symbol alpha="1" type="fill" name="2">
+                        <layer pass="0" class="SimpleFill" locked="0">
+                            <prop k="border_width_unit" v="MM"/>
+                            <prop k="color" v="255,235,190,255"/>
+                            <prop k="color_border" v="0,0,0,255"/>
+                            <prop k="offset" v="0,0"/>
+                            <prop k="offset_unit" v="MM"/>
+                            <prop k="style" v="solid"/>
+                            <prop k="style_border" v="solid"/>
+                            <prop k="width_border" v="0.15"/>
+                        </layer>
+                    </symbol>
+                    <symbol alpha="1" type="fill" name="3">
+                        <layer pass="0" class="SimpleFill" locked="0">
+                            <prop k="border_width_unit" v="MM"/>
+                            <prop k="color" v="215,252,228,255"/>
+                            <prop k="color_border" v="0,0,0,255"/>
+                            <prop k="offset" v="0,0"/>
+                            <prop k="offset_unit" v="MM"/>
+                            <prop k="style" v="solid"/>
+                            <prop k="style_border" v="solid"/>
+                            <prop k="width_border" v="0.15"/>
+                        </layer>
+                    </symbol>
+                    <symbol alpha="1" type="fill" name="4">
+                        <layer pass="0" class="SimpleFill" locked="0">
+                            <prop k="border_width_unit" v="MM"/>
+                            <prop k="color" v="182,231,252,255"/>
+                            <prop k="color_border" v="0,0,0,255"/>
+                            <prop k="offset" v="0,0"/>
+                            <prop k="offset_unit" v="MM"/>
+                            <prop k="style" v="solid"/>
+                            <prop k="style_border" v="solid"/>
+                            <prop k="width_border" v="0.15"/>
+                        </layer>
+                    </symbol>
+                    <symbol alpha="1" type="fill" name="5">
+                        <layer pass="0" class="SimpleFill" locked="0">
+                            <prop k="border_width_unit" v="MM"/>
+                            <prop k="color" v="133,247,179,255"/>
+                            <prop k="color_border" v="0,0,0,255"/>
+                            <prop k="offset" v="0,0"/>
+                            <prop k="offset_unit" v="MM"/>
+                            <prop k="style" v="no"/>
+                            <prop k="style_border" v="solid"/>
+                            <prop k="width_border" v="0.15"/>
+                        </layer>
+                    </symbol>
+                    <symbol alpha="1" type="fill" name="6">
+                        <layer pass="0" class="SimpleLine" locked="0">
+                            <prop k="capstyle" v="square"/>
+                            <prop k="color" v="0,0,0,255"/>
+                            <prop k="customdash" v="1.9;1.1"/>
+                            <prop k="customdash_unit" v="MM"/>
+                            <prop k="joinstyle" v="bevel"/>
+                            <prop k="offset" v="0"/>
+                            <prop k="offset_unit" v="MM"/>
+                            <prop k="penstyle" v="dash"/>
+                            <prop k="use_custom_dash" v="1"/>
+                            <prop k="width" v="0.4"/>
+                            <prop k="width_unit" v="MM"/>
+                        </layer>
+                    </symbol>
+                    <symbol alpha="1" type="fill" name="7">
+                        <layer pass="0" class="SimpleFill" locked="0">
+                            <prop k="border_width_unit" v="MM"/>
+                            <prop k="color" v="252,222,255,255"/>
+                            <prop k="color_border" v="0,0,0,255"/>
+                            <prop k="offset" v="0,0"/>
+                            <prop k="offset_unit" v="MM"/>
+                            <prop k="style" v="solid"/>
+                            <prop k="style_border" v="no"/>
+                            <prop k="width_border" v="0"/>
+                        </layer>
+                        <layer pass="0" class="SimpleLine" locked="0">
+                            <prop k="capstyle" v="square"/>
+                            <prop k="color" v="0,0,0,255"/>
+                            <prop k="customdash" v="1.9;1.1"/>
+                            <prop k="customdash_unit" v="MM"/>
+                            <prop k="joinstyle" v="bevel"/>
+                            <prop k="offset" v="0"/>
+                            <prop k="offset_unit" v="MM"/>
+                            <prop k="penstyle" v="dash"/>
+                            <prop k="use_custom_dash" v="1"/>
+                            <prop k="width" v="0.4"/>
+                            <prop k="width_unit" v="MM"/>
+                        </layer>
+                    </symbol>
+                </symbols>
+            </renderer-v2>
+            <customproperties/>
+            <blendMode>0</blendMode>
+            <displayfield>tipo</displayfield>
+            <label>0</label>
+            <labelattributes>
+                <label fieldname="" text="Etichetta"/>
+                <family fieldname="" name="MS Shell Dlg 2"/>
+                <size fieldname="" units="pt" value="12"/>
+                <bold fieldname="" on="0"/>
+                <italic fieldname="" on="0"/>
+                <underline fieldname="" on="0"/>
+                <strikeout fieldname="" on="0"/>
+                <color fieldname="" red="0" blue="0" green="0"/>
+                <x fieldname=""/>
+                <y fieldname=""/>
+                <offset x="0" y="0" units="pt" yfieldname="" xfieldname=""/>
+                <angle fieldname="" value="0" auto="0"/>
+                <alignment fieldname="" value="center"/>
+                <buffercolor fieldname="" red="255" blue="255" green="255"/>
+                <buffersize fieldname="" units="pt" value="1"/>
+                <bufferenabled fieldname="" on=""/>
+                <multilineenabled fieldname="" on=""/>
+                <selectedonly on=""/>
+            </labelattributes>
+            <edittypes>
+                <edittype editable="1" type="0" name="CODICE"/>
+                <edittype editable="1" type="0" name="SUPERFICIE"/>
+                <edittype editable="1" type="0" name="TIPO"/>
+                <edittype editable="1" type="0" name="codice"/>
+                <edittype editable="1" type="0" name="superficie"/>
+                <edittype editable="1" type="0" name="tipo"/>
+            </edittypes>
+            <editform>/riondato/vm_qgis_settimo</editform>
+            <editforminit></editforminit>
+            <annotationform>/riondato/vm_qgis_settimo</annotationform>
+            <editorlayout>generatedlayout</editorlayout>
+            <excludeAttributesWMS/>
+            <excludeAttributesWFS/>
+            <attributeactions/>
+        </maplayer>
+        <maplayer minimumScale="0" maximumScale="1e+08" geometry="Line" type="vector" hasScaleBasedVisibilityFlag="0">
+            <id>sit_ft_ct_line20120806193454296</id>
+            <datasource>dbname='settimo' host=192.168.10.54 port=5432 user='settimo' password='settimo' sslmode=disable key='oid' srid=3003 type=LINESTRING table="sit_ft_ct_line" (geom) sql=</datasource>
+            <title></title>
+            <abstract></abstract>
+            <layername>sit_ft_ct_line</layername>
+            <srs>
+                <spatialrefsys>
+                    <proj4>+proj=tmerc +lat_0=0 +lon_0=9 +k=0.9996 +x_0=1500000 +y_0=0 +ellps=intl +towgs84=-104.1,-49.1,-9.9,0.971,-2.917,0.714,-11.68 +units=m +no_defs</proj4>
+                    <srsid>968</srsid>
+                    <srid>3003</srid>
+                    <authid>EPSG:3003</authid>
+                    <description>Monte Mario / Italy zone 1</description>
+                    <projectionacronym>tmerc</projectionacronym>
+                    <ellipsoidacronym>intl</ellipsoidacronym>
+                    <geographicflag>false</geographicflag>
+                </spatialrefsys>
+            </srs>
+            <transparencyLevelInt>255</transparencyLevelInt>
+            <provider encoding="System">postgres</provider>
+            <vectorjoins/>
+            <renderer-v2 symbollevels="0" type="RuleRenderer">
+                <rules>
+                    <rule scalemaxdenom="2000" filter="LEVEL_NAME = 'S_autostrada' OR LEVEL_NAME = 'STRADA_MINORE' OR LEVEL_NAME = 'ARGINI_PIETRA' OR LEVEL_NAME = 'ARGINI_SABBIA' OR LEVEL_NAME = 'barbette' OR LEVEL_NAME = 'BINARI_FERROV' OR LEVEL_NAME = 'CAMPI_GIOCO' OR LEVEL_NAME = 'CHIUSA' OR LEVEL_NAME = 'COLTIV_ERB' OR LEVEL_NAME = 'CORDOLI' OR LEVEL_NAME = 'DIGA_BRET_SALTO' OR LEVEL_NAME = 'DIVID_VOLUMI' OR LEVEL_NAME = 'FILAR_ALBERI' OR LEVEL_NAME = 'GUARD_RAILS' OR LEVEL_NAME = 'IMPIANTI_VASCHE' OR LEVEL_NAME = 'LIMITE_BOSCO' OR LEVEL_NAME = 'LIMITE_TETTOIA_PENS' OR LEVEL_NAME = 'MARC_FERROV' OR LEVEL_NAME = 'MARCIAPIEDI' OR LEVEL_NAME = 'MURO_CONTEN' OR LEVEL_NAME = 'PARCHEGGI' OR LEVEL_NAME = 'PASSO_CARRAIO' OR LEVEL_NAME = 'PASS_PEDONALE' OR LEVEL_NAME = 'PISTA_CICLABILE' OR LEVEL_NAME = 'PONTI' OR LEVEL_NAME = 'RAMPE' OR LEVEL_NAME = 'SCALE' OR LEVEL_NAME = 'SCARPATA_INF' OR LEVEL_NAME = 'SEDE_FERR' OR LEVEL_NAME = 'SERRA' OR LEVEL_NAME = 'SIEPE_AREAVERDE' OR LEVEL_NAME = 'SOTTOPASSO' OR LEVEL_NAME = 'SPARTITRAFFICO' OR LEVEL_NAME = 'STRADE' OR LEVEL_NAME = 'TORRI_SERB' OR LEVEL_NAME = 'serbatoi_gpl' OR LEVEL_NAME = 'autostrada' OR LEVEL_NAME = 'VIADOTTO' OR LEVEL_NAME = 'TRALICCIO' OR LEVEL_NAME = 'STRADA_MINORE' OR LEVEL_NAME = 'S_CAMPI_GIOCO' OR LEVEL_NAME = 'S_COLTIV_ERB' OR LEVEL_NAME = 'S_CORDOLI' OR LEVEL_NAME = 'S_GUARD_RAILS' OR LEVEL_NAME = 'S_LIMITE_TETTOIA_PENS' OR LEVEL_NAME = 'S_MARCIAPIEDI' OR LEVEL_NAME = 'S_MURO_CONTEN' OR LEVEL_NAME = 'S_PASSO_CARRAIO' OR LEVEL_NAME = 'S_PASS_PEDONALE' OR LEVEL_NAME = 'S_PISTA_CICLABILE' OR LEVEL_NAME = 'S_PONTI' OR LEVEL_NAME = 'S_RAMPE' OR LEVEL_NAME = 'S_SCALE' OR LEVEL_NAME = 'S_SCARPATA_INF' OR LEVEL_NAME = 'S_SEDE_FERR' OR LEVEL_NAME = 'S_SIEPE_AREAVERDE' OR LEVEL_NAME = 'S_SOTTOPASSO' OR LEVEL_NAME = 'S_SPARTITRAFFICO' OR LEVEL_NAME = 'S_STRADA_MINORE' OR LEVEL_NAME = 'S_STRADE' OR LEVEL_NAME = 'S_VIADOTTO'" symbol="0" label="elementi di base"/>
+                    <rule filter="LEVEL_NAME = 'LIMITE_COMUNALE' OR LEVEL_NAME = 'LIMITE_COM_FRAMM_TOPO'" symbol="1" label="confine comunale"/>
+                    <rule scalemaxdenom="2000" filter="LEVEL_NAME = 'MURI_DIVISORI' OR LEVEL_NAME = 'S_MURI_DIVISORI'" symbol="2" label="muri divisori (scala grande)"/>
+                    <rule scalemaxdenom="2000" filter="LEVEL_NAME = 'RECINZIONI' OR LEVEL_NAME = 'S_RECINZIONI'" symbol="3" label="recinzioni (scala grande)"/>
+                    <rule filter="LEVEL_NAME = 'CANALI' OR LEVEL_NAME = 'FIUME_PO' OR LEVEL_NAME = 'RII' " symbol="4" label="fiumi, canali"/>
+                    <rule filter="LEVEL_NAME = 'RII_INT'" symbol="5" label="canali interrati"/>
+                    <rule filter="LEVEL_NAME = 'STRADA_CANTIERE' OR LEVEL_NAME = 'S_STRADA_CANTIERE'" symbol="6" label="strade minori"/>
+                    <rule scalemaxdenom="2000" filter="LEVEL_NAME = 'VESTIZ_BASSI_FAB' OR LEVEL_NAME = 'VESTIZ_CHIESA' OR LEVEL_NAME = 'VESTIZ_SERRA' OR LEVEL_NAME = 'VESTIZ_TETTOIE' OR LEVEL_NAME = 'VESTIZ_TRALICCIO'" symbol="7" label="simbologia di vestizione"/>
+                </rules>
+                <symbols>
+                    <symbol alpha="1" type="line" name="0">
+                        <layer pass="0" class="SimpleLine" locked="0">
+                            <prop k="capstyle" v="square"/>
+                            <prop k="color" v="0,0,0,255"/>
+                            <prop k="customdash" v="5;2"/>
+                            <prop k="customdash_unit" v="MM"/>
+                            <prop k="joinstyle" v="bevel"/>
+                            <prop k="offset" v="0"/>
+                            <prop k="offset_unit" v="MM"/>
+                            <prop k="penstyle" v="solid"/>
+                            <prop k="use_custom_dash" v="0"/>
+                            <prop k="width" v="0.15"/>
+                            <prop k="width_unit" v="MM"/>
+                        </layer>
+                    </symbol>
+                    <symbol alpha="1" type="line" name="1">
+                        <layer pass="0" class="SimpleLine" locked="0">
+                            <prop k="capstyle" v="square"/>
+                            <prop k="color" v="0,0,0,255"/>
+                            <prop k="customdash" v="2;1"/>
+                            <prop k="customdash_unit" v="MM"/>
+                            <prop k="joinstyle" v="bevel"/>
+                            <prop k="offset" v="0"/>
+                            <prop k="offset_unit" v="MM"/>
+                            <prop k="penstyle" v="dash"/>
+                            <prop k="use_custom_dash" v="1"/>
+                            <prop k="width" v="2"/>
+                            <prop k="width_unit" v="MM"/>
+                        </layer>
+                    </symbol>
+                    <symbol alpha="1" type="line" name="2">
+                        <layer pass="0" class="SimpleLine" locked="0">
+                            <prop k="capstyle" v="square"/>
+                            <prop k="color" v="75,136,96,255"/>
+                            <prop k="customdash" v="5;2"/>
+                            <prop k="customdash_unit" v="MM"/>
+                            <prop k="joinstyle" v="bevel"/>
+                            <prop k="offset" v="0"/>
+                            <prop k="offset_unit" v="MM"/>
+                            <prop k="penstyle" v="solid"/>
+                            <prop k="use_custom_dash" v="0"/>
+                            <prop k="width" v="0.15"/>
+                            <prop k="width_unit" v="MM"/>
+                        </layer>
+                        <layer pass="0" class="SimpleLine" locked="0">
+                            <prop k="capstyle" v="square"/>
+                            <prop k="color" v="75,136,96,255"/>
+                            <prop k="customdash" v="0.6;4"/>
+                            <prop k="customdash_unit" v="MM"/>
+                            <prop k="joinstyle" v="bevel"/>
+                            <prop k="offset" v="0"/>
+                            <prop k="offset_unit" v="MM"/>
+                            <prop k="penstyle" v="solid"/>
+                            <prop k="use_custom_dash" v="1"/>
+                            <prop k="width" v="0.9"/>
+                            <prop k="width_unit" v="MM"/>
+                        </layer>
+                    </symbol>
+                    <symbol alpha="1" type="line" name="3">
+                        <layer pass="0" class="SimpleLine" locked="0">
+                            <prop k="capstyle" v="square"/>
+                            <prop k="color" v="210,88,88,255"/>
+                            <prop k="customdash" v="5;2"/>
+                            <prop k="customdash_unit" v="MM"/>
+                            <prop k="joinstyle" v="bevel"/>
+                            <prop k="offset" v="0"/>
+                            <prop k="offset_unit" v="MM"/>
+                            <prop k="penstyle" v="solid"/>
+                            <prop k="use_custom_dash" v="0"/>
+                            <prop k="width" v="0.4"/>
+                            <prop k="width_unit" v="MM"/>
+                        </layer>
+                        <layer pass="0" class="SimpleLine" locked="0">
+                            <prop k="capstyle" v="square"/>
+                            <prop k="color" v="210,88,88,255"/>
+                            <prop k="customdash" v="0.3;2"/>
+                            <prop k="customdash_unit" v="MM"/>
+                            <prop k="joinstyle" v="bevel"/>
+                            <prop k="offset" v="0"/>
+                            <prop k="offset_unit" v="MM"/>
+                            <prop k="penstyle" v="dash"/>
+                            <prop k="use_custom_dash" v="1"/>
+                            <prop k="width" v="1"/>
+                            <prop k="width_unit" v="MM"/>
+                        </layer>
+                    </symbol>
+                    <symbol alpha="1" type="line" name="4">
+                        <layer pass="0" class="SimpleLine" locked="0">
+                            <prop k="capstyle" v="square"/>
+                            <prop k="color" v="0,112,255,255"/>
+                            <prop k="customdash" v="5;2"/>
+                            <prop k="customdash_unit" v="MM"/>
+                            <prop k="joinstyle" v="bevel"/>
+                            <prop k="offset" v="0"/>
+                            <prop k="offset_unit" v="MM"/>
+                            <prop k="penstyle" v="solid"/>
+                            <prop k="use_custom_dash" v="0"/>
+                            <prop k="width" v="0.4"/>
+                            <prop k="width_unit" v="MM"/>
+                        </layer>
+                    </symbol>
+                    <symbol alpha="1" type="line" name="5">
+                        <layer pass="0" class="SimpleLine" locked="0">
+                            <prop k="capstyle" v="square"/>
+                            <prop k="color" v="0,112,255,255"/>
+                            <prop k="customdash" v="1.9;1.1"/>
+                            <prop k="customdash_unit" v="MM"/>
+                            <prop k="joinstyle" v="bevel"/>
+                            <prop k="offset" v="0"/>
+                            <prop k="offset_unit" v="MM"/>
+                            <prop k="penstyle" v="dash"/>
+                            <prop k="use_custom_dash" v="1"/>
+                            <prop k="width" v="0.4"/>
+                            <prop k="width_unit" v="MM"/>
+                        </layer>
+                    </symbol>
+                    <symbol alpha="1" type="line" name="6">
+                        <layer pass="0" class="SimpleLine" locked="0">
+                            <prop k="capstyle" v="square"/>
+                            <prop k="color" v="89,88,88,255"/>
+                            <prop k="customdash" v="1.9;1.1"/>
+                            <prop k="customdash_unit" v="MM"/>
+                            <prop k="joinstyle" v="bevel"/>
+                            <prop k="offset" v="0"/>
+                            <prop k="offset_unit" v="MM"/>
+                            <prop k="penstyle" v="dash"/>
+                            <prop k="use_custom_dash" v="1"/>
+                            <prop k="width" v="0.4"/>
+                            <prop k="width_unit" v="MM"/>
+                        </layer>
+                    </symbol>
+                    <symbol alpha="1" type="line" name="7">
+                        <layer pass="0" class="SimpleLine" locked="0">
+                            <prop k="capstyle" v="square"/>
+                            <prop k="color" v="178,178,178,255"/>
+                            <prop k="customdash" v="5;2"/>
+                            <prop k="customdash_unit" v="MM"/>
+                            <prop k="joinstyle" v="bevel"/>
+                            <prop k="offset" v="0"/>
+                            <prop k="offset_unit" v="MM"/>
+                            <prop k="penstyle" v="solid"/>
+                            <prop k="use_custom_dash" v="0"/>
+                            <prop k="width" v="0.15"/>
+                            <prop k="width_unit" v="MM"/>
+                        </layer>
+                    </symbol>
+                </symbols>
+            </renderer-v2>
+            <customproperties/>
+            <blendMode>0</blendMode>
+            <displayfield>level_name</displayfield>
+            <label>0</label>
+            <labelattributes>
+                <label fieldname="" text="Etichetta"/>
+                <family fieldname="" name="MS Shell Dlg 2"/>
+                <size fieldname="" units="pt" value="12"/>
+                <bold fieldname="" on="0"/>
+                <italic fieldname="" on="0"/>
+                <underline fieldname="" on="0"/>
+                <strikeout fieldname="" on="0"/>
+                <color fieldname="" red="0" blue="0" green="0"/>
+                <x fieldname=""/>
+                <y fieldname=""/>
+                <offset x="0" y="0" units="pt" yfieldname="" xfieldname=""/>
+                <angle fieldname="" value="0" auto="0"/>
+                <alignment fieldname="" value="center"/>
+                <buffercolor fieldname="" red="255" blue="255" green="255"/>
+                <buffersize fieldname="" units="pt" value="1"/>
+                <bufferenabled fieldname="" on=""/>
+                <multilineenabled fieldname="" on=""/>
+                <selectedonly on=""/>
+            </labelattributes>
+            <edittypes>
+                <edittype editable="1" type="0" name="LEVEL_NAME"/>
+                <edittype editable="1" type="0" name="level_name"/>
+            </edittypes>
+            <editform>/riondato/vm_qgis_settimo</editform>
+            <editforminit></editforminit>
+            <annotationform>/riondato/vm_qgis_settimo</annotationform>
+            <editorlayout>generatedlayout</editorlayout>
+            <excludeAttributesWMS/>
+            <excludeAttributesWFS/>
+            <attributeactions/>
+        </maplayer>
+        <maplayer minimumScale="0" maximumScale="5000" geometry="Polygon" type="vector" hasScaleBasedVisibilityFlag="1">
+            <id>sit_ft_ct_strade20120806191955843</id>
+            <datasource>dbname='settimo' host=192.168.10.54 port=5432 user='settimo' password='settimo' sslmode=disable key='oid' srid=3003 type=POLYGON table="sit_ft_ct_strade" (geom) sql=</datasource>
+            <title></title>
+            <abstract></abstract>
+            <layername>sit_ft_ct_strade</layername>
+            <srs>
+                <spatialrefsys>
+                    <proj4>+proj=tmerc +lat_0=0 +lon_0=9 +k=0.9996 +x_0=1500000 +y_0=0 +ellps=intl +towgs84=-104.1,-49.1,-9.9,0.971,-2.917,0.714,-11.68 +units=m +no_defs</proj4>
+                    <srsid>968</srsid>
+                    <srid>3003</srid>
+                    <authid>EPSG:3003</authid>
+                    <description>Monte Mario / Italy zone 1</description>
+                    <projectionacronym>tmerc</projectionacronym>
+                    <ellipsoidacronym>intl</ellipsoidacronym>
+                    <geographicflag>false</geographicflag>
+                </spatialrefsys>
+            </srs>
+            <transparencyLevelInt>255</transparencyLevelInt>
+            <provider encoding="System">postgres</provider>
+            <vectorjoins/>
+            <renderer-v2 attr="TIPO" symbollevels="0" type="categorizedSymbol">
+                <categories>
+                    <category symbol="0" value="m" label="m"/>
+                    <category symbol="1" value="s" label="s"/>
+                </categories>
+                <symbols>
+                    <symbol alpha="1" type="fill" name="0">
+                        <layer pass="0" class="SimpleFill" locked="0">
+                            <prop k="border_width_unit" v="MM"/>
+                            <prop k="color" v="225,225,225,255"/>
+                            <prop k="color_border" v="0,0,0,255"/>
+                            <prop k="offset" v="0,0"/>
+                            <prop k="offset_unit" v="MM"/>
+                            <prop k="style" v="solid"/>
+                            <prop k="style_border" v="solid"/>
+                            <prop k="width_border" v="0.15"/>
+                        </layer>
+                    </symbol>
+                    <symbol alpha="1" type="fill" name="1">
+                        <layer pass="0" class="SimpleFill" locked="0">
+                            <prop k="border_width_unit" v="MM"/>
+                            <prop k="color" v="240,240,240,255"/>
+                            <prop k="color_border" v="0,0,0,255"/>
+                            <prop k="offset" v="0,0"/>
+                            <prop k="offset_unit" v="MM"/>
+                            <prop k="style" v="solid"/>
+                            <prop k="style_border" v="solid"/>
+                            <prop k="width_border" v="0.15"/>
+                        </layer>
+                    </symbol>
+                </symbols>
+                <source-symbol>
+                    <symbol alpha="1" type="fill" name="0">
+                        <layer pass="0" class="SimpleFill" locked="0">
+                            <prop k="border_width_unit" v="MM"/>
+                            <prop k="color" v="162,228,230,255"/>
+                            <prop k="color_border" v="0,0,0,255"/>
+                            <prop k="offset" v="0,0"/>
+                            <prop k="offset_unit" v="MM"/>
+                            <prop k="style" v="solid"/>
+                            <prop k="style_border" v="solid"/>
+                            <prop k="width_border" v="0.26"/>
+                        </layer>
+                    </symbol>
+                </source-symbol>
+                <colorramp type="gradient" name="[source]">
+                    <prop k="color1" v="250,250,250,255"/>
+                    <prop k="color2" v="5,5,5,255"/>
+                    <prop k="discrete" v="0"/>
+                </colorramp>
+                <rotation field=""/>
+                <sizescale field="" scalemethod="area"/>
+            </renderer-v2>
+            <customproperties/>
+            <blendMode>0</blendMode>
+            <displayfield>tipo</displayfield>
+            <label>0</label>
+            <labelattributes>
+                <label fieldname="" text="Etichetta"/>
+                <family fieldname="" name="MS Shell Dlg 2"/>
+                <size fieldname="" units="pt" value="12"/>
+                <bold fieldname="" on="0"/>
+                <italic fieldname="" on="0"/>
+                <underline fieldname="" on="0"/>
+                <strikeout fieldname="" on="0"/>
+                <color fieldname="" red="0" blue="0" green="0"/>
+                <x fieldname=""/>
+                <y fieldname=""/>
+                <offset x="0" y="0" units="pt" yfieldname="" xfieldname=""/>
+                <angle fieldname="" value="0" auto="0"/>
+                <alignment fieldname="" value="center"/>
+                <buffercolor fieldname="" red="255" blue="255" green="255"/>
+                <buffersize fieldname="" units="pt" value="1"/>
+                <bufferenabled fieldname="" on=""/>
+                <multilineenabled fieldname="" on=""/>
+                <selectedonly on=""/>
+            </labelattributes>
+            <edittypes>
+                <edittype editable="1" type="0" name="SUPERFICIE"/>
+                <edittype editable="1" type="0" name="TIPO"/>
+                <edittype editable="1" type="0" name="superficie"/>
+                <edittype editable="1" type="0" name="tipo"/>
+            </edittypes>
+            <editform>/riondato/vm_qgis_settimo</editform>
+            <editforminit></editforminit>
+            <annotationform>/riondato/vm_qgis_settimo</annotationform>
+            <editorlayout>generatedlayout</editorlayout>
+            <excludeAttributesWMS/>
+            <excludeAttributesWFS/>
+            <attributeactions/>
+        </maplayer>
+        <maplayer minimumScale="0" maximumScale="1e+08" geometry="Point" type="vector" hasScaleBasedVisibilityFlag="0">
+            <id>sit_ft_ct_text20120806192001781</id>
+            <datasource>dbname='settimo' host=192.168.10.54 port=5432 user='settimo' password='settimo' sslmode=disable key='oid' srid=3003 type=POINT table="sit_ft_ct_text" (geom) sql=</datasource>
+            <title></title>
+            <abstract></abstract>
+            <layername>sit_ft_ct_text</layername>
+            <srs>
+                <spatialrefsys>
+                    <proj4>+proj=tmerc +lat_0=0 +lon_0=9 +k=0.9996 +x_0=1500000 +y_0=0 +ellps=intl +towgs84=-104.1,-49.1,-9.9,0.971,-2.917,0.714,-11.68 +units=m +no_defs</proj4>
+                    <srsid>968</srsid>
+                    <srid>3003</srid>
+                    <authid>EPSG:3003</authid>
+                    <description>Monte Mario / Italy zone 1</description>
+                    <projectionacronym>tmerc</projectionacronym>
+                    <ellipsoidacronym>intl</ellipsoidacronym>
+                    <geographicflag>false</geographicflag>
+                </spatialrefsys>
+            </srs>
+            <transparencyLevelInt>255</transparencyLevelInt>
+            <provider encoding="System">postgres</provider>
+            <vectorjoins/>
+            <renderer-v2 symbollevels="0" type="singleSymbol">
+                <symbols>
+                    <symbol alpha="0" type="marker" name="0">
+                        <layer pass="0" class="SimpleMarker" locked="0">
+                            <prop k="angle" v="0"/>
+                            <prop k="color" v="170,0,255,255"/>
+                            <prop k="color_border" v="170,0,255,255"/>
+                            <prop k="name" v="circle"/>
+                            <prop k="offset" v="0,0"/>
+                            <prop k="offset_unit" v="MM"/>
+                            <prop k="scale_method" v="area"/>
+                            <prop k="size" v="0.1"/>
+                            <prop k="size_unit" v="MM"/>
+                        </layer>
+                    </symbol>
+                </symbols>
+                <rotation field=""/>
+                <sizescale field="" scalemethod="area"/>
+            </renderer-v2>
+            <customproperties/>
+            <blendMode>0</blendMode>
+            <displayfield>level</displayfield>
+            <label>1</label>
+            <labelfield>string</labelfield>
+            <labelattributes>
+                <label fieldname="string" text="Etichetta"/>
+                <family fieldname="" name="Arial"/>
+                <size fieldname="" units="mu" value="7"/>
+                <bold fieldname="" on="0"/>
+                <italic fieldname="" on="0"/>
+                <underline fieldname="" on="0"/>
+                <strikeout fieldname="" on="0"/>
+                <color fieldname="" red="16" blue="255" green="29"/>
+                <x fieldname=""/>
+                <y fieldname=""/>
+                <offset x="0" y="0" units="pt" yfieldname="" xfieldname=""/>
+                <angle fieldname="rotation" value="0" auto="0"/>
+                <alignment fieldname="" value="aboveright"/>
+                <buffercolor fieldname="" red="255" blue="255" green="255"/>
+                <buffersize fieldname="" units="mu" value="2"/>
+                <bufferenabled fieldname="" on="1"/>
+                <multilineenabled fieldname="" on=""/>
+                <selectedonly on=""/>
+            </labelattributes>
+            <edittypes>
+                <edittype editable="1" type="0" name="LEVEL"/>
+                <edittype editable="1" type="0" name="ROTATION"/>
+                <edittype editable="1" type="0" name="SIZE"/>
+                <edittype editable="1" type="0" name="STRING"/>
+                <edittype editable="1" type="0" name="level"/>
+                <edittype editable="1" type="0" name="rotation"/>
+                <edittype editable="1" type="0" name="size"/>
+                <edittype editable="1" type="0" name="string"/>
+            </edittypes>
+            <editform>/riondato/vm_qgis_settimo</editform>
+            <editforminit></editforminit>
+            <annotationform>/riondato/vm_qgis_settimo</annotationform>
+            <editorlayout>generatedlayout</editorlayout>
+            <excludeAttributesWMS/>
+            <excludeAttributesWFS/>
+            <attributeactions/>
+        </maplayer>
+    </projectlayers>
+    <properties>
+        <WMSServiceAbstract type="QString"></WMSServiceAbstract>
+        <WMSOnlineResource type="QString"></WMSOnlineResource>
+        <WMSContactPerson type="QString"></WMSContactPerson>
+        <Identify>
+            <disabledLayers type="QStringList"/>
+        </Identify>
+        <WMSContactPhone type="QString"></WMSContactPhone>
+        <SpatialRefSys>
+            <ProjectCRSProj4String type="QString">+proj=tmerc +lat_0=0 +lon_0=9 +k=0.9996 +x_0=1500000 +y_0=0 +ellps=intl +towgs84=-104.1,-49.1,-9.9,0.971,-2.917,0.714,-11.68 +units=m +no_defs</ProjectCRSProj4String>
+            <ProjectCrs type="QString">EPSG:4326</ProjectCrs>
+            <ProjectCRSID type="int">968</ProjectCRSID>
+        </SpatialRefSys>
+        <Paths>
+            <Absolute type="bool">false</Absolute>
+        </Paths>
+        <Gui>
+            <SelectionColorBluePart type="int">0</SelectionColorBluePart>
+            <CanvasColorGreenPart type="int">255</CanvasColorGreenPart>
+            <CanvasColorRedPart type="int">255</CanvasColorRedPart>
+            <SelectionColorRedPart type="int">255</SelectionColorRedPart>
+            <SelectionColorAlphaPart type="int">255</SelectionColorAlphaPart>
+            <SelectionColorGreenPart type="int">255</SelectionColorGreenPart>
+            <CanvasColorBluePart type="int">255</CanvasColorBluePart>
+        </Gui>
+        <WMSContactMail type="QString"></WMSContactMail>
+        <WFSLayers type="QStringList">
+            <value>civ_ft_indirizzi20120806192006250</value>
+            <value>sit_ft_ct_edifici20120806193710140</value>
+            <value>sit_ft_ct_line20120806193454296</value>
+            <value>sit_ft_ct_strade20120806191955843</value>
+            <value>sit_ft_ct_text20120806192001781</value>
+        </WFSLayers>
+        <Digitizing>
+            <LayerSnappingList type="QStringList">
+                <value>sit_strade_ir2_corretto20120613113854875</value>
+                <value>sit_edifici_ir2_corretto20120613115944296</value>
+                <value>prova20120613121759062</value>
+            </LayerSnappingList>
+            <LayerSnappingEnabledList type="QStringList">
+                <value>disabled</value>
+                <value>disabled</value>
+                <value>enabled</value>
+            </LayerSnappingEnabledList>
+            <AvoidIntersectionsList type="QStringList">
+                <value>prova20120613121759062</value>
+            </AvoidIntersectionsList>
+            <LayerSnappingToleranceUnitList type="QStringList">
+                <value>0</value>
+                <value>0</value>
+                <value>0</value>
+            </LayerSnappingToleranceUnitList>
+            <LayerSnapToList type="QStringList">
+                <value>to_vertex</value>
+                <value>to_vertex</value>
+                <value>to_vertex</value>
+            </LayerSnapToList>
+            <TopologicalEditing type="int">1</TopologicalEditing>
+            <LayerSnappingToleranceList type="QStringList">
+                <value>0.000000</value>
+                <value>0.000000</value>
+                <value>0.100000</value>
+            </LayerSnappingToleranceList>
+        </Digitizing>
+        <PositionPrecision>
+            <DecimalPlaces type="int">2</DecimalPlaces>
+            <Automatic type="bool">true</Automatic>
+        </PositionPrecision>
+        <WMSAddWktGeometry type="bool">true</WMSAddWktGeometry>
+        <WMSContactOrganization type="QString"></WMSContactOrganization>
+        <WMSServiceCapabilities type="bool">false</WMSServiceCapabilities>
+        <WMSServiceTitle type="QString"></WMSServiceTitle>
+        <WMSExtent type="QStringList">
+            <value>1399790.07418961</value>
+            <value>4997019.93390611</value>
+            <value>1406762.37418980</value>
+            <value>5000842.36847213</value>
+        </WMSExtent>
+    </properties>
+</qgis>
