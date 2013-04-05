@@ -46,7 +46,7 @@ function getFeaturesSearch(currentLayer, value, lastLayer) {
 	         'REQUEST': 'GetFeature',
 	         'MAXFEATURES': '5000',
 	         'OUTPUTFORMAT': 'GML3',
-	         'SRS': 'EPSG:' + epsgcode
+	         'SRS': BBOXfromProject['SRS']
 		},
 		success:	function(response) {
 	       	var format = new OpenLayers.Format.GML(gmlOptions);
