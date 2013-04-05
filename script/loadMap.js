@@ -209,11 +209,12 @@ function viewMapLayer(listLayer) {
     }  
     
 	var mapExtent = new OpenLayers.Bounds(BBOXfromProject['minx'],BBOXfromProject['miny'],BBOXfromProject['maxx'],BBOXfromProject['maxy']);
-	var projectProj = new OpenLayers.Projection(BBOXfromProject['SRS']);
-	var mapProj = map.getProjection();
+	//var projectProj = new OpenLayers.Projection(BBOXfromProject['SRS']);
+	//var mapProj = map.getProjection();
     
-    // Set map to max extent
-	map.zoomToExtent(mapExtent.transform(projectProj, mapProj));
+     // Set map to max extent
+      //map.zoomToExtent(mapExtent.transform(projectProj, mapProj));
+	map.zoomToExtent(mapExtent);
 	
 	if(CACHE_BROWSER)
 		enableCacheBrowser();
@@ -221,10 +222,10 @@ function viewMapLayer(listLayer) {
 
 function createGoogleLayer() {
     // Creo layer di google
-	var extentProj = new OpenLayers.Bounds(BBOXfromProject['minx'],BBOXfromProject['miny'],BBOXfromProject['maxx'],BBOXfromProject['maxy']);
-	var projectProj = new OpenLayers.Projection(BBOXfromProject['SRS']);
+	//var extentProj = new OpenLayers.Bounds(BBOXfromProject['minx'],BBOXfromProject['miny'],BBOXfromProject['maxx'],BBOXfromProject['maxy']);
+	//var projectProj = new OpenLayers.Projection(BBOXfromProject['SRS']);
 	
-	var extentGoogle = extentProj.transform(projectProj, googleProj);
+	//var extentGoogle = extentProj.transform(projectProj, googleProj);
 	
 	if(epsgcode_display == "") epsgcode_display = BBOXfromProject['SRS'];
 	
@@ -255,13 +256,13 @@ function createWMSLayer(listLayer) {
 	
 	if(epsgcode_display == "") epsgcode_display = BBOXfromProject['SRS'];
 	
-	var mapExtentDefault = new OpenLayers.Bounds(BBOXfromProject['minx'],BBOXfromProject['miny'],BBOXfromProject['maxx'],BBOXfromProject['maxy']);
+	var mapExtent = new OpenLayers.Bounds(BBOXfromProject['minx'],BBOXfromProject['miny'],BBOXfromProject['maxx'],BBOXfromProject['maxy']);
 	
-	if(GOOGLE_ENABLE) {
-		var mapExtent = mapExtentDefault.transform(new OpenLayers.Projection(BBOXfromProject['SRS']), googleProj);
-	}
-	else
-		var mapExtent = mapExtentDefault;
+	//if(GOOGLE_ENABLE) {
+	//	var mapExtent = mapExtentDefault.transform(new OpenLayers.Projection(BBOXfromProject['SRS']), googleProj);
+	//}
+	//else
+	//	var mapExtent = mapExtentDefault;
 	
 	if(!GOOGLE_ENABLE && !OSM_ENABLE)
 		var isBaseLayer = true;

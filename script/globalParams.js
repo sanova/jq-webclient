@@ -22,6 +22,7 @@ var maxScale = "200"; // Max (default: 200)
 var minScale = "50000"; // Min (default 50000)
 
 // LOAD GOOGLE. true if you want enable google layer  (default: false)
+// ATTENTION: to enable this option keep in mind that qgs map project must have epsg 900913 or equivalent (3857 for example) 
 var GOOGLE_ENABLE = false; 
 // LOAD OSM. true if you want to enable Open street map layer (default: false)
 var OSM_ENABLE = false;
