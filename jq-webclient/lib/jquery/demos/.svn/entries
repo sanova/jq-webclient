@@ -1,168 +1,0 @@
-10
-
-dir
-4
-https://svn.gesp.it/svn/mifido/trunk/lib/jquery/development-bundle/demos
-https://svn.gesp.it/svn/mifido
-
-
-
-2012-08-22T16:41:02.924415Z
-4
-pogliaghi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-97dde216-fcde-4816-94a0-4f0c1191ada3
-
-images
-dir
-
-toggleClass
-dir
-
-droppable
-dir
-
-draggable
-dir
-
-hide
-dir
-
-index.html
-file
-
-
-
-
-2013-04-02T14:35:30.099209Z
-e2ad228d92ade2c49235130180d9e90c
-2012-08-22T16:41:02.924415Z
-4
-pogliaghi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-14617
-
-datepicker
-dir
-
-button
-dir
-
-sortable
-dir
-
-animate
-dir
-
-addClass
-dir
-
-resizable
-dir
-
-show
-dir
-
-toggle
-dir
-
-slider
-dir
-
-removeClass
-dir
-
-switchClass
-dir
-
-progressbar
-dir
-
-tabs
-dir
-
-effect
-dir
-
-demos.css
-file
-
-
-
-
-2013-04-02T14:35:30.099209Z
-2e2ec04700af4ac5681a956cfe405c47
-2012-08-22T16:41:02.924415Z
-4
-pogliaghi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-14338
-
-dialog
-dir
-
-autocomplete
-dir
-
-accordion
-dir
-
-selectable
-dir
-
-position
-dir
-
