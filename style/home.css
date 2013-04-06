@@ -38,6 +38,7 @@ h3.ui-corner-top.ui-state-hover a {color:    #000000 !important; }
 .leftPanel {width: 300px; float: left; height: 100%; }
 .tabPanel { height: 99%; }
 #wg-MapPanel { height: 100%; }
+#wg-MapPanel .olMapViewport { margin-left: 5px; }
 
 #layer { padding-left: 1px !important; padding-right: 1px !important; height: 93%; }
 
