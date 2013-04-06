@@ -10,19 +10,19 @@
  * 	- 192.168.1.12
  * 	- test.yourserver.com
  */
-var server = "192.168.1.93";
+var server = "";
 
 /*
  * Path where you copy your qgis project (qgs file)
  * I suggest to copy your qgs file into "project" directory of jq-webclient
  * Example: /var/www/jq-webclient/projects
  */
-var pathProject = "/var/www/jq-webclient/projects";
+var pathProject = "";
 
 /*
  * File name of your qgis project (example: polygon.qgs)
  */
-var nameProject = "polygon.qgs";
+var nameProject = "";
 
 /* EPSG
  * This is the epsg code for the coordinates you want to display on map
