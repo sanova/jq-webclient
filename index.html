@@ -64,89 +64,91 @@
 </head>
 
 <body>
-	<div id="wg-BrowsePanel" class="leftPanel">
-		<div id="wg-leftTabTop" class="tabPanel">
-			<!-- LINK TAB -->
-			<ul>
-				<li><a href="#layer">LAYERS</a></li>
-				<li><a href="#wb-Filter">FILTRI</a></li>
-				<li><a href="#wb-Seacrh">CERCA</a></li>
-			</ul>
-			<!-- TAB -->
-			<div id="layer">
-				<div id="wg-LayerListDiv">
-					<div id="wb-LayerList" class="accordion"></div>
-				</div>
-				<div id="wg-layerLegendDiv">
-					<div id="wg-layerLegendHeader" class="bgGray">LEGENDA</div>
-					<div id="wg-layerLegendContainer"></div>
-				</div>
-			</div>
-			<div id="wb-Filter">
-				<div id="wb-formFilter" class="form">
-					<div id="wb-layerComboDiv" class="itemForm">
-	                    <label for="wb-layerCombo">Layer</label>
-	                    <select id="wb-layerCombo" style="padding: 0.2em"></select>						
+	<div id="wg-containerAll">
+		<div id="wg-BrowsePanel" class="leftPanel">
+			<div id="wg-leftTabTop" class="tabPanel">
+				<!-- LINK TAB -->
+				<ul>
+					<li><a href="#layer">LAYERS</a></li>
+					<li><a href="#wb-Filter">FILTRI</a></li>
+					<li><a href="#wb-Seacrh">CERCA</a></li>
+				</ul>
+				<!-- TAB -->
+				<div id="layer">
+					<div id="wg-LayerListDiv">
+						<div id="wb-LayerList" class="accordion"></div>
 					</div>
-					<div id="wb-fieldLayerComboDiv" class="itemForm">
-	                    <label for="wb-fieldLayerCombo">Campo</label>
-	                    <select id="wb-fieldLayerCombo" style="padding: 0.2em"></select>					
-					</div>
-					<div id="wb-valueFieldLayerInputDiv" class="itemForm">
-	                    <label for="wb-valueFieldLayerInput">Valore</label>
-	                    <input id="wb-valueFieldLayerInput" type="text" class="wb-inputField" />						
-					</div>
-					<div align="right">
-						<button id="execFilter" class="submitButton"></button>
+					<div id="wg-layerLegendDiv">
+						<div id="wg-layerLegendHeader" class="bgGray">LEGENDA</div>
+						<div id="wg-layerLegendContainer"></div>
 					</div>
 				</div>
-				<div id="wb-filterResultsDiv">
-					<div id="wb-filterResults" class="bgGray">
-						<span>Elementi Trovati: </span><span id="countResultFilter"></span>
+				<div id="wb-Filter">
+					<div id="wb-formFilter" class="form">
+						<div id="wb-layerComboDiv" class="itemForm">
+		                    <label for="wb-layerCombo">Layer</label>
+		                    <select id="wb-layerCombo" style="padding: 0.2em"></select>						
+						</div>
+						<div id="wb-fieldLayerComboDiv" class="itemForm">
+		                    <label for="wb-fieldLayerCombo">Campo</label>
+		                    <select id="wb-fieldLayerCombo" style="padding: 0.2em"></select>					
+						</div>
+						<div id="wb-valueFieldLayerInputDiv" class="itemForm">
+		                    <label for="wb-valueFieldLayerInput">Valore</label>
+		                    <input id="wb-valueFieldLayerInput" type="text" class="wb-inputField" />						
+						</div>
+						<div align="right">
+							<button id="execFilter" class="submitButton"></button>
+						</div>
 					</div>
-					<div id="wb-filterResultsAcoordion" class="accordion"></div>			
+					<div id="wb-filterResultsDiv">
+						<div id="wb-filterResults" class="bgGray">
+							<span>Elementi Trovati: </span><span id="countResultFilter"></span>
+						</div>
+						<div id="wb-filterResultsAcoordion" class="accordion"></div>			
+					</div>
 				</div>
-			</div>
-			<div id="wb-Seacrh">
-				<div id="wb-formSearch" class="form">
-					<div id="wb-valueSeacrhDiv" class="itemForm">
-	                    <label for="wb-valueSeacrh">Valore</label>
-	                    <input id="wb-valueSeacrh" type="text" class="wb-inputField" />						
+				<div id="wb-Seacrh">
+					<div id="wb-formSearch" class="form">
+						<div id="wb-valueSeacrhDiv" class="itemForm">
+		                    <label for="wb-valueSeacrh">Valore</label>
+		                    <input id="wb-valueSeacrh" type="text" class="wb-inputField" />						
+						</div>
+						<div align="right">
+							<button id="execSeacrh" class="submitButton"></button>
+						</div>
 					</div>
-					<div align="right">
-						<button id="execSeacrh" class="submitButton"></button>
-					</div>
+					<div id="wb-SeacrhResultsDiv">
+						<div id="wb-SeacrhResults" class="bgGray">
+							<span>Elementi Trovati: </span><span id="countResult"></span>
+						</div>
+						<div id="wb-SeacrhResultsAcoordion" class="accordion"></div>			
+					</div>				
 				</div>
-				<div id="wb-SeacrhResultsDiv">
-					<div id="wb-SeacrhResults" class="bgGray">
-						<span>Elementi Trovati: </span><span id="countResult"></span>
-					</div>
-					<div id="wb-SeacrhResultsAcoordion" class="accordion"></div>			
-				</div>				
 			</div>
 		</div>
-	</div>
-	
-	<div id="wg-MapPanelContainer" class="centerPanel">
-		<div id="wg-headerMapPanel" class="bgGray">MAPPA</div>
-    	<div id="toolbarMap" class="bgGray">
-    		<button id="infoButton" class="toolbarButton ui-icon-custom" title="Abilita ModalitÃƒÂ  Info Mappa"></button>
-    		<button id="measureDistance" class="toolbarButton ui-icon-custom" title="Abilita Misura Distanza"></button>
-    		<button id="measureArea" class="toolbarButton ui-icon-custom" title="Abilita Misura Aree"></button>
-    		<button id="modFeature" class="toolbarButton ui-icon-custom" title="Abilita Misura Distanza"></button>
-    	</div>
-		<div id="wg-MapPanel"></div>
-		<div id="outputDistance" class="bgGrayRegular"><span id="outputDistanceTextLabel"></span><span id="outputDistanceText"></span></div>
-		<div id="panelMod" class="bgGrayRegular"><span id="panelModTextLabel"></span><span id="panelModText"></span></div>
 		
-		<div id="divLoading" class="bgGray">Attendere...</div>
+		<div id="wg-MapPanelContainer" class="centerPanel">
+			<div id="wg-headerMapPanel" class="bgGray">MAPPA</div>
+	    	<div id="toolbarMap" class="bgGray">
+	    		<button id="infoButton" class="toolbarButton ui-icon-custom" title="Abilita ModalitÃƒÂ  Info Mappa"></button>
+	    		<button id="measureDistance" class="toolbarButton ui-icon-custom" title="Abilita Misura Distanza"></button>
+	    		<button id="measureArea" class="toolbarButton ui-icon-custom" title="Abilita Misura Aree"></button>
+	    		<button id="modFeature" class="toolbarButton ui-icon-custom" title="Abilita Misura Distanza"></button>
+	    	</div>
+			<div id="wg-MapPanel"></div>
+			<div id="outputDistance" class="bgGrayRegular"><span id="outputDistanceTextLabel"></span><span id="outputDistanceText"></span></div>
+			<div id="panelMod" class="bgGrayRegular"><span id="panelModTextLabel"></span><span id="panelModText"></span></div>
+			
+			<div id="divLoading" class="bgGray">Attendere...</div>
+		</div>
 	</div>
 	
 	<div id="wg-layerInfoContainer">
 		<div id="wg-headerInfo">
 			<button id="closeInfoDiv" title="Chiudi"></button>
-        </div>
+	    </div>
 		<div id="wg-layerInfo"></div>
-	</div> 
+	</div>
 </body>
 </html>

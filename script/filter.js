@@ -57,7 +57,7 @@ function getFeatureFilter() {
 	         'REQUEST': 'GetFeature',
 	         'MAXFEATURES': '5000',
 	         'OUTPUTFORMAT': 'GML3',
-	         'SRS': BBOXfromProject['SRS']
+	         'SRS': EPSGdefault
 		},
 		success:	function(response) {
 	       	var format = new OpenLayers.Format.GML(gmlOptions);
@@ -67,7 +67,7 @@ function getFeatureFilter() {
             		createAccordionLayerFilter(layer);
                 for(var i=0; i<features.length; i++){
                 	if($(features[i]).attr('attributes')[field].toUpperCase().indexOf(value.toUpperCase()) != -1) {
-                		highlightLayer.addFeatures(features[i]);
+                		//highlightLayer.addFeatures(features[i]);
                 		createAccordionFilterResults(layer, features[i]);
                 	}
                 }

@@ -1,3 +1,5 @@
+html body { height: 100%; width: 100%; }
+
 .ui-accordion .ui-accordion-header a { font-size: 10pt; }
 .ui-state-pressed {opacity: 0.4; border: 1px solid gray}
 /* Override style header dell'accordion esteso (definito gradiente grigio) */
@@ -18,6 +20,7 @@ h3.ui-corner-top.ui-state-hover { background: -moz-linear-gradient(top, #F6F6F6,
 
 h3.ui-corner-top.ui-state-hover a {color:    #000000 !important; }
 
+#wg-containerAll { display: block; position: absolute; bottom: 0px; left: 0px; right: 0px; top: 0px; }
 
 .bgGray{	background: -moz-linear-gradient(top, #FAFAFA, #E7E7E7) !important; /* Firefox */ 
             background: -webkit-gradient(linear, 
@@ -31,27 +34,29 @@ h3.ui-corner-top.ui-state-hover a {color:    #000000 !important; }
                 filter:   progid:DXImageTransform.Microsoft.Gradient(
                           StartColorStr='#EDEDED', EndColorStr='#D1D1D1', GradientType=0) !important;}
 
-.leftPanel {width: 18%;position: absolute; background-color: White; left: 0px; bottom: 0px; top: 0px;}
+/* .leftPanel {width: 18%;position: absolute; background-color: White; left: 0px; bottom: 0px; top: 0px;} */
+.leftPanel {width: 300px; float: left; height: 100%; }
+.tabPanel { height: 99%; }
+#wg-MapPanel { height: 100%; }
 
-#wg-leftTabTop{position: absolute; bottom: 0px; top: 0px; left: 0px; right: 0px;}
-#wg-LayerListDiv{position: relative; margin-top: 5px; margin-bottom: 50%; margin-left: 1px; margin-right: 1px; display: none}
-#wg-LayerList{position:absolute; top: 0px; bottom: 0px; right: 0px; left: 0px;}
-#wg-layerLegendDiv{position: absolute; bottom: 0px; top:50%; right: 1px; left: 1px; display: none;}
-#wg-layerLegendContainer{position: absolute; bottom: 0px; top: 45px; right: 1px; left: 1px; overflow: auto;}
+#layer { padding-left: 1px !important; padding-right: 1px !important; height: 93%; }
+
+#wg-LayerListDiv{float: left; width: 100%; display: none; height: 50%; }
+#wg-layerLegendDiv{ float: left; overflow: hidden; width: 100%; display: none;}
 #wg-layerLegendHeader{height: 30px; padding-top: 15px; padding-left: 5px;}
 .recordLegend{border-bottom: 1px solid lightGray;}
 
-.centerPanel {position: absolute; top: 0px; bottom: 0px; left: 18%; right: 0px; z-index: 0; overflow: auto;}
-.ui-tabs .ui-tabs-panel{padding-left: 1px !important; padding-right: 1px !important; padding-top: 4px !important; padding-bottom: 4px !important;}
+/* .centerPanel {position: absolute; top: 0px; bottom: 0px; left: 18%; right: 0px; z-index: 0; overflow: auto;} */
+.centerPanel { height: 100%; overflow: hidden;}
 
 #toolbarMap{position: relative; height: 30px; margin-left: 4px; top: 0px;}             
 #wg-headerMapPanel	{position: relative;height: 25px;padding-top: 9px; padding-left: 5px;}
-#wg-MapPanel{position: absolute; top: 65px; bottom: 0px; right: 0px; left: 4px;}
-#outputDistance{position: absolute; right:10px; height: 15px; bottom: 10px; width: 200px; z-index: 3;padding-bottom: 4px; padding-left: 10px; padding-top: 7px; display: none;}
 #panelMod{	position: absolute; left:20px; height: 20px; bottom: 20px; width: 170px;z-index: 3;padding-bottom: 4px; padding-left: 30px; padding-top: 15px; display: none;}
 				
-#wg-layerInfoContainer{z-index:1; top: 95px; height: 250px; width: 300px; right: 0px; position:absolute;display: none}
-#wg-layerInfo { position: relative;overflow: auto;}
+#wg-layerInfoContainer{ top: 95px; height: auto; overflow: hidden; width: 300px; right: 0px; position:absolute;display: none; z-index: 1001; }
+#wg-layerInfoContainer .ui-accordion-content { max-height: 500px; }
+#wg-layerInfo { height: auto; }
+#closeInfoDiv{background-image: url('../images/closePanel.png') ; height: 32px; width: 30px;}
 
 .containerRowLayer{float: left}
 .layerCheckBox{display: inline; margin-top: 1px !important; margin-bottom: 1px !important; margin-left: 1px !important; margin-right: 1px !important;}
@@ -61,9 +66,9 @@ h3.ui-corner-top.ui-state-hover a {color:    #000000 !important; }
 #measureDistance{background-image: url('../images/gis_icons/measureDistance.png') ; height: 25px; width: 25px; margin-left: 3px; margin-top: 3px;}
 #measureArea{background-image: url('../images/gis_icons/measureArea.png') ; height: 25px; width: 25px; margin-left: 3px; margin-top: 3px;}
 #modFeature{background-image: url('../images/gis_icons/move_feature_off.png') ; height: 25px; width: 25px; margin-left: 3px; margin-top: 3px;}
-
-#closeInfoDiv{background-image: url('../images/closePanel.png') ; height: 32px; width: 30px;}
                               
+.containerLayer{cursor: pointer;}
+
 .containerLayer{cursor: pointer;}
 #wb-formFilter{position: relative; top: 10px; right: 5px; margin-top: 10px;}
 #execFilter{position: relative; right: 5px; margin-top: 10px;}
