@@ -1,38 +1,46 @@
-/*
- * CONFIG PARAMETERS 
- * EDIT THIS VARIABLES TO SET BASE CONFIG OF MAP
- * 
- * */
- 
-// IP or server link 
-var server = "";
-// Path to project --> /path/to/project   
-var pathProject = "";
-// Project file --> example.qgs 
-var nameProject = "";
+// Parametro server IP/Indirizzo
+var server = "192.168.1.93";
+// Percorso server project
+var pathProject = "/var/www/jq-webclient/projects";
+// Nome Progetto
+var nameProject = "polygon.qgs";
 
-//EPSG
-// EPSG you want to display in map. If this variable is empty it will be epsg of project  (default empty)
-var epsgcode_display = "";  
+/* EPSG
+ * This is the epsg code for the coordinates you want to display on map
+*/
+var epsgcode_display = "3003"; //
+
+/* BBOX
+ * If your qgis project has a bbox configured you can leave these parameters empty.
+ * If you want to configure them manually set x min, y min, x max and y max of the Bounding box you want 
+ */
+var bbox_minx = ""; // X min
+var bbox_miny = ""; // Y min
+var bbox_maxx = ""; // X max
+var bbox_maxy = ""; // Y max
 
 // Unit (degree, m ..)
 var unit = "m";
 // Scale
-var maxScale = "200"; // Max (default: 200)
-var minScale = "50000"; // Min (default 50000)
+var maxScale = "200"; // Massima
+var minScale = "50000"; // Minima
 
-// LOAD GOOGLE. true if you want enable google layer  (default: false)
-// ATTENTION: to enable this option keep in mind that qgs map project must have epsg 900913 or equivalent (3857 for example) 
-var GOOGLE_ENABLE = false; 
-// LOAD OSM. true if you want to enable Open street map layer (default: false)
+// LOAD GOOGLE
+// ATTENTION: to enable this option keep in mind that qgs project must have epsg 900913 or equivalent (3857 for example) 
+var GOOGLE_ENABLE = true;
+// LOAD OSM
 var OSM_ENABLE = false;
-// Cache Browser. true if you want to enable local storage cache browser
-var CACHE_BROWSER = false;
+
+var CACHE_BROWSER = true;
 
 
-
+/*
+ * NOT MODIFY THE FOLLOWING 
+ */
 // WMS URI
 var serverURI = "http://"+server+"/cgi-bin/qgis_mapserv.fcgi?map="+pathProject+"/"+nameProject;
+
+var BBOX = {};
 
 var metersPerUnit = 111319.4908;  //value returned from mapguide
 var inPerUnit = OpenLayers.INCHES_PER_UNIT.m * metersPerUnit;

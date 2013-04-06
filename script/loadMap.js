@@ -2,8 +2,9 @@ var map, basicLayer, highlightLayer, editableLayer, googleLayer, osmLayer;
 var infoControls, modControls, infoIdControls;
 var cacheWrite, cacheRead;
 var activeLayer = "";
-var BBOXfromProject = "";
-var googleProj = new OpenLayers.Projection("EPSG:900913");
+var BBOXMap = "";
+var SRSMap = "";
+
 
 var propertyAccordion =
 {
@@ -33,7 +34,13 @@ function getListLayers() {
         method: 'GET',
         scope: this,
         success: function (response) {
-        	BBOXfromProject = getBboxFromProject(response);
+        	setBboxFromConfig();
+        	
+        	// Set bbox map and projection map
+        	var BBOXFrosmProject = getBboxFromProject(response);
+        	BBOXMap = getBboxMap(BBOXFrosmProject);
+        	SRSMap = getSRSMap(BBOXFrosmProject);
+        	
         	createListLayerAccordion(response);
         }
     });
@@ -129,22 +136,22 @@ function clearCache() {
 function viewMapLayer(listLayer) {
 	var layersList = new Array();
 	
-	if(epsgcode_display == "") epsgcode_display = BBOXfromProject['SRS'];
-	
-	if(GOOGLE_ENABLE)
-		epsgMap = googleProj;
-	else
-		epsgMap = new OpenLayers.Projection(BBOXfromProject['SRS']);
+	if(epsgcode_display == "") SRSMapDisplay = SRSMap 
+	else SRSMapDisplay = new OpenLayers.Projection("EPSG:"+epsgcode_display);
+//	
+//	if(GOOGLE_ENABLE)
+//		epsgMap = googleProj;
+//	else
+//		epsgMap = new OpenLayers.Projection(BBOXfromProject['SRS']);
 	
 	var mapOptions = {
-			//projection: "EPSG:"+epsgcode, units: unit,
-			projection: epsgMap,
-			displayProjection: new OpenLayers.Projection("EPSG:"+epsgcode_display),
+			projection: SRSMap,
+			displayProjection: SRSMapDisplay,
 			units: unit,
-			//maxExtent: new OpenLayers.Bounds(BBOXfromProject['minx'],BBOXfromProject['miny'],BBOXfromProject['maxx'],BBOXfromProject['maxy']),
 			maxScale: maxScale,
 			minScale: minScale,
 			singleTile: false,
+			maxExtent: BBOXMap,
 			tileSize: new OpenLayers.Size(512,512), 
 	        controls: [
 	                   new OpenLayers.Control.Navigation({
@@ -206,38 +213,28 @@ function viewMapLayer(listLayer) {
     
     for (var i=0; i<layersList.length; i++) {
     	map.addLayer(layersList[i]);
-    }  
+    }
     
-	var mapExtent = new OpenLayers.Bounds(BBOXfromProject['minx'],BBOXfromProject['miny'],BBOXfromProject['maxx'],BBOXfromProject['maxy']);
-	//var projectProj = new OpenLayers.Projection(BBOXfromProject['SRS']);
-	//var mapProj = map.getProjection();
-    
-     // Set map to max extent
-      //map.zoomToExtent(mapExtent.transform(projectProj, mapProj));
-	map.zoomToExtent(mapExtent);
+	map.zoomToExtent(BBOXMap);
 	
 	if(CACHE_BROWSER)
 		enableCacheBrowser();
 }
 
 function createGoogleLayer() {
-    // Creo layer di google
-	//var extentProj = new OpenLayers.Bounds(BBOXfromProject['minx'],BBOXfromProject['miny'],BBOXfromProject['maxx'],BBOXfromProject['maxy']);
-	//var projectProj = new OpenLayers.Projection(BBOXfromProject['SRS']);
-	
-	//var extentGoogle = extentProj.transform(projectProj, googleProj);
-	
-	if(epsgcode_display == "") epsgcode_display = BBOXfromProject['SRS'];
+    // Creo layer di google	
+	if(epsgcode_display == "") SRSMapDisplay = SRSMap 
+	else SRSMapDisplay = new OpenLayers.Projection("EPSG:"+epsgcode_display);
 	
     var googleLayer = new OpenLayers.Layer.Google("Google Satellite",
 	    {
 	      	sphericalMercator: true,
-	        projection: googleProj,
-	        displayProjection: new OpenLayers.Projection("EPSG:"+epsgcode_display),
+	        projection: SRSMap,
+	        displayProjection: SRSMapDisplay,
+	        type: google.maps.MapTypeId.SATELLITE,
 	        units: unit,
 	        minZoomLevel: 5,
 	        maxZoomLevel: 20,
-	        maxExtent: extentGoogle,
 	         isBaseLayer: true,
 	        'reproject': true
 	    });
@@ -254,15 +251,8 @@ function createOsmLayer() {
 function createWMSLayer(listLayer) {
 	var listLayerToView = getStringLayerToShow(listLayer);
 	
-	if(epsgcode_display == "") epsgcode_display = BBOXfromProject['SRS'];
-	
-	var mapExtent = new OpenLayers.Bounds(BBOXfromProject['minx'],BBOXfromProject['miny'],BBOXfromProject['maxx'],BBOXfromProject['maxy']);
-	
-	//if(GOOGLE_ENABLE) {
-	//	var mapExtent = mapExtentDefault.transform(new OpenLayers.Projection(BBOXfromProject['SRS']), googleProj);
-	//}
-	//else
-	//	var mapExtent = mapExtentDefault;
+	if(epsgcode_display == "") SRSMapDisplay = SRSMap 
+	else SRSMapDisplay = new OpenLayers.Projection("EPSG:"+epsgcode_display);
 	
 	if(!GOOGLE_ENABLE && !OSM_ENABLE)
 		var isBaseLayer = true;
@@ -272,11 +262,10 @@ function createWMSLayer(listLayer) {
 		serverURI,
 		{layers: listLayerToView.reverse(),transparent: 'TRUE',format:"image/png"},
 		{
-            projection: new OpenLayers.Projection(BBOXfromProject['SRS']),
-            displayProjection: new OpenLayers.Projection("EPSG:"+epsgcode_display),
+            projection: SRSMap,
+            displayProjection: SRSMapDisplay,
 			buffer: 0,
 			isBaseLayer: isBaseLayer,
-			maxExtent: mapExtent,
 			redraw: function(force) {
 				if(force)
 					return this.mergeNewParams({"_olSalt": Math.random()});
@@ -493,6 +482,13 @@ function getEditWfsLayer (layer, idFeature) {
 
 }
 
+function setBboxFromConfig() {
+	BBOX['minx'] = bbox_minx;
+	BBOX['maxx'] = bbox_maxx;
+	BBOX['miny'] = bbox_miny;
+	BBOX['maxy'] = bbox_maxy;
+}
+
 function getBboxFromProject(data) {
 	var bboxObj = {};
 	// <BoundingBox maxx="1.01957e+06" minx="958453" maxy="5.75244e+06" miny="5.64631e+06" SRS="EPSG:3785"/>
@@ -507,4 +503,20 @@ function getBboxFromProject(data) {
 	}
 	
 	return bboxObj;
+}
+
+function getBboxMap(bboxFromProj) {
+	
+	if(BBOX['maxx'] != "" && BBOX['minx'] != "" && BBOX['maxy'] != "" && BBOX['miny'] != "")
+		bbox = new OpenLayers.Bounds(BBOX['minx'],BBOX['miny'],BBOX['maxx'],BBOX['maxy']);
+	else
+		bbox = new OpenLayers.Bounds(bboxFromProj['minx'],bboxFromProj['miny'],bboxFromProj['maxx'],bboxFromProj['maxy']);
+	
+	return bbox;
+}
+
+function getSRSMap(bboxFromProj) {
+	var srs = new OpenLayers.Projection(bboxFromProj['SRS']);
+	
+	return srs;
 }
