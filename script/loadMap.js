@@ -138,11 +138,6 @@ function viewMapLayer(listLayer) {
 	
 	if(epsgcode_display == "") SRSMapDisplay = SRSMap 
 	else SRSMapDisplay = new OpenLayers.Projection("EPSG:"+epsgcode_display);
-//	
-//	if(GOOGLE_ENABLE)
-//		epsgMap = googleProj;
-//	else
-//		epsgMap = new OpenLayers.Projection(BBOXfromProject['SRS']);
 	
 	var mapOptions = {
 			projection: SRSMap,
