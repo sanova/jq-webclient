@@ -31,12 +31,12 @@ Unzip and copy jq-webclient directory into a directory of your web-server (apach
 
 If necessary, change owner and permissions to directory:
 
-Go to jq-webclient:	
+Go to directory containing jq-webclient (for example /var/www):	
 	
-* $ cd /var/www/jq-webclient
+* $ cd /var/www
 	
 
-Change group to files:
+Change group to jq-webclient:
 	
 * $ chgrp -R www-data jq-webclient
 
