@@ -1,0 +1,100 @@
+JQ-WEBCLIENT, version 1.0, by
+Mirko La Valle 
+05/04/2013
+
+JQ-WEBCLIENT is a gis webclient for qgis-mapserver. 
+
+It uses:
+
+	* openlayers (version 2.12)
+	* jquery (version 1.7.2)
+
+
+
+CONTENTS
+
+I. REQUIREMENTS
+II. INSTALLATION
+III. CONFIGURATION
+
+
+I. REQUIREMENTS
+
+	* qgis-mapserver
+
+
+II. INSTALLATION
+
+Unzip and copy jq-webclient directory into a directory of your web-server (apache for example).
+
+If necessary, change owner and permissions to directory:
+
+	Go to jq-webclient:	
+	
+		* $ cd /var/www/jq-webclient
+	
+	Change group to files:
+	
+		* $ chgrp -R www-data jq-webclient
+
+	Change group permissions:
+
+		* $ chmode -R g+rx jq-webclient
+		
+
+III. CONFIGURATION
+
+Go to "scripts" directory into jq-webclient.
+
+	* cd jq-webclient/scripts
+
+Edit globalParams.js file
+
+Set the following parameters properly:
+
+	* server :  IP or ADDRESS of your machine where you have installed jq-webclient
+	
+	Examples: 	192.168.10.12
+				example.url.com
+				
+	* pathProject: here you have to set the directory where qgis project will be copied to
+	
+	I suggest to set 
+		
+		* /path/to/jq-webclient/projects  
+		
+	and put your qgis project file here.
+	The directory "projects" exists so you don't have to create it.
+	
+	Example on Linux:  /var/www/jq-webclient/projects
+	
+	* nameProject: this is the name of your qgis project file
+	
+	Example:  polygon.qgs
+	
+	* epsgcode_display: this is the epsg code of coordinates you can display on the map. 
+	
+	You can have map and qgis project with a coordinate system 
+	but you want to display coordinates in other coordinates system 
+	
+	* unit: unit of map ("m" for meters, "degree" for degree). 
+
+	* GOOGLE_ENABLE: set to true if you want display google map layer
+	
+		ATTENTION: to enable this option your your qgis project must be in 900913 or 3857 (Spherical Mercator like google layer)
+		
+	* OSM_ENABLE: set to true if you want to display Open Street Map layer
+	
+	* CACHE_BROWSER: set to true if you want browser using local storage (cache in local)
+	
+	
+Save the file.
+
+
+Be sure that your qgis project file is in the correct directory setting up above.
+
+Now you can try to connect to you jq-webclient and see layer/layers of your project
+
+
+	
+	
