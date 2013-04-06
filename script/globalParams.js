@@ -40,7 +40,7 @@ var bbox_maxx = ""; // X max
 var bbox_maxy = ""; // Y max
 
 /*
- * Unit of coordinate map
+ * Unit of map coordinate system map
  * m : meters
  * degree: degree
  */
