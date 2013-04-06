@@ -31,7 +31,7 @@ function setFieldLayerCmbo(layer) {
 	});	
 }
 
-function getFeatureFilter() {
+function getFeatureFilter () {
 	$('#wb-filterResultsAcoordion').accordion('destroy');
 	$('#wb-filterResultsAcoordion').children().remove();
 	
@@ -40,41 +40,143 @@ function getFeatureFilter() {
 	var value = $('#wb-valueFieldLayerInput').val();
 	
 	var gmlOptions = {
-	    featureType: "point",
+	    featureType: "polygon",
 	    featureNS: serverURI
 	};
-    
+	
 	highlightLayer.removeAllFeatures();
+	
+	if(value != "") {
+		var filter =         	  	
+			"<Filter>" +
+				"<PropertyIsEqualTo>" +
+					"<PropertyName>"+ field +"</PropertyName>" +
+					"<Literal>"+ value +"</Literal>" +
+				"</PropertyIsEqualTo>" +
+			"</Filter>";			
+	}
+	else
+		return;
 	
 	$.ajax({
 		type: 'GET',
 		url: serverURI,
 		dataType: 'xml',
-		data: {
-	         'SERVICE': 'WFS',
-	         'VERSION': '1.1.1',
-	         'TYPENAME': layer,
-	         'REQUEST': 'GetFeature',
-	         'MAXFEATURES': '5000',
-	         'OUTPUTFORMAT': 'GML3',
-	         'SRS': EPSGdefault
+		data: {         
+	          'SERVICE': 'WFS',
+	          'VERSION': '1.1.1',
+	          'TYPENAME': layer,
+	          'REQUEST': 'GetFeature',
+	          'MAXFEATURES': '5000',
+	          'OUTPUTFORMAT': 'GML3',
+	          'SRS': EPSGdefault,
+	          //'FEATUREID': idFeature
+	          'FILTER': filter
 		},
 		success:	function(response) {
 	       	var format = new OpenLayers.Format.GML(gmlOptions);
         	var features = format.read(response);
+        	
+        	var bounds = new OpenLayers.Bounds();
+        	var format = new OpenLayers.Format.GML(gmlOptions);
+        	var features = format.read(response);
             if(features){
-            	if($('#layerFilterFind_'+layer).length <= 0)
-            		createAccordionLayerFilter(layer);
-                for(var i=0; i<features.length; i++){
-                	if($(features[i]).attr('attributes')[field].toUpperCase().indexOf(value.toUpperCase()) != -1) {
-                		//highlightLayer.addFeatures(features[i]);
-                		createAccordionFilterResults(layer, features[i]);
-                	}
-                }
+            	createAccordionLayerFilter(layer);
+            	if(features.length == 1) {
+            		highlightLayer.addFeatures(features[0]);
+            		createAccordionFilterResults(layer, features[i]);
+            		//boundsCatasto.extend(features[0].geometry.getBounds());
+               		bounds.bottom = features[0].geometry.getBounds().bottom - X1;
+               		bounds.top = features[0].geometry.getBounds().top + X2;
+               		bounds.left = features[0].geometry.getBounds().left - Y1;
+               		bounds.right = features[0].geometry.getBounds().right + Y2;
+            	}
+            	else {
+	            	for(var i=0; i<features.length; i++){
+	            		highlightLayer.addFeatures(features[i]);
+	            		createAccordionFilterResults(layer, features[i]);
+	            		if(i==0) {
+	            			bounds.bottom = features[i].geometry.getBounds().bottom;
+	            			bounds.top = features[i].geometry.getBounds().top;
+	            			bounds.left = features[i].geometry.getBounds().left;
+	            			bounds.right = features[i].geometry.getBounds().right;
+	            		}
+	            		else {
+		            		if(features[i].geometry.getBounds().bottom < boundsCatasto.bottom)
+		            			bounds.bottom = features[i].geometry.getBounds().bottom;
+		            		if(features[i].geometry.getBounds().top > boundsCatasto.top)
+		            			bounds.top = features[i].geometry.getBounds().top;
+		            		if(features[i].geometry.getBounds().left < boundsCatasto.left)
+		            			bounds.left = features[i].geometry.getBounds().left;
+		            		if(features[i].geometry.getBounds().right > boundsCatasto.right)
+		            			bounds.right = features[i].geometry.getBounds().right;
+	            		}
+		            }
+            	}
+            	map.zoomToExtent(bounds);
             }
+        	
+        	
+//            if(features){
+//            	if($('#layerFilterFind_'+layer).length <= 0)
+//            		createAccordionLayerFilter(layer);
+//                for(var i=0; i<features.length; i++){
+//                	if($(features[i]).attr('attributes')[field].toUpperCase().indexOf(value.toUpperCase()) != -1) {
+//                		highlightLayer.addFeatures(features[i]);
+//                		createAccordionFilterResults(layer, features[i]);
+//                	}
+//                }
+//            }
 		}
 	});
 }
+
+
+
+//function getFeatureFilter() {
+//	$('#wb-filterResultsAcoordion').accordion('destroy');
+//	$('#wb-filterResultsAcoordion').children().remove();
+//	
+//	var layer = $('select#wb-layerCombo').val();
+//	var field = $('select#wb-fieldLayerCombo').val();
+//	var value = $('#wb-valueFieldLayerInput').val();
+//	
+//	var gmlOptions = {
+//	    featureType: "polygon",
+//	    featureNS: serverURI
+//	};
+//    
+//	highlightLayer.removeAllFeatures();
+//	
+//	$.ajax({
+//		type: 'GET',
+//		url: serverURI,
+//		dataType: 'xml',
+//		data: {
+//	         'SERVICE': 'WFS',
+//	         'VERSION': '1.1.1',
+//	         'TYPENAME': layer,
+//	         'REQUEST': 'GetFeature',
+//	         'MAXFEATURES': '5000',
+//	         'OUTPUTFORMAT': 'GML3',
+//	         'SRS': EPSGdefault
+//		},
+//		success:	function(response) {
+//	       	var format = new OpenLayers.Format.GML(gmlOptions);
+//        	var features = format.read(response);
+//            if(features){
+//            	if($('#layerFilterFind_'+layer).length <= 0)
+//            		createAccordionLayerFilter(layer);
+//                for(var i=0; i<features.length; i++){
+//                	if($(features[i]).attr('attributes')[field].toUpperCase().indexOf(value.toUpperCase()) != -1) {
+//                		highlightLayer.addFeatures(features[i]);
+//                		createAccordionFilterResults(layer, features[i]);
+//                	}
+//                }
+//            }
+//		}
+//	});
+//}
 
 function createAccordionLayerFilter(layer) {
 	var featureContainer = $("<div>").attr("id", 'featuresFindFilter-'+layer).attr('class', 'singleFeatureContainer');
