@@ -10,25 +10,25 @@
  * 	- 192.168.1.12
  * 	- test.yourserver.com
  */
-var server = "";
+var server = "192.168.1.93";
 
 /*
  * Path where you copy your qgis project (qgs file)
  * I suggest to copy your qgs file into "project" directory of jq-webclient
  * Example: /var/www/jq-webclient/projects
  */
-var pathProject = "";
+var pathProject = "/var/www/jq-webclient/projects";
 
 /*
  * File name of your qgis project (example: polygon.qgs)
  */
-var nameProject = "";
+var nameProject = "polygon.qgs";
 
 /* EPSG
  * This is the epsg code for the coordinates you want to display on map
  * Leave empty if you want to display coordinates in the same epsg of project 
- */
-var epsgcode_display = ""; //
+*/
+var epsgcode_display = "3003"; //
 
 /* BBOX
  * If your qgis project has a bbox configured you can leave these parameters empty.
@@ -40,7 +40,7 @@ var bbox_maxx = ""; // X max
 var bbox_maxy = ""; // Y max
 
 /*
- * Unit of map coordinate system map
+ * Unit of coordinate map
  * m : meters
  * degree: degree
  */
@@ -74,15 +74,27 @@ var OSM_ENABLE = false;
 var CACHE_BROWSER = false;
 
 
+/*
+ * WMS URI
+ * If you are using Windows UNCOMMENT FIRST LINE and COMMENT THE SECOND ONE
+ * 
+ * ATTENTION: you have to properly configure qgis_mapserver.fcgi to have it working
+ * Read here for more details: http://hub.qgis.org/projects/quantum-gis/wiki/QGIS_Server_Tutorial 
+ * May be you have to modify "qgis" directory into the following URI string 
+ * depending on how you have configured your qgis_mapserver.fcgi.exe 
+ */
+
+// -- For windows users --
+//var serverURI = "http://"+server+"/qgis/qgis_mapserv.fcgi.exe?map="+pathProject+"/"nameProject;
+
+// -- For linux users --
+var serverURI = "http://"+server+"/cgi-bin/qgis_mapserv.fcgi?map="+pathProject+"/"+nameProject;
 
 /* 
  * ************************
  * NOT MODIFY THE FOLLOWING
  * ************************ 
  */
-// WMS URI
-var serverURI = "http://"+server+"/cgi-bin/qgis_mapserv.fcgi?map="+pathProject+"/"+nameProject;
-
 var BBOX = {};
 
 var metersPerUnit = 111319.4908;  //value returned from mapguide
