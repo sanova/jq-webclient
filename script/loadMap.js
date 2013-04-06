@@ -2,9 +2,15 @@ var map, basicLayer, highlightLayer, editableLayer, googleLayer, osmLayer;
 var infoControls, modControls, infoIdControls;
 var cacheWrite, cacheRead;
 var activeLayer = "";
+var EPSGdefault = "";
 var BBOXMap = "";
 var SRSMap = "";
 
+// Correction zoom on bound
+var X1 = 12;
+var X2 = 12;
+var Y1 = 1;
+var Y2 = 1;
 
 var propertyAccordion =
 {
@@ -276,6 +282,7 @@ function createWMSLayer(listLayer) {
 function createEditableLayer() {
 	var editableLayer = new OpenLayers.Layer.Vector("EditLayer",
 		{
+			projection: SRSMap,
 			isBaseLayer: false, 
 			displayInLayerSwitcher: true, 
 			styleMap: styleMapHighLightLayer
@@ -288,6 +295,7 @@ function createEditableLayer() {
 function createHighLightLayer() {
 	var highLightLayer = new OpenLayers.Layer.Vector("attribHighLight",
 		{
+			projection: SRSMap,
 			isBaseLayer: false, 
 			displayInLayerSwitcher: true, 
 			styleMap: styleMapHighLightLayer
@@ -511,6 +519,7 @@ function getBboxMap(bboxFromProj) {
 }
 
 function getSRSMap(bboxFromProj) {
+	EPSGdefault = bboxFromProj['SRS'];
 	var srs = new OpenLayers.Projection(bboxFromProj['SRS']);
 	
 	return srs;

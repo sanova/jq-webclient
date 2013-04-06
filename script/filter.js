@@ -84,101 +84,50 @@ function getFeatureFilter () {
             	createAccordionLayerFilter(layer);
             	if(features.length == 1) {
             		highlightLayer.addFeatures(features[0]);
-            		createAccordionFilterResults(layer, features[i]);
-            		//boundsCatasto.extend(features[0].geometry.getBounds());
-               		bounds.bottom = features[0].geometry.getBounds().bottom - X1;
-               		bounds.top = features[0].geometry.getBounds().top + X2;
-               		bounds.left = features[0].geometry.getBounds().left - Y1;
-               		bounds.right = features[0].geometry.getBounds().right + Y2;
+            		createAccordionFilterResults(layer, features[0]);
+            		if(features[0].geometry.getBounds() != null) {
+	               		bounds.bottom = features[0].geometry.getBounds().bottom - X1;
+	               		bounds.top = features[0].geometry.getBounds().top + X2;
+	               		bounds.left = features[0].geometry.getBounds().left - Y1;
+	               		bounds.right = features[0].geometry.getBounds().right + Y2;
+            		}
             	}
             	else {
 	            	for(var i=0; i<features.length; i++){
 	            		highlightLayer.addFeatures(features[i]);
 	            		createAccordionFilterResults(layer, features[i]);
 	            		if(i==0) {
-	            			bounds.bottom = features[i].geometry.getBounds().bottom;
-	            			bounds.top = features[i].geometry.getBounds().top;
-	            			bounds.left = features[i].geometry.getBounds().left;
-	            			bounds.right = features[i].geometry.getBounds().right;
+	            			if(features[i].geometry.getBounds() != null) {
+		            			bounds.bottom = features[i].geometry.getBounds().bottom;
+		            			bounds.top = features[i].geometry.getBounds().top;
+		            			bounds.left = features[i].geometry.getBounds().left;
+		            			bounds.right = features[i].geometry.getBounds().right;
+	            			}
 	            		}
 	            		else {
-		            		if(features[i].geometry.getBounds().bottom < boundsCatasto.bottom)
-		            			bounds.bottom = features[i].geometry.getBounds().bottom;
-		            		if(features[i].geometry.getBounds().top > boundsCatasto.top)
-		            			bounds.top = features[i].geometry.getBounds().top;
-		            		if(features[i].geometry.getBounds().left < boundsCatasto.left)
-		            			bounds.left = features[i].geometry.getBounds().left;
-		            		if(features[i].geometry.getBounds().right > boundsCatasto.right)
-		            			bounds.right = features[i].geometry.getBounds().right;
+	            			if(features[i].geometry.getBounds() != null) {
+			            		if(features[i].geometry.getBounds().bottom < bounds.bottom)
+			            			bounds.bottom = features[i].geometry.getBounds().bottom;
+			            		if(features[i].geometry.getBounds().top > bounds.top)
+			            			bounds.top = features[i].geometry.getBounds().top;
+			            		if(features[i].geometry.getBounds().left < bounds.left)
+			            			bounds.left = features[i].geometry.getBounds().left;
+			            		if(features[i].geometry.getBounds().right > bounds.right)
+			            			bounds.right = features[i].geometry.getBounds().right;
+	            			}
 	            		}
 		            }
             	}
-            	map.zoomToExtent(bounds);
+            	if(typeof(bounds.bottom) !== "undefined" && bounds.bottom != null)
+            		map.zoomToExtent(bounds);
             }
-        	
-        	
-//            if(features){
-//            	if($('#layerFilterFind_'+layer).length <= 0)
-//            		createAccordionLayerFilter(layer);
-//                for(var i=0; i<features.length; i++){
-//                	if($(features[i]).attr('attributes')[field].toUpperCase().indexOf(value.toUpperCase()) != -1) {
-//                		highlightLayer.addFeatures(features[i]);
-//                		createAccordionFilterResults(layer, features[i]);
-//                	}
-//                }
-//            }
 		}
 	});
 }
 
-
-
-//function getFeatureFilter() {
-//	$('#wb-filterResultsAcoordion').accordion('destroy');
-//	$('#wb-filterResultsAcoordion').children().remove();
-//	
-//	var layer = $('select#wb-layerCombo').val();
-//	var field = $('select#wb-fieldLayerCombo').val();
-//	var value = $('#wb-valueFieldLayerInput').val();
-//	
-//	var gmlOptions = {
-//	    featureType: "polygon",
-//	    featureNS: serverURI
-//	};
-//    
-//	highlightLayer.removeAllFeatures();
-//	
-//	$.ajax({
-//		type: 'GET',
-//		url: serverURI,
-//		dataType: 'xml',
-//		data: {
-//	         'SERVICE': 'WFS',
-//	         'VERSION': '1.1.1',
-//	         'TYPENAME': layer,
-//	         'REQUEST': 'GetFeature',
-//	         'MAXFEATURES': '5000',
-//	         'OUTPUTFORMAT': 'GML3',
-//	         'SRS': EPSGdefault
-//		},
-//		success:	function(response) {
-//	       	var format = new OpenLayers.Format.GML(gmlOptions);
-//        	var features = format.read(response);
-//            if(features){
-//            	if($('#layerFilterFind_'+layer).length <= 0)
-//            		createAccordionLayerFilter(layer);
-//                for(var i=0; i<features.length; i++){
-//                	if($(features[i]).attr('attributes')[field].toUpperCase().indexOf(value.toUpperCase()) != -1) {
-//                		highlightLayer.addFeatures(features[i]);
-//                		createAccordionFilterResults(layer, features[i]);
-//                	}
-//                }
-//            }
-//		}
-//	});
-//}
-
 function createAccordionLayerFilter(layer) {
+	var layer = layer.replace(/\s/g, "_");
+	
 	var featureContainer = $("<div>").attr("id", 'featuresFindFilter-'+layer).attr('class', 'singleFeatureContainer');
 	
 	$('#wb-filterResultsAcoordion').append(
@@ -191,7 +140,9 @@ function createAccordionLayerFilter(layer) {
 	);
 }
 
-function createAccordionFilterResults(layerSelected, feature) {		
+function createAccordionFilterResults(layerSelected, feature) {	
+	var layerSelected = layerSelected.replace(/\s/g, "_");
+	
 	var featureAttributeContainer = $("<div>").attr('id', 'featureFilterAttributes-'+feature.fid).attr('class', 'divFeatureAttribute');
 
 	$('#featuresFindFilter-'+layerSelected).append(
