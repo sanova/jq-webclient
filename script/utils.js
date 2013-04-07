@@ -15,7 +15,7 @@ function setPositionContainerScale() {
 	var width = $("#wg-scalesValue").width();
 	var yScaleContainer = y - $("#wg-containerScaleRange").height();
 	
-	$("#wg-containerScaleRange").css("width", width).offset({ top: yScaleContainer, left: x}).mouseover(function(){
+	$("#wg-containerScaleRange").css("width", width).offset({ left: x, top: yScaleContainer}).mouseover(function(){
 		$(this).show();
 	}).mouseleave(function(){
 		$(this).hide();
@@ -23,19 +23,12 @@ function setPositionContainerScale() {
 }
 
 function setPositionContainerNamesTemplates() {
-	if($("#wg-containerNamesTemplates").offset().top > 0)
-		return;
-	
 	var y = $("#selectTemplate").offset().top;
 	var x = $("#selectTemplate").offset().left;
 	var width = $("#selectTemplate").width();
 	var yContTemp = y + 15;
 	
-	$("#wg-containerNamesTemplates").css("width", width).offset({ top: yContTemp, left: x}).mouseover(function(){
-		$(this).show();
-	}).mouseleave(function(){
-		$(this).hide();
-	});
+	$("#wg-containerNamesTemplates").css("width", width).css("top", yContTemp).css("left", x);
 }
 
 function viewScaleRangeContainer() {
@@ -62,7 +55,7 @@ function goToScaleValue(scale) {
  * PRINT UTILS
  */
 function openPrintPanel() {	
-	$("#wg-printPanelContainer").show("slide", {direction: 'up'}, "fast", setPositionContainerNamesTemplates);
+	$("#wg-printPanelContainer").show("slide", {direction: 'up'}, "fast");
 }
 
 function closePrintPanel() {

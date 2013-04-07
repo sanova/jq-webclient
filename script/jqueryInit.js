@@ -84,9 +84,15 @@ $(function(){
 	// Print panel
 	$("#wg-printPanelContainer").hide();
 	$("#selectTemplate").mouseover(function(){
+		setPositionContainerNamesTemplates();
 		$("#wg-containerNamesTemplates").show();
 	}).mouseleave(function(){ 
 		$("#wg-containerNamesTemplates").hide();
+	});
+	$("#wg-containerNamesTemplates").mouseover(function(){
+		$(this).show();
+	}).mouseleave(function(){
+		$(this).hide();
 	});
 
 });
