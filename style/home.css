@@ -1,4 +1,4 @@
-html body { height: 100%; width: 100%; }
+body { height: 100%; }
 
 .ui-accordion .ui-accordion-header a { font-size: 10pt; }
 .ui-state-pressed {opacity: 0.4; border: 1px solid gray}
@@ -46,7 +46,6 @@ h3.ui-corner-top.ui-state-hover a {color:    #000000 !important; }
 /* .leftPanel {width: 18%;position: absolute; background-color: White; left: 0px; bottom: 0px; top: 0px;} */
 .leftPanel {width: 300px; float: left; height: 100%; }
 .tabPanel { height: 99%; }
-#wg-MapPanel .olMapViewport { margin-left: 5px; }
 
 #layer { padding-left: 1px !important; padding-right: 1px !important; height: 93%; }
 
@@ -56,11 +55,12 @@ h3.ui-corner-top.ui-state-hover a {color:    #000000 !important; }
 .recordLegend{border-bottom: 1px solid lightGray;}
 
 /* CENTER PANEL: Map panel */
-.centerPanel { height: 100%; overflow: hidden;}
-#toolbarMap{position: relative; height: 30px; top: 0px;}             
-#wg-headerMapPanel	{position: relative;height: 25px;padding-top: 9px; padding-left: 6px; }
-#wg-MapPanel { height: 88%; }
-#wg-BottomPanelBar { position: relative; height: 27px; width: 100%; padding-top: 3px; padding-left: 10px; padding-right: 10px; display: block; }
+.centerPanel { position: absolute; top: 0px; left: 300px; right: 0px; bottom: 0px; overflow: hidden; display: block; }
+#toolbarMap{ height: 30px; }             
+#wg-headerMapPanel	{ height: 25px; padding-top: 9px; padding-left: 6px; width: 100%; }
+#wg-MapPanel { position: absolute; left: 0px; right: 0px; top: 65px; bottom: 30px; }
+#wg-MapPanel .olMapViewport { margin-left: 5px; }
+#wg-BottomPanelBar { position: absolute; bottom: 0px; left: 0px; right: 0px; height: 27px; width: 100%; padding-top: 3px; padding-left: 10px; padding-right: 10px; bottom: 0px; }
 #panelMod{	z-index:1001; position: absolute; left:320px; height: 20px; bottom: 35px; width: 170px;padding-bottom: 4px; padding-left: 30px; padding-top: 15px; display: none;}
 				
 #wg-layerInfoContainer{ top: 95px; height: auto; overflow: hidden; width: 300px; right: 0px; position:absolute;display: none; z-index: 1001; }
