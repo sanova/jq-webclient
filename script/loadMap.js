@@ -298,7 +298,12 @@ function createHighLightLayer() {
 			projection: SRSMap,
 			isBaseLayer: false, 
 			displayInLayerSwitcher: true, 
-			styleMap: styleMapHighLightLayer
+			styleMap: styleMapHighLightLayer,
+//			eventListeners: {
+//				'beforefeatureadded': function(feature) {
+//					feature.feature.geometry.transform(new OpenLayers.Projection("EPSG:32632"),SRSMap);
+//				}
+//			}
 		}
 	);
 	

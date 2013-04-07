@@ -19,14 +19,21 @@ function setFieldLayerCmbo(layer) {
 	         'TYPENAME': layer
 		},
 		success:	function(response) {
-			$(response).find('sequence').find('element').each(function(){
-				if(typeof($(this).attr('alias')) != 'undefined')
-					$('select#wb-fieldLayerCombo').append($('<option />').attr('value', $(this).attr('name')).text($(this).attr('alias')));
-				else {
-					if(typeof($(this).attr('name')) != 'undefined')
-						$('select#wb-fieldLayerCombo').append($('<option />').attr('value', $(this).attr('name')).text($(this).attr('name')));
-				}
-			});
+			if( $(response).find('sequence').find('element').length == 0 ) {
+				$("#wb-valueFieldLayerInputDiv").prepend(
+					$("<div>").attr("class", "warnignText").text("You have to enable WFS request for the layer in qgs project")
+				);
+			}
+			else {	
+				$(response).find('sequence').find('element').each(function(){
+					if(typeof($(this).attr('alias')) != 'undefined')
+						$('select#wb-fieldLayerCombo').append($('<option />').attr('value', $(this).attr('name')).text($(this).attr('alias')));
+					else {
+						if(typeof($(this).attr('name')) != 'undefined')
+							$('select#wb-fieldLayerCombo').append($('<option />').attr('value', $(this).attr('name')).text($(this).attr('name')));
+					}
+				});
+			}
 		}
 	});	
 }

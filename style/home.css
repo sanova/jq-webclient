@@ -84,3 +84,6 @@ h3.ui-corner-top.ui-state-hover a {color:    #000000 !important; }
 #wb-filterResultsAcoordion{position: absolute; overflow: auto; left: 0px; right: 0px; top: 0px; bottom: 0px;}
 .layerFindContainer{top: 0px; bottom: 0px; overflow: auto;}
 #divLoading{position:absolute; z-index: 4; background: white; top: 40%; left: 40%; right: 40%; display: none; height: 40px;}
+
+/* Warning text */
+#wb-formFilter .warnignText { margin-top: 1px; margin-bottom: 5px; height: auto; }
