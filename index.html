@@ -132,10 +132,11 @@
 		<div id="wg-MapPanelContainer" class="centerPanel">
 			<div id="wg-headerMapPanel" class="bgGray">MAPPA</div>
 	    	<div id="toolbarMap" class="bgGray">
-	    		<button id="infoButton" class="toolbarButton ui-icon-custom" title="Abilita ModalitÃƒÂ  Info Mappa"></button>
+	    		<button id="infoButton" class="toolbarButton ui-icon-custom" title="Abilita Modalità  Info Mappa"></button>
 	    		<button id="measureDistance" class="toolbarButton ui-icon-custom" title="Abilita Misura Distanza"></button>
 	    		<button id="measureArea" class="toolbarButton ui-icon-custom" title="Abilita Misura Aree"></button>
 	    		<button id="modFeature" class="toolbarButton ui-icon-custom" title="Abilita Misura Distanza"></button>
+	    		<button id="printFunc" class="toolbarButton ui-icon-custom" title="Print Panel"></button>
 	    	</div>
 			<div id="wg-MapPanel"></div>
 			<div id="wg-BottomPanelBar" class="bgGrayRegular">
@@ -162,6 +163,17 @@
 		<div id="wg-layerInfo"></div>
 	</div>
 	
+	<div id="wg-printPanelContainer" class="box-shadow">
+		<div id="wg-printPanel">
+			<input id="selectTemplate" class="itemPrint"></input><span>Select template</span>
+			<input id="selectScale" class="itemPrint"></input><span>Select scale</span>
+			<input id="selectDpi" class="itemPrint"></input><span>Select dpi</span>
+			<input id="selectFormat" class="itemPrint"></input><span>Select format</span>
+		</div>
+		
+	</div>
+	
 	<div id="wg-containerScaleRange" class="box-shadow"></div>
+	<div id="wg-containerNamesTemplates" class="box-shadow"></div>
 </body>
 </html>

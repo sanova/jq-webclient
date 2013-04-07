@@ -61,8 +61,10 @@ h3.ui-corner-top.ui-state-hover a {color:    #000000 !important; }
 #wg-MapPanel { position: absolute; left: 0px; right: 0px; top: 65px; bottom: 30px; }
 #wg-MapPanel .olMapViewport { margin-left: 5px; }
 #wg-BottomPanelBar { position: absolute; bottom: 0px; left: 0px; right: 0px; height: 27px; width: 100%; padding-top: 3px; padding-left: 10px; padding-right: 10px; bottom: 0px; }
-#panelMod{	z-index:1001; position: absolute; left:320px; height: 20px; bottom: 35px; width: 170px;padding-bottom: 4px; padding-left: 30px; padding-top: 15px; display: none;}
-				
+
+#panelMod{ z-index:1001; position: absolute; left:30px; height: 20px; bottom: 35px; width: 170px;padding-bottom: 4px; padding-left: 30px; padding-top: 15px; display: none;}
+#outputDistance { z-index:1001; position: absolute; right: 30px; height: 20px; bottom: 35px; width: 170px;padding-bottom: 4px; padding-left: 30px; padding-top: 15px; display: none; }
+
 #wg-layerInfoContainer{ top: 95px; height: auto; overflow: hidden; width: 300px; right: 0px; position:absolute;display: none; z-index: 1001; }
 #wg-layerInfoContainer .ui-accordion-content { max-height: 500px; }
 #wg-layerInfo { height: auto; }
@@ -76,6 +78,7 @@ h3.ui-corner-top.ui-state-hover a {color:    #000000 !important; }
 #measureDistance{background-image: url('../images/gis_icons/measureDistance.png') ; height: 25px; width: 25px; margin-left: 3px; margin-top: 3px;}
 #measureArea{background-image: url('../images/gis_icons/measureArea.png') ; height: 25px; width: 25px; margin-left: 3px; margin-top: 3px;}
 #modFeature{background-image: url('../images/gis_icons/move_feature_off.png') ; height: 25px; width: 25px; margin-left: 3px; margin-top: 3px;}
+#printFunc{background-image: url('../images/gis_icons/printer.png') ; height: 25px; width: 25px; margin-left: 3px; margin-top: 3px;}
                               
 .containerLayer{cursor: pointer;}
 
@@ -106,3 +109,9 @@ h3.ui-corner-top.ui-state-hover a {color:    #000000 !important; }
 #wg-containerScaleRange { position: absolute; z-index: 1001; background: white; }
 #wg-containerScaleRange div { padding-top: 4px; font-size: 12px; font-weight: 700; padding-right: 5px; padding-left: 5px; padding-bottom: 4px; }
 #wg-containerScaleRange div:hover { cursor: pointer; background: #D8D8D8; }
+
+/* PRINT PANEL */
+#wg-printPanelContainer { position: absolute; top: 65px; left: 400px; height: auto; width: 300px; z-index: 1001; background: white; display: block; padding: 10px 10px 10px 5px }
+#wg-printPanelContainer input { margin-bottom: 5px; margin-right: 4px; border: 0px; }
+#wg-containerNamesTemplates { position: absolute; z-index: 1001; background: white; height: auto; display: none; }
+#wg-containerNamesTemplates div { padding-top: 3px; font-size: 12px; font-weight: 700; }

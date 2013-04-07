@@ -54,6 +54,10 @@ $(function(){
 		toogleStateButton($(this));
 	});
 	
+	$('#printFunc').button().click(function(){
+		toogleStateButton($(this));
+	});
+	
 	// Inizializzazione tasto chiusura pannello info elementi mappa
 	$('#closeInfoDiv').button().click(function(){
 		$('#wg-layerInfoContainer').toggle('slide', {direction: 'right'}, 400);
@@ -76,4 +80,13 @@ $(function(){
 	}).keyup(function(e){
 		if(e.keyCode == 13) goToScaleValue($(this).val());
 	}).attr("title", "Choose a scale or write a value and press <Enter>");
+	
+	// Print panel
+	$("#wg-printPanelContainer").hide();
+	$("#selectTemplate").mouseover(function(){
+		$("#wg-containerNamesTemplates").show();
+	}).mouseleave(function(){ 
+		$("#wg-containerNamesTemplates").hide();
+	});
+
 });

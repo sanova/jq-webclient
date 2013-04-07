@@ -77,6 +77,21 @@ function activateDeactivateControl() {
 				$(this).attr('title', 'Abilita Sposta Oggetto');
 			}
 		}
+		
+		if($(this).attr('id') == 'printFunc') {
+			if($(this).hasClass('ui-state-pressed')) {
+				$('#panelModText').html('Print mode enabled');
+				openPrintPanel();
+				createPolygonToPrint();
+				controlMod.activate();
+			}
+			else {
+				$(this).attr('title', 'Open print panel');
+				closePrintPanel();
+				editableLayer.removeAllFeatures();
+				controlMod.deactivate();
+			}
+		}
 	});
 	
 	if($('#toolbarMap').find('button').hasClass('ui-state-pressed')){

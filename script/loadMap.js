@@ -1,10 +1,11 @@
 var map, basicLayer, highlightLayer, editableLayer, googleLayer, osmLayer;
-var infoControls, modControls, infoIdControls;
+var infoControls, modControls, infoIdControls, controlMod;
 var cacheWrite, cacheRead;
 var activeLayer = "";
 var EPSGdefault = "";
 var BBOXMap = "";
 var SRSMap = "";
+var listTemplatePrint = {};
 
 // Correction zoom on bound
 var X1 = 12;
@@ -46,6 +47,12 @@ function getListLayers() {
         	var BBOXFrosmProject = getBboxFromProject(response);
         	BBOXMap = getBboxMap(BBOXFrosmProject);
         	SRSMap = getSRSMap(BBOXFrosmProject);
+        	
+        	listTemplatePrint = getTemplatesPrint(response);
+        	if(listTemplatePrint == false)
+        		$("#printFunc").disable();
+        	else
+        		setPanelPrint(listTemplatePrint);
         	
         	createListLayerAccordion(response);
         }
@@ -158,7 +165,8 @@ function viewMapLayer(listLayer) {
 	                   new OpenLayers.Control.Navigation({
 	        			dragPanOptions: {enableKinetic: true}
 	        		}),
-	        	    new OpenLayers.Control.PanZoomBar(),
+	        	    new OpenLayers.Control.PanPanel(),
+	        	    new OpenLayers.Control.ZoomPanel(),
 	        	    new OpenLayers.Control.Attribution()
 	        ]			
 	};
@@ -285,7 +293,6 @@ function createWMSLayer(listLayer) {
 function createEditableLayer() {
 	var editableLayer = new OpenLayers.Layer.Vector("EditLayer",
 		{
-			projection: SRSMap,
 			isBaseLayer: false, 
 			displayInLayerSwitcher: true, 
 			styleMap: styleMapHighLightLayer
@@ -343,6 +350,12 @@ function addInfoControlsMap() {
 	});
     
     map.addControl(modControls);
+    
+	controlMod = new OpenLayers.Control.ModifyFeature(editableLayer);
+	controlMod.mode = OpenLayers.Control.ModifyFeature.ROTATE;
+	controlMod.mode |= OpenLayers.Control.ModifyFeature.RESIZE;
+	controlMod.mode |= OpenLayers.Control.ModifyFeature.DRAG;
+	map.addControl(controlMod);
     
     // Add click event to info Control
     infoControls.click.events.register("getfeatureinfo", this, showInfo);
