@@ -37,7 +37,6 @@ h3.ui-corner-top.ui-state-hover a {color:    #000000 !important; }
 /* .leftPanel {width: 18%;position: absolute; background-color: White; left: 0px; bottom: 0px; top: 0px;} */
 .leftPanel {width: 300px; float: left; height: 100%; }
 .tabPanel { height: 99%; }
-#wg-MapPanel { height: 100%; }
 #wg-MapPanel .olMapViewport { margin-left: 5px; }
 
 #layer { padding-left: 1px !important; padding-right: 1px !important; height: 93%; }
@@ -47,11 +46,12 @@ h3.ui-corner-top.ui-state-hover a {color:    #000000 !important; }
 #wg-layerLegendHeader{height: 30px; padding-top: 15px; padding-left: 5px;}
 .recordLegend{border-bottom: 1px solid lightGray;}
 
-/* .centerPanel {position: absolute; top: 0px; bottom: 0px; left: 18%; right: 0px; z-index: 0; overflow: auto;} */
+/* CENTER PANEL: Map panel */
 .centerPanel { height: 100%; overflow: hidden;}
-
-#toolbarMap{position: relative; height: 30px; margin-left: 4px; top: 0px;}             
-#wg-headerMapPanel	{position: relative;height: 25px;padding-top: 9px; padding-left: 5px;}
+#toolbarMap{position: relative; height: 30px; top: 0px;}             
+#wg-headerMapPanel	{position: relative;height: 25px;padding-top: 9px; padding-left: 6px; }
+#wg-MapPanel { height: 88%; }
+#wg-BottomPanelBar { position: relative; height: 27px; width: 100%; padding-top: 3px; padding-left: 10px; padding-right: 10px; }
 #panelMod{	z-index:1001; position: absolute; left:320px; height: 20px; bottom: 20px; width: 170px;padding-bottom: 4px; padding-left: 30px; padding-top: 15px; display: none;}
 				
 #wg-layerInfoContainer{ top: 95px; height: auto; overflow: hidden; width: 300px; right: 0px; position:absolute;display: none; z-index: 1001; }
@@ -87,3 +87,6 @@ h3.ui-corner-top.ui-state-hover a {color:    #000000 !important; }
 
 /* Warning text */
 #wb-formFilter .warnignText { margin-top: 1px; margin-bottom: 5px; height: auto; }
+
+/* COORDINATES */
+.coords-input { padding-left: 4px; padding-top: 1px;}

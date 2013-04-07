@@ -211,6 +211,7 @@ function viewMapLayer(listLayer) {
     // ADD CONTROLS TO MAP
     addInfoControlsMap();
     addGeneralControlsMap();
+    addMouseMoveControl();
     
     for (var i=0; i<layersList.length; i++) {
     	map.addLayer(layersList[i]);
@@ -348,6 +349,13 @@ function addInfoControlsMap() {
     // Link controls to map
     map.addControl(infoControls.click); 
     map.addControl(infoIdControls.click);
+}
+
+function addMouseMoveControl() {
+    map.events.register("mousemove", map, function(e) {
+        var coords = map.getLonLatFromPixel(e.xy);
+        setCoordIntoPanelCoords(coords);
+    });
 }
 
 function addGeneralControlsMap() {  
@@ -528,4 +536,24 @@ function getSRSMap(bboxFromProj) {
 	var srs = new OpenLayers.Projection(bboxFromProj['SRS']);
 	
 	return srs;
+}
+
+function setCoordIntoPanelCoords(coords) {
+	if(epsgcode_display != "")
+		var coordinates = new OpenLayers.LonLat(coords.lon, coords.lat).transform(SRSMap, SRSMapDisplay);
+	else
+		var coordinates = new OpenLayers.LonLat(coords.lon, coords.lat);
+	
+	$("#wg-coordinateX").val(coordinates.lon);
+	$("#wg-coordinateY").val(coordinates.lat);
+}
+
+function goToCoords(lon, lat) {
+	if(epsgcode_display != "")
+		var coords = new OpenLayers.LonLat(lon, lat).transform(SRSMapDisplay, SRSMap);
+	else
+		var coords = new OpenLayers.LonLat(lon, lat);
+	
+	map.setCenter(coords, 7);
+	//map.zoomTo(10, new OpenLayers.LonLat(lon, lat));
 }
