@@ -39,6 +39,7 @@
     
     <!--  Script custom -->
     <script type="text/javascript" src="script/jqueryInit.js"></script>
+    <script type="text/javascript" src="script/utils.js"></script>
     <script type="text/javascript" src="script/globalParams.js"></script>
     <script type="text/javascript" src="script/globalStyle.js"></script>
     <script type="text/javascript" src="script/loadMap.js"></script>
@@ -142,6 +143,9 @@
 					<span>X (Lon): </span><input type="text" id="wg-coordinateX" class="coords-input"></input>
 					<span>Y (Lat): </span><input type="text" id="wg-coordinateY" class="coords-input"></input>
 				</div>
+				<div id="wg-scaleContainer">
+					<span>Scale  1:</span><input type="text" id="wg-scalesValue"></input>
+				</div>
 			</div>
 			
 			<div id="outputDistance" class="bgGrayRegular"><span id="outputDistanceTextLabel"></span><span id="outputDistanceText"></span></div>
@@ -157,5 +161,7 @@
 	    </div>
 		<div id="wg-layerInfo"></div>
 	</div>
+	
+	<div id="wg-containerScaleRange" class="box-shadow"></div>
 </body>
 </html>

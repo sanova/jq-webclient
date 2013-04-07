@@ -62,8 +62,18 @@ $(function(){
 	// Get coords from input fields
 	$("#wg-coordinateX").keyup(function(e){
 		if(e.keyCode == 13) goToCoords($("#wg-coordinateX").val(), $("#wg-coordinateY").val());
-	}).attr("title", "Set coordinates you want and press Enter to go to position");
+	}).attr("title", "Set coordinates you want and press <Enter> to go to position");
 	$("#wg-coordinateY").keyup(function(e){
 		if(e.keyCode == 13) goToCoords($("#wg-coordinateX").val(), $("#wg-coordinateY").val());
-	}).attr("title", "Set coordinates you want and press Enter to go to position");
+	}).attr("title", "Set coordinates you want and press <Enter> to go to position");
+	
+	// Scale input field
+	$("#wg-containerScaleRange").hide();
+	$("#wg-scalesValue").mouseover(function(){
+		viewScaleRangeContainer();
+	}).mouseleave(function(){
+		hideScaleRangeContainer();
+	}).keyup(function(e){
+		if(e.keyCode == 13) goToScaleValue($(this).val());
+	}).attr("title", "Choose a scale or write a value and press <Enter>");
 });

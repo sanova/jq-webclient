@@ -212,12 +212,14 @@ function viewMapLayer(listLayer) {
     addInfoControlsMap();
     addGeneralControlsMap();
     addMouseMoveControl();
+    addZoomEvent();
     
     for (var i=0; i<layersList.length; i++) {
     	map.addLayer(layersList[i]);
     }
     
 	map.zoomToExtent(BBOXMap);
+	setCurrentScale(null);
 	
 	if(CACHE_BROWSER)
 		enableCacheBrowser();
@@ -356,6 +358,10 @@ function addMouseMoveControl() {
         var coords = map.getLonLatFromPixel(e.xy);
         setCoordIntoPanelCoords(coords);
     });
+}
+
+function addZoomEvent() {
+	map.events.register("zoomend", this, eventsOnChangeZoom);
 }
 
 function addGeneralControlsMap() {  
@@ -556,4 +562,8 @@ function goToCoords(lon, lat) {
 	
 	map.setCenter(coords, 7);
 	//map.zoomTo(10, new OpenLayers.LonLat(lon, lat));
+}
+
+function eventsOnChangeZoom(obj) {
+	setCurrentScale(obj);
 }

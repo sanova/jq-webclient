@@ -28,11 +28,20 @@ h3.ui-corner-top.ui-state-hover a {color:    #000000 !important; }
             filter:   progid:DXImageTransform.Microsoft.Gradient(
                       StartColorStr='#FAFAFA', EndColorStr='#E7E7E7', GradientType=0) !important;}
                       
-.bgGrayRegular{	background: -moz-linear-gradient(top, #EDEDED, #D1D1D1) !important; /* Firefox */ 
-                background: -webkit-gradient(linear, 
-                           	left top, left bottom, from(#EDEDED), to(#D1D1D1)) !important; /* Safari e Chrome */
-                filter:   progid:DXImageTransform.Microsoft.Gradient(
-                          StartColorStr='#EDEDED', EndColorStr='#D1D1D1', GradientType=0) !important;}
+.bgGrayRegular{	
+	background: -moz-linear-gradient(top, #EDEDED, #D1D1D1) !important; /* Firefox */ 
+    background: -webkit-gradient(linear, 
+                left top, left bottom, from(#EDEDED), to(#D1D1D1)) !important; /* Safari e Chrome */
+    filter:   progid:DXImageTransform.Microsoft.Gradient(
+              StartColorStr='#EDEDED', EndColorStr='#D1D1D1', GradientType=0) !important;
+}
+                          
+.box-shadow { 
+	border-top: 1px solid #666; border-left: 1px solid #666; border-right: 1px solid #666; border-bottom: 0px solid white;
+	-moz-box-shadow: 0 2px 4px rgba(0,0,0,.35);
+	-webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, .35);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, .35); 
+}
 
 /* .leftPanel {width: 18%;position: absolute; background-color: White; left: 0px; bottom: 0px; top: 0px;} */
 .leftPanel {width: 300px; float: left; height: 100%; }
@@ -51,7 +60,7 @@ h3.ui-corner-top.ui-state-hover a {color:    #000000 !important; }
 #toolbarMap{position: relative; height: 30px; top: 0px;}             
 #wg-headerMapPanel	{position: relative;height: 25px;padding-top: 9px; padding-left: 6px; }
 #wg-MapPanel { height: 88%; }
-#wg-BottomPanelBar { position: relative; height: 27px; width: 100%; padding-top: 3px; padding-left: 10px; padding-right: 10px; }
+#wg-BottomPanelBar { position: relative; height: 27px; width: 100%; padding-top: 3px; padding-left: 10px; padding-right: 10px; display: block; }
 #panelMod{	z-index:1001; position: absolute; left:320px; height: 20px; bottom: 20px; width: 170px;padding-bottom: 4px; padding-left: 30px; padding-top: 15px; display: none;}
 				
 #wg-layerInfoContainer{ top: 95px; height: auto; overflow: hidden; width: 300px; right: 0px; position:absolute;display: none; z-index: 1001; }
@@ -89,4 +98,11 @@ h3.ui-corner-top.ui-state-hover a {color:    #000000 !important; }
 #wb-formFilter .warnignText { margin-top: 1px; margin-bottom: 5px; height: auto; }
 
 /* COORDINATES */
+#wg-coordinateContainer { float: left; margin-right: 20px; width: auto; }
 .coords-input { padding-left: 4px; padding-top: 1px;}
+#wg-scaleContainer { float: left; }
+#wg-scalesValue { padding-left: 5px; }
+#wg-scalesValue:hover { cursor: pointer; }
+#wg-containerScaleRange { position: absolute; z-index: 1001; background: white; }
+#wg-containerScaleRange div { padding-top: 4px; font-size: 12px; font-weight: 700; padding-right: 5px; padding-left: 5px; padding-bottom: 4px; }
+#wg-containerScaleRange div:hover { cursor: pointer; background: #D8D8D8; }
