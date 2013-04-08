@@ -22,13 +22,13 @@ var pathProject = "";
 /*
  * File name of your qgis project (example: polygon.qgs)
  */
-var nameProject = "";
+var nameProject = "polygon2.qgs";
 
 /* EPSG
  * This is the epsg code for the coordinates you want to display on map
  * Leave empty if you want to display coordinates in the same epsg of project 
 */
-var epsgcode_display = "3003"; //
+var epsgcode_display = ""; //
 
 /* BBOX
  * If your qgis project has a bbox configured you can leave these parameters empty.
@@ -71,8 +71,34 @@ var OSM_ENABLE = false;
  * true to enable local storage of browser
  * Browser will cache during moving and zooming map
  */
-var CACHE_BROWSER = false;
+var CACHE_BROWSER = true;
 
+/*
+ * Here you can modify values of scale range or add something new
+ */
+var scaleArray = {
+	500: "1:500",
+	1000: "1:1000",
+	2000: "1:2000",
+	5000: "1:5000",
+	10000: "1:10000",
+	20000: "1:20000",
+	50000: "1:50000",
+	100000: "1:100000",
+	200000: "1:200000",
+	500000: "1:500000",
+	1000000: "1:1000000"
+}
+
+/*
+ * Here you can modify values of scale range or add something new
+ */
+var dpiArray = [
+    150,
+    300,
+    600,
+    1200
+]
 
 /*
  * WMS URI
