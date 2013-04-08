@@ -22,15 +22,6 @@ function setPositionContainerScale() {
 	});
 }
 
-function setPositionContainerNamesTemplates() {
-	var y = $("#selectTemplate").offset().top;
-	var x = $("#selectTemplate").offset().left;
-	var width = $("#selectTemplate").width();
-	var yContTemp = y + 15;
-	
-	$("#wg-containerNamesTemplates").css("width", width).css("top", yContTemp).css("left", x);
-}
-
 function viewScaleRangeContainer() {
 	$("#wg-containerScaleRange").show();
 }
@@ -56,10 +47,13 @@ function goToScaleValue(scale) {
  */
 function openPrintPanel() {	
 	$("#wg-printPanelContainer").show("slide", {direction: 'up'}, "fast");
+	var currentScale = map.getScale().toString().split(".")[0];
+	$("#wg-containerPrintScale").find(".printValue").text("1:" + currentScale);
 }
 
 function closePrintPanel() {
-	$("#wg-printPanelContainer").hide("slide", {direction: 'up'}, "fast");
+	if($("#wg-printPanelContainer").is(":visible"))
+		$("#wg-printPanelContainer").hide("slide", {direction: 'up'}, "fast");
 }
 
 function getTemplatesPrint(data) {
@@ -83,15 +77,138 @@ function getTemplatesPrint(data) {
 }
 
 function setPanelPrint(list) {
+	// **************
 	// Template names
+	// **************
 	for(var key in list) {
-		var map = list[key];
-		$("#wg-containerNamesTemplates").append(
-			$("<div>").attr("class", "itemNameTemplate").attr("class", map).text(key)
+		var mapPrint = list[key];
+		$("#wg-containerPrintTemplate").append(
+			$("<div>").attr("class", "titleItem").append(
+				$("<div>").attr("class", "printValue").addClass("map-"+mapPrint).text(key),
+				$("<div>").attr("class", "printDesc").text("Select template"),
+				$("<div>").attr("class", "printImg").append(
+					$("<img>").attr("src", "")
+				)
+			),
+			$("<div>").attr("class", "containerPrintValuesCombo").addClass("box-shadow-combo")
 		)
-		if($("#wg-containerNamesTemplates").contents().length == 1)
-			$("#selectTemplate").val(key);
-	}	
+		break;
+	}
+	
+	for(var key in list) {
+		var mapPrint = list[key];
+		$("#wg-containerPrintTemplate").find(".containerPrintValuesCombo").append(
+			$("<div>").attr("class", "itemsValuesTemplate").addClass("map-"+mapPrint).text(key).click(function() {
+				$(this).parent().parent().find(".printValue").text($(this).text());
+			})
+		)
+	}
+	
+	// *****
+	// Scale
+	// *****
+	$("#wg-containerPrintScale").append(
+		$("<div>").attr("class", "titleItem").append(
+			$("<div>").attr("class", "printValue").text(""),
+			$("<div>").attr("class", "printDesc").text("Select scale"),
+			$("<div>").attr("class", "printImg").append(
+				$("<img>").attr("src", "")
+			)
+		),
+		$("<div>").attr("class", "containerPrintValuesCombo").addClass("box-shadow-combo")
+	)
+	
+	for(var key in scaleArray) {
+		var valueScale = scaleArray[key];
+		var denomScale = valueScale.split(":")[1];
+		if(parseInt(denomScale) < parseInt(minScale)) {
+			$("#wg-containerPrintScale").find(".containerPrintValuesCombo").append(
+				$("<div>").attr("class", "itemsValuesScale").text(valueScale).click(function() {
+					$(this).parent().parent().find(".printValue").text($(this).text());
+	
+					var polyBound = editableLayer.features[0].geometry.getBounds();
+					var originObj = polyBound.getCenterLonLat();
+					
+					var origin = new OpenLayers.Geometry.Point(originObj.lon, originObj.lat);
+					var scale = ($(this).text().split(":")[1])/map.getScale();
+					editableLayer.features[0].geometry.resize(scale, origin);
+					editableLayer.redraw();
+					goToScaleValue($(this).text().split(":")[1]);
+					map.setCenter(originObj);
+					
+				})
+			)
+		}
+	}
+	$("#wg-containerPrintScale").find(".containerPrintValuesCombo").append(
+		$("<div>").attr("class", "itemsValuesScale").text("1:"+minScale).click(function() {
+			$(this).parent().parent().find(".printValue").text($(this).text());
+
+			var polyBound = editableLayer.features[0].geometry.getBounds();
+			var originObj = polyBound.getCenterLonLat();
+			
+			var origin = new OpenLayers.Geometry.Point(originObj.lon, originObj.lat);
+			var scale = ($(this).text().split(":")[1])/map.getScale();
+			editableLayer.features[0].geometry.resize(scale, origin);
+			editableLayer.redraw();
+			goToScaleValue($(this).text().split(":")[1]);
+			map.setCenter(originObj);
+			
+		})
+	)	
+	
+	
+	/*
+	 * DPI
+	 */
+	var dpiDefault = dpiArray[0];
+	$("#wg-containerPrintDpi").append(
+		$("<div>").attr("class", "titleItem").append(
+			$("<div>").attr("class", "printValue").text(dpiDefault),
+			$("<div>").attr("class", "printDesc").text("Select dpi"),
+			$("<div>").attr("class", "printImg").append(
+				$("<img>").attr("src", "")
+			)
+		),
+		$("<div>").attr("class", "containerPrintValuesCombo").addClass("box-shadow-combo")
+	)
+	
+	for(var i=0; i<dpiArray.length; i++) {
+		var dpiVal = dpiArray[i];
+		$("#wg-containerPrintDpi").find(".containerPrintValuesCombo").append(
+			$("<div>").attr("class", "itemsValuesDpi").text(dpiVal).click(function() {
+				$(this).parent().parent().find(".printValue").text($(this).text());			
+			})
+		)
+	}
+	
+	/*
+	 * FORMAT
+	 */
+	var pdfFromat = "pdf";
+	var pngFormat = "png";
+	var jpgFormat = "jpg";
+	$("#wg-containerPrintFormat").append(
+		$("<div>").attr("class", "titleItem").append(
+			$("<div>").attr("class", "printValue").text(pdfFromat),
+			$("<div>").attr("class", "printDesc").text("Select format"),
+			$("<div>").attr("class", "printImg").append(
+				$("<img>").attr("src", "")
+			)
+		),
+		$("<div>").attr("class", "containerPrintValuesCombo").addClass("box-shadow-combo")
+	)
+	$("#wg-containerPrintFormat").find(".containerPrintValuesCombo").append(
+		$("<div>").attr("class", "itemsValuesDpi").text(pdfFromat).click(function() {
+			$(this).parent().parent().find(".printValue").text($(this).text());			
+		}),
+		$("<div>").attr("class", "itemsValuesDpi").text(pngFormat).click(function() {
+			$(this).parent().parent().find(".printValue").text($(this).text());			
+		}),
+		$("<div>").attr("class", "itemsValuesDpi").text(jpgFormat).click(function() {
+			$(this).parent().parent().find(".printValue").text($(this).text());			
+		})
+	)
 }
 
 function createPolygonToPrint() {
@@ -118,4 +235,43 @@ function createPolygonToPrint() {
 	
 	var feature = new OpenLayers.Feature.Vector(polygon);
 	editableLayer.addFeatures([feature]);
+}
+
+function getPrint() {
+	var template = $("#wg-containerPrintTemplate").find(".printValue").text();
+	var scale = $("#wg-containerPrintScale").find(".printValue").text();
+	var dpi = $("#wg-containerPrintDpi").find(".printValue").text();
+	var format = $("#wg-containerPrintFormat").find(".printValue").text();
+	
+	var listLayer = getListVisibleLayer();
+	var listLayerToView = getStringLayerToShow(listLayer);
+	
+	var polyBound = editableLayer.features[0].geometry.getBounds();	
+	var extent = polyBound.left+","+polyBound.bottom+","+polyBound.right+","+polyBound.top;
+	
+	var urlPrintRequest = 
+		serverURI + 
+		"&SERVICE=WMS" +
+		"&VERSION=1.3.0" +
+		"&REQUEST=GetPrint" +
+		"&TEMPLATE=" + template +
+		"&map0:extent=" + extent +
+		"&BBOX=" + extent +
+		"&CRS=" + SRSMap.projCode +
+		"&LAYERS=" + listLayerToView +
+		"&FORMAT=" + format +
+		"&DPI=" + dpi +
+		"&TRANSPARENTE=true";
+	
+//	if(format != "pdf")
+		window.open(urlPrintRequest);
+//	else {
+//		$("<div>").attr("id", "wg-windowPdfDownload").appendTo("body").append(
+//			$("<object>").attr("id", "pdfObject").attr("data", urlPrintRequest).attr("type", "application/pdf")
+//		)
+//	}
+} 
+
+function getCurrentScaleMap() {
+	return map.getScale();
 }

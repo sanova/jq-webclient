@@ -42,6 +42,12 @@ h3.ui-corner-top.ui-state-hover a {color:    #000000 !important; }
 	-webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, .35);
 	box-shadow: 0 2px 4px rgba(0, 0, 0, .35); 
 }
+.box-shadow-combo {
+	border: 0px;
+	-moz-box-shadow: 0 2px 4px rgba(0,0,0,.35);
+	-webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, .35);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, .35); 	
+}
 
 /* .leftPanel {width: 18%;position: absolute; background-color: White; left: 0px; bottom: 0px; top: 0px;} */
 .leftPanel {width: 300px; float: left; height: 100%; }
@@ -111,7 +117,16 @@ h3.ui-corner-top.ui-state-hover a {color:    #000000 !important; }
 #wg-containerScaleRange div:hover { cursor: pointer; background: #D8D8D8; }
 
 /* PRINT PANEL */
-#wg-printPanelContainer { position: absolute; top: 65px; left: 400px; height: auto; width: 300px; z-index: 1001; background: white; display: block; padding: 10px 10px 10px 5px }
-#wg-printPanelContainer input { margin-bottom: 5px; margin-right: 4px; border: 0px; }
-#wg-containerNamesTemplates { position: absolute; z-index: 1001; background: white; height: auto; display: none; }
-#wg-containerNamesTemplates div { padding-top: 3px; font-size: 12px; font-weight: 700; }
+#wg-printPanelContainer { position: absolute; top: 65px; left: 400px; height: auto; width: 300px; z-index: 1001; background: white; display: block; }
+.containerPrintValuesCombo { display: none; z-index: 1001; position: absolute; width: 90%; height: auto; background: white; }
+.containerPrintValuesCombo div { font-size: 12px; padding: 3px; }
+.containerPrintValuesCombo div:hover { cursor: pointer; background: #D8D8D8; }
+.titleItem { display: block; width: 100%; overflow: hidden; padding: 8px; }
+.titleItem:hover { cursor: pointer; }
+.titleItem div { float: left; font-size: 12px; }
+.printValue { width: 50%; font-weight: 700; }
+.printDesc { width: 40%; }
+.printImg { width: 10%; }
+#wg-divButtonPrint { margin-bottom: 10px; margin-top: 5px; text-align: right; padding-right: 30px; }
+#wg-windowPdfDownload { position: absolute; top: 200px; left: 300px; right: 100px; bottom: 100px; z-index: 1001; background: white; }
+#pdfObject { width: 100%; height: 100%; }

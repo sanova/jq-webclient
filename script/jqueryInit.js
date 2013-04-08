@@ -83,16 +83,51 @@ $(function(){
 	
 	// Print panel
 	$("#wg-printPanelContainer").hide();
-	$("#selectTemplate").mouseover(function(){
-		setPositionContainerNamesTemplates();
-		$("#wg-containerNamesTemplates").show();
-	}).mouseleave(function(){ 
-		$("#wg-containerNamesTemplates").hide();
-	});
-	$("#wg-containerNamesTemplates").mouseover(function(){
-		$(this).show();
+	
+	var isAnimating = false;
+	
+	$("#wg-containerPrintTemplate").mouseover(function(){
+		if(!isAnimating) {
+			isAnimating = true;
+			$(this).find(".containerPrintValuesCombo").show("fast", function(){
+				setTimeout(function () { isAnimating = false; }, 100);
+			});
+		}
 	}).mouseleave(function(){
-		$(this).hide();
+		$(this).find(".containerPrintValuesCombo").hide("fast");
+	});
+	$("#wg-containerPrintScale").mouseover(function(){
+		if(!isAnimating) {
+			isAnimating = true;
+			$(this).find(".containerPrintValuesCombo").show("fast", function(){
+				setTimeout(function () { isAnimating = false; }, 100);
+			});
+		}
+	}).mouseleave(function(){
+		$(this).find(".containerPrintValuesCombo").hide("fast");
+	});
+	$("#wg-containerPrintDpi").mouseover(function(){
+		if(!isAnimating) {
+			isAnimating = true;
+			$(this).find(".containerPrintValuesCombo").show("fast", function(){
+				setTimeout(function () { isAnimating = false; }, 100);
+			});
+		}
+	}).mouseleave(function(){
+		$(this).find(".containerPrintValuesCombo").hide("fast");
+	});
+	$("#wg-containerPrintFormat").mouseover(function(){
+		if(!isAnimating) {
+			isAnimating = true;
+			$(this).find(".containerPrintValuesCombo").show("fast", function(){
+				setTimeout(function () { isAnimating = false; }, 100);
+			});
+		}
+	}).mouseleave(function(){
+		$(this).find(".containerPrintValuesCombo").hide("fast");
+	});
+	$("#buttonPrint").button({ label: "Print" }).click(function(){
+		getPrint();
 	});
 
 });
