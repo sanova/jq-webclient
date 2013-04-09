@@ -1,3 +1,7 @@
+var pathImageDown = "./images/gis_icons/arrow_down_16.png";
+var mathMax = Math.max;
+var mathMin = Math.min;
+
 function setRangeScaleInPanel() {	
 	for(var key in scaleArray) {
 		var valueScale = scaleArray[key];
@@ -40,6 +44,12 @@ function setCurrentScale(obj) {
 function goToScaleValue(scale) {
 	$("#wg-containerScaleRange").hide();
 	map.zoomToScale(scale, false);
+}
+
+function goToExtentSquare(obj) {
+	var bounds = obj.feature.geometry.getBounds();
+	map.zoomToExtent(bounds);
+	editableLayer.removeAllFeatures();
 }
 
 /*
@@ -87,7 +97,7 @@ function setPanelPrint(list) {
 				$("<div>").attr("class", "printValue").addClass("map-"+mapPrint).text(key),
 				$("<div>").attr("class", "printDesc").text("Select template"),
 				$("<div>").attr("class", "printImg").append(
-					$("<img>").attr("src", "")
+					$("<img>").attr("src", pathImageDown)
 				)
 			),
 			$("<div>").attr("class", "containerPrintValuesCombo").addClass("box-shadow-combo")
@@ -112,7 +122,7 @@ function setPanelPrint(list) {
 			$("<div>").attr("class", "printValue").text(""),
 			$("<div>").attr("class", "printDesc").text("Select scale"),
 			$("<div>").attr("class", "printImg").append(
-				$("<img>").attr("src", "")
+				$("<img>").attr("src", pathImageDown)
 			)
 		),
 		$("<div>").attr("class", "containerPrintValuesCombo").addClass("box-shadow-combo")
@@ -167,7 +177,7 @@ function setPanelPrint(list) {
 			$("<div>").attr("class", "printValue").text(dpiDefault),
 			$("<div>").attr("class", "printDesc").text("Select dpi"),
 			$("<div>").attr("class", "printImg").append(
-				$("<img>").attr("src", "")
+				$("<img>").attr("src", pathImageDown)
 			)
 		),
 		$("<div>").attr("class", "containerPrintValuesCombo").addClass("box-shadow-combo")
@@ -193,7 +203,7 @@ function setPanelPrint(list) {
 			$("<div>").attr("class", "printValue").text(pdfFromat),
 			$("<div>").attr("class", "printDesc").text("Select format"),
 			$("<div>").attr("class", "printImg").append(
-				$("<img>").attr("src", "")
+				$("<img>").attr("src", pathImageDown)
 			)
 		),
 		$("<div>").attr("class", "containerPrintValuesCombo").addClass("box-shadow-combo")
@@ -212,15 +222,18 @@ function setPanelPrint(list) {
 }
 
 function createPolygonToPrint() {
-	var p1 = {x: 150,y: 200};
-	var p2 = {x: 150,y: 600};
-	var p3 = {x: 600,y: 600};
-	var p4 = {x: 600,y: 200};
+	editableLayer.removeAllFeatures();
 	
-	var c1 = map.getLonLatFromPixel(p1);
-	var c2 = map.getLonLatFromPixel(p2);
-	var c3 = map.getLonLatFromPixel(p3);
-	var c4 = map.getLonLatFromPixel(p4);
+	var scale = 0.7;
+	
+	var mapBound = map.getExtent();
+	var mapCenter = map.getCenter();
+	var origin = new OpenLayers.Geometry.Point(mapCenter.lon, mapCenter.lat);
+	
+	var c1 = {lon: mapBound.left, lat: mapBound.bottom};
+	var c2 = {lon: mapBound.left, lat: mapBound.top};
+	var c3 = {lon: mapBound.right, lat: mapBound.top};
+	var c4 = {lon: mapBound.right, lat: mapBound.bottom};
 	
 	var points = 
 	[
@@ -234,14 +247,59 @@ function createPolygonToPrint() {
 	var polygon = new OpenLayers.Geometry.Polygon([line]);
 	
 	var feature = new OpenLayers.Feature.Vector(polygon);
+		feature.geometry.resize(scale, origin);
+	
 	editableLayer.addFeatures([feature]);
+	
+}
+
+function getRotationPolygon(polygon) {
+	var vertex = polygon.geometry.components[0].components;
+	
+	// Check rotation directrion and get angle
+	var sides = getSidesTriangle(vertex);	
+	
+	// Calculate rotation
+	if( sides != false)
+		var rotation = Math.atan(sides["sideY"] / sides["sideX"]) / Math.PI * 180;
+	else
+		rotation = 0;
+	
+	return rotation;
+}
+
+function getSidesTriangle(vertex) {
+	var sides = {};
+	
+	if((vertex[3].x > vertex[0].x && vertex[3].y > vertex[0].y) || (vertex[0].x > vertex[3].x && vertex[0].y > vertex[3].y)) {
+		var sideX = (vertex[3].x - vertex[0].x);
+		var sideY = (vertex[3].y - vertex[0].y);
+		
+		sides["sideX"] = sideX;
+		sides["sideY"] = sideY;
+	}
+	
+	else if((vertex[3].x > vertex[0].x && vertex[3].y < vertex[0].y) || (vertex[3].x < vertex[0].x && vertex[3].y > vertex[0].y)) {
+		var sideX = (vertex[3].x - vertex[0].x);
+		var sideY = (vertex[3].y - vertex[0].y);
+		
+		sides["sideX"] = sideX;
+		sides["sideY"] = sideY;
+	}
+	
+	else sides = false;
+	
+	return sides;
+	
 }
 
 function getPrint() {
+	
 	var template = $("#wg-containerPrintTemplate").find(".printValue").text();
 	var scale = $("#wg-containerPrintScale").find(".printValue").text();
 	var dpi = $("#wg-containerPrintDpi").find(".printValue").text();
 	var format = $("#wg-containerPrintFormat").find(".printValue").text();
+	var rotation = getRotationPolygon(editableLayer.features[0]);
 	
 	var listLayer = getListVisibleLayer();
 	var listLayerToView = getStringLayerToShow(listLayer);
@@ -255,11 +313,13 @@ function getPrint() {
 		"&VERSION=1.3.0" +
 		"&REQUEST=GetPrint" +
 		"&TEMPLATE=" + template +
+		"&map0:ROTATION=" + rotation +
 		"&map0:extent=" + extent +
 		"&BBOX=" + extent +
 		"&CRS=" + SRSMap.projCode +
 		"&LAYERS=" + listLayerToView +
 		"&FORMAT=" + format +
+		"&map0:SCALE=" + scale +
 		"&DPI=" + dpi +
 		"&TRANSPARENTE=true";
 	
@@ -274,4 +334,4 @@ function getPrint() {
 
 function getCurrentScaleMap() {
 	return map.getScale();
-}
+} 
