@@ -261,7 +261,7 @@ function getRotationPolygon(polygon) {
 	
 	// Calculate rotation
 	if( sides != false)
-		var rotation = Math.atan(sides["sideY"] / sides["sideX"]) / Math.PI * 180;
+		var rotation = (Math.atan(sides["sideY"] / sides["sideX"]) / Math.PI * 180) + sides["angle_rotation"];
 	else
 		rotation = 0;
 	
@@ -271,12 +271,22 @@ function getRotationPolygon(polygon) {
 function getSidesTriangle(vertex) {
 	var sides = {};
 	
-	if((vertex[3].x > vertex[0].x && vertex[3].y > vertex[0].y) || (vertex[0].x > vertex[3].x && vertex[0].y > vertex[3].y)) {
+	if((vertex[3].x > vertex[0].x && vertex[3].y > vertex[0].y)) {
 		var sideX = (vertex[3].x - vertex[0].x);
 		var sideY = (vertex[3].y - vertex[0].y);
 		
 		sides["sideX"] = sideX;
 		sides["sideY"] = sideY;
+		sides["angle_rotation"] = 0;
+	}
+	
+	else if((vertex[0].x > vertex[3].x && vertex[0].y > vertex[3].y)) {
+		var sideX = (vertex[3].x - vertex[0].x);
+		var sideY = (vertex[3].y - vertex[0].y);
+		
+		sides["sideX"] = sideX;
+		sides["sideY"] = sideY;
+		sides["angle_rotation"] = 180;
 	}
 	
 	else if((vertex[3].x > vertex[0].x && vertex[3].y < vertex[0].y) || (vertex[3].x < vertex[0].x && vertex[3].y > vertex[0].y)) {
@@ -285,6 +295,16 @@ function getSidesTriangle(vertex) {
 		
 		sides["sideX"] = sideX;
 		sides["sideY"] = sideY;
+		sides["angle_rotation"] = 0;
+	}
+	
+	else if((vertex[3].x < vertex[0].x && vertex[3].y > vertex[0].y)) {
+		var sideX = (vertex[3].x - vertex[0].x);
+		var sideY = (vertex[3].y - vertex[0].y);
+		
+		sides["sideX"] = sideX;
+		sides["sideY"] = sideY;
+		sides["angle_rotation"] = 180;
 	}
 	
 	else sides = false;
@@ -305,7 +325,7 @@ function getPrint() {
 	var listLayerToView = getStringLayerToShow(listLayer);
 	
 	var polyBound = editableLayer.features[0].geometry.getBounds();	
-	var extent = polyBound.left+","+polyBound.bottom+","+polyBound.right+","+polyBound.top;
+	var extentBound = polyBound.left+","+polyBound.bottom+","+polyBound.right+","+polyBound.top;
 	
 	var urlPrintRequest = 
 		serverURI + 
@@ -315,7 +335,7 @@ function getPrint() {
 		"&TEMPLATE=" + template +
 		"&map0:ROTATION=" + rotation +
 		"&map0:extent=" + extent +
-		"&BBOX=" + extent +
+		//"&BBOX=" + extent +
 		"&CRS=" + SRSMap.projCode +
 		"&LAYERS=" + listLayerToView +
 		"&FORMAT=" + format +
@@ -330,7 +350,7 @@ function getPrint() {
 //			$("<object>").attr("id", "pdfObject").attr("data", urlPrintRequest).attr("type", "application/pdf")
 //		)
 //	}
-} 
+}
 
 function getCurrentScaleMap() {
 	return map.getScale();
