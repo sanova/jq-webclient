@@ -271,7 +271,7 @@ function getRotationPolygon(polygon) {
 function getSidesTriangle(vertex) {
 	var sides = {};
 	
-	if((vertex[3].x > vertex[0].x && vertex[3].y > vertex[0].y)) {
+	if(vertex[3].x > vertex[0].x && vertex[3].y > vertex[0].y) {
 		var sideX = (vertex[3].x - vertex[0].x);
 		var sideY = (vertex[3].y - vertex[0].y);
 		
@@ -280,7 +280,7 @@ function getSidesTriangle(vertex) {
 		sides["angle_rotation"] = 0;
 	}
 	
-	else if((vertex[0].x > vertex[3].x && vertex[0].y > vertex[3].y)) {
+	else if(vertex[0].x > vertex[3].x && vertex[0].y > vertex[3].y) {
 		var sideX = (vertex[3].x - vertex[0].x);
 		var sideY = (vertex[3].y - vertex[0].y);
 		
@@ -289,7 +289,7 @@ function getSidesTriangle(vertex) {
 		sides["angle_rotation"] = 180;
 	}
 	
-	else if((vertex[3].x > vertex[0].x && vertex[3].y < vertex[0].y) || (vertex[3].x < vertex[0].x && vertex[3].y > vertex[0].y)) {
+	else if(vertex[3].x > vertex[0].x && vertex[3].y < vertex[0].y) {
 		var sideX = (vertex[3].x - vertex[0].x);
 		var sideY = (vertex[3].y - vertex[0].y);
 		
@@ -298,7 +298,7 @@ function getSidesTriangle(vertex) {
 		sides["angle_rotation"] = 0;
 	}
 	
-	else if((vertex[3].x < vertex[0].x && vertex[3].y > vertex[0].y)) {
+	else if(vertex[3].x < vertex[0].x && vertex[3].y > vertex[0].y) {
 		var sideX = (vertex[3].x - vertex[0].x);
 		var sideY = (vertex[3].y - vertex[0].y);
 		
@@ -313,6 +313,53 @@ function getSidesTriangle(vertex) {
 	
 }
 
+function traslatePolygon(vertex, rotation) {
+	var diff1 = vertex[0].x - vertex[1].x;
+	var diff2 = vertex[1].y - vertex[0].y;
+	var pow1 = Math.pow(diff1, 2);
+	var pow2 = Math.pow(diff2, 2);
+	
+	var ro = Math.sqrt( pow1 + pow2);
+		ro = ro/4;
+	
+	var rotationDegree = (rotation-90)*Math.PI/180;
+	
+	var X0 = vertex[0].x + ro * Math.cos(rotationDegree);
+	var X1 = vertex[1].x + ro * Math.cos(rotationDegree);
+	var X2 = vertex[2].x + ro * Math.cos(rotationDegree);
+	var X3 = vertex[3].x + ro * Math.cos(rotationDegree);
+	
+	var Y0 = vertex[0].y + ro * Math.sin(rotationDegree);
+	var Y1 = vertex[1].y + ro * Math.sin(rotationDegree);
+	var Y2 = vertex[2].y + ro * Math.sin(rotationDegree);
+	var Y3 = vertex[3].y + ro * Math.sin(rotationDegree);
+	
+	var minX = Math.min(X0, X1, X2, X3);
+	var maxX = Math.max(X0, X1, X2, X3);
+	var minY = Math.min(Y0, Y1, Y2, Y3);
+	var maxY = Math.max(Y0, Y1, Y2, Y3);
+	
+	var newBound = {
+		"left": minX,
+		"right": maxX,
+		"top": maxY,
+		"bottom": minY
+	}
+	
+	return newBound;
+	
+}
+
+function createClonePolygon(polygon, rotation) {
+	var clonePolygon = polygon.clone();
+	var centerPolygon = clonePolygon.getCentroid();
+	var rotationPolygon = -(rotation);
+	
+	clonePolygon.rotate(rotationPolygon, centerPolygon);
+	
+	return clonePolygon;	
+}
+
 function getPrint() {
 	
 	var template = $("#wg-containerPrintTemplate").find(".printValue").text();
@@ -324,8 +371,15 @@ function getPrint() {
 	var listLayer = getListVisibleLayer();
 	var listLayerToView = getStringLayerToShow(listLayer);
 	
-	var polyBound = editableLayer.features[0].geometry.getBounds();	
-	var extentBound = polyBound.left+","+polyBound.bottom+","+polyBound.right+","+polyBound.top;
+	if(rotation == 0) {
+		var polyBound = editableLayer.features[0].geometry.getBounds();	
+		var extentBound = polyBound.left+","+polyBound.bottom+","+polyBound.right+","+polyBound.top;
+	}
+	else {
+		var clonePolygon = createClonePolygon(editableLayer.features[0].geometry, rotation);
+		var polyBound = clonePolygon.getBounds();	
+		var extentBound = polyBound.left+","+polyBound.bottom+","+polyBound.right+","+polyBound.top;		
+	}
 	
 	var urlPrintRequest = 
 		serverURI + 
@@ -334,8 +388,7 @@ function getPrint() {
 		"&REQUEST=GetPrint" +
 		"&TEMPLATE=" + template +
 		"&map0:ROTATION=" + rotation +
-		"&map0:extent=" + extent +
-		//"&BBOX=" + extent +
+		"&map0:extent=" + extentBound +
 		"&CRS=" + SRSMap.projCode +
 		"&LAYERS=" + listLayerToView +
 		"&FORMAT=" + format +
