@@ -63,6 +63,13 @@ $(function(){
 		toogleStateButton($(this));
 	});
 	
+	$("#wg-windowPdfDownload").dialog({
+		height: 450,
+		width: 650,
+		modal:true,
+		autoOpen: false
+	});
+	
 	// Inizializzazione tasto chiusura pannello info elementi mappa
 	$('#closeInfoDiv').button().click(function(){
 		$('#wg-layerInfoContainer').toggle('slide', {direction: 'right'}, 400);

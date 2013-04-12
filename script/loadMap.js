@@ -353,8 +353,8 @@ function addInfoControlsMap() {
     map.addControl(modControls);
     
 	controlMod = new OpenLayers.Control.ModifyFeature(editableLayer);
-	controlMod.mode = OpenLayers.Control.ModifyFeature.ROTATE;
-	controlMod.mode |= OpenLayers.Control.ModifyFeature.RESIZE;
+	controlMod.mode = OpenLayers.Control.ModifyFeature.RESIZE;
+	controlMod.mode &= ~OpenLayers.Control.ModifyFeature.RESHAPE;
 	controlMod.mode |= OpenLayers.Control.ModifyFeature.DRAG;
 	map.addControl(controlMod);
     
@@ -597,4 +597,23 @@ function goToCoords(lon, lat) {
 
 function eventsOnChangeZoom(obj) {
 	setCurrentScale(obj);
+}
+
+function toggleRotate(enable) {
+	if(enable) {
+		controlMod.mode = OpenLayers.Control.ModifyFeature.ROTATE;
+		controlMod.mode |= OpenLayers.Control.ModifyFeature.RESIZE;
+		controlMod.mode |= OpenLayers.Control.ModifyFeature.DRAG;
+	}
+	else {
+		controlMod.mode = OpenLayers.Control.ModifyFeature.RESIZE;
+		controlMod.mode &= ~OpenLayers.Control.ModifyFeature.RESHAPE;
+		controlMod.mode |= OpenLayers.Control.ModifyFeature.DRAG;
+	}
+}
+
+function removeRotationControl() {
+	controlMod.mode = OpenLayers.Control.ModifyFeature.RESIZE;
+	controlMod.mode &= ~OpenLayers.Control.ModifyFeature.RESHAPE;
+	controlMod.mode |= OpenLayers.Control.ModifyFeature.DRAG;	
 }

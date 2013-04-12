@@ -1,4 +1,6 @@
 var pathImageDown = "./images/gis_icons/arrow_down_16.png";
+var pathImageChecked = "./images/gis_icons/check2_16.png";
+
 var mathMax = Math.max;
 var mathMin = Math.min;
 
@@ -56,14 +58,14 @@ function goToExtentSquare(obj) {
  * PRINT UTILS
  */
 function openPrintPanel() {	
-	$("#wg-printPanelContainer").show("slide", {direction: 'up'}, "fast");
+	$("#wg-printPanelContainer").show("slide", {direction: 'left'}, "fast");
 	var currentScale = map.getScale().toString().split(".")[0];
 	$("#wg-containerPrintScale").find(".printValue").text("1:" + currentScale);
 }
 
 function closePrintPanel() {
 	if($("#wg-printPanelContainer").is(":visible"))
-		$("#wg-printPanelContainer").hide("slide", {direction: 'up'}, "fast");
+		$("#wg-printPanelContainer").hide("slide", {direction: 'left'}, "fast");
 }
 
 function getTemplatesPrint(data) {
@@ -95,7 +97,7 @@ function setPanelPrint(list) {
 		$("#wg-containerPrintTemplate").append(
 			$("<div>").attr("class", "titleItem").append(
 				$("<div>").attr("class", "printValue").addClass("map-"+mapPrint).text(key),
-				$("<div>").attr("class", "printDesc").text("Select template"),
+				$("<div>").attr("class", "printDesc").text("Template"),
 				$("<div>").attr("class", "printImg").append(
 					$("<img>").attr("src", pathImageDown)
 				)
@@ -120,7 +122,7 @@ function setPanelPrint(list) {
 	$("#wg-containerPrintScale").append(
 		$("<div>").attr("class", "titleItem").append(
 			$("<div>").attr("class", "printValue").text(""),
-			$("<div>").attr("class", "printDesc").text("Select scale"),
+			$("<div>").attr("class", "printDesc").text("Scale"),
 			$("<div>").attr("class", "printImg").append(
 				$("<img>").attr("src", pathImageDown)
 			)
@@ -175,7 +177,7 @@ function setPanelPrint(list) {
 	$("#wg-containerPrintDpi").append(
 		$("<div>").attr("class", "titleItem").append(
 			$("<div>").attr("class", "printValue").text(dpiDefault),
-			$("<div>").attr("class", "printDesc").text("Select dpi"),
+			$("<div>").attr("class", "printDesc").text("Dpi"),
 			$("<div>").attr("class", "printImg").append(
 				$("<img>").attr("src", pathImageDown)
 			)
@@ -201,7 +203,7 @@ function setPanelPrint(list) {
 	$("#wg-containerPrintFormat").append(
 		$("<div>").attr("class", "titleItem").append(
 			$("<div>").attr("class", "printValue").text(pdfFromat),
-			$("<div>").attr("class", "printDesc").text("Select format"),
+			$("<div>").attr("class", "printDesc").text("Format"),
 			$("<div>").attr("class", "printImg").append(
 				$("<img>").attr("src", pathImageDown)
 			)
@@ -219,12 +221,83 @@ function setPanelPrint(list) {
 			$(this).parent().parent().find(".printValue").text($(this).text());			
 		})
 	)
+	
+	/*
+	 * CheckBox rotation
+	 */
+	$("#wg-containerPrintCheckRotation").append(
+		$("<div>").attr("class", "titleItem").append(
+			$("<div>").attr("id", "printCheckbox").attr("class", "printValue").css("opacity", 0).append(
+				$("<img>").attr("class", "imgCheckBoxRotation").addClass("notChecked").attr("src", pathImageChecked)
+			),
+			$("<div>").attr("class", "printDesc").text("Rotation")
+		)
+	).click(function() {
+		toggleCheckBox($("#printCheckbox"));
+		var enableRotate = getEnableDisableRotate($("#printCheckbox"));
+		toggleRotate(enableRotate);
+	}).mouseover(function(){
+		highLightCheckBox($("#printCheckbox"));
+	}).mouseleave(function(){
+		removeHighLightCheckBox($("#printCheckbox"));
+	})
+}
+
+function toggleCheckBox(obj) {
+	var imgObj = $(obj.children("img")[0]);
+	if(imgObj.hasClass("notChecked")) {
+		imgObj.removeClass("notChecked").addClass("checked");
+		obj.css("opacity", 1);
+	}
+	else {
+		imgObj.removeClass("checked").addClass("notChecked");
+		obj.css("opacity", 0);
+		disableRotationPolygon(editableLayer.features[0]);
+	}
+	
+	controlMod.deactivate();
+	controlMod.activate();
+	
+	return;
+}
+
+function clearRotationSetting() {
+	var obj = $($("#printCheckbox").children("img")[0]);
+	obj.removeClass("checked").addClass("notChecked");
+	$("#printCheckbox").css("opacity", 0);
+}
+
+function highLightCheckBox(obj) {
+	var imgObj = $(obj.children("img")[0]);
+	if(imgObj.hasClass("notChecked")) {
+		obj.css("opacity", 0.5);
+	}
+	
+	return;	
+}
+function removeHighLightCheckBox(obj) {
+	var imgObj = $(obj.children("img")[0]);
+	if(imgObj.hasClass("notChecked")) {
+		obj.css("opacity", 0);
+	}
+	
+	return;	
+}
+
+function getEnableDisableRotate(obj) {
+	var imgObj = $(obj.children("img")[0]);
+	if(imgObj.hasClass("notChecked")) {
+		return false;
+	}
+	else {
+		return true;
+	}	
 }
 
 function createPolygonToPrint() {
 	editableLayer.removeAllFeatures();
 	
-	var scale = 0.7;
+	var scale = 0.6;
 	
 	var mapBound = map.getExtent();
 	var mapCenter = map.getCenter();
@@ -313,43 +386,6 @@ function getSidesTriangle(vertex) {
 	
 }
 
-function traslatePolygon(vertex, rotation) {
-	var diff1 = vertex[0].x - vertex[1].x;
-	var diff2 = vertex[1].y - vertex[0].y;
-	var pow1 = Math.pow(diff1, 2);
-	var pow2 = Math.pow(diff2, 2);
-	
-	var ro = Math.sqrt( pow1 + pow2);
-		ro = ro/4;
-	
-	var rotationDegree = (rotation-90)*Math.PI/180;
-	
-	var X0 = vertex[0].x + ro * Math.cos(rotationDegree);
-	var X1 = vertex[1].x + ro * Math.cos(rotationDegree);
-	var X2 = vertex[2].x + ro * Math.cos(rotationDegree);
-	var X3 = vertex[3].x + ro * Math.cos(rotationDegree);
-	
-	var Y0 = vertex[0].y + ro * Math.sin(rotationDegree);
-	var Y1 = vertex[1].y + ro * Math.sin(rotationDegree);
-	var Y2 = vertex[2].y + ro * Math.sin(rotationDegree);
-	var Y3 = vertex[3].y + ro * Math.sin(rotationDegree);
-	
-	var minX = Math.min(X0, X1, X2, X3);
-	var maxX = Math.max(X0, X1, X2, X3);
-	var minY = Math.min(Y0, Y1, Y2, Y3);
-	var maxY = Math.max(Y0, Y1, Y2, Y3);
-	
-	var newBound = {
-		"left": minX,
-		"right": maxX,
-		"top": maxY,
-		"bottom": minY
-	}
-	
-	return newBound;
-	
-}
-
 function createClonePolygon(polygon, rotation) {
 	var clonePolygon = polygon.clone();
 	var centerPolygon = clonePolygon.getCentroid();
@@ -358,6 +394,16 @@ function createClonePolygon(polygon, rotation) {
 	clonePolygon.rotate(rotationPolygon, centerPolygon);
 	
 	return clonePolygon;	
+}
+
+function disableRotationPolygon(polygon) {
+	var rotation = getRotationPolygon(polygon);	
+	var center = polygon.geometry.getCentroid();
+	var rotationPolygon = -(rotation);
+	
+	polygon.geometry.rotate(rotationPolygon, center);
+	
+	editableLayer.redraw();	
 }
 
 function getPrint() {
@@ -396,15 +442,24 @@ function getPrint() {
 		"&DPI=" + dpi +
 		"&TRANSPARENTE=true";
 	
-//	if(format != "pdf")
+	if(format != "pdf")
 		window.open(urlPrintRequest);
-//	else {
-//		$("<div>").attr("id", "wg-windowPdfDownload").appendTo("body").append(
-//			$("<object>").attr("id", "pdfObject").attr("data", urlPrintRequest).attr("type", "application/pdf")
-//		)
-//	}
+	else {
+		$("#wg-windowPdfDownload div").remove();
+		$("#wg-windowPdfDownload").append(
+			$("<div>").attr("id", "containerPdfPreview").append(
+				$("<object>").attr("id", "pdfObject").attr("data", urlPrintRequest).attr("type", "application/pdf"),
+				$("<button>").attr("id", "downloadPdfButton").click(function(){
+					window.open(urlPrintRequest);
+				}).button({ label: "Download" })
+			)
+		);
+		if(!$("#wg-windowPdfDownload").is(":visible")) {
+			$("#wg-windowPdfDownload").dialog("open");
+		}
+	}
 }
 
 function getCurrentScaleMap() {
 	return map.getScale();
-} 
+}
