@@ -1,5 +1,5 @@
 var map, basicLayer, highlightLayer, editableLayer, googleLayer, osmLayer;
-var infoControls, modControls, infoIdControls, controlMod;
+var infoControls, modControls, infoIdControls, controlMod, zoomSquareControl;
 var cacheWrite, cacheRead;
 var activeLayer = "";
 var EPSGdefault = "";
@@ -220,6 +220,7 @@ function viewMapLayer(listLayer) {
     addInfoControlsMap();
     addGeneralControlsMap();
     addMouseMoveControl();
+    addZoomingSquareControl();
     addZoomEvent();
     
     for (var i=0; i<layersList.length; i++) {
@@ -388,6 +389,23 @@ function addGeneralControlsMap() {
     }   
 
     map.addControl(new OpenLayers.Control.LayerSwitcher());
+}
+
+function addZoomingSquareControl() {
+    zoomSquareControl = new OpenLayers.Control.DrawFeature(editableLayer, 
+    	OpenLayers.Handler.RegularPolygon, {
+        	handlerOptions: {
+        		sides: 4,
+        		irregular: true
+        	}
+    	}
+    )
+    
+    map.addControl(zoomSquareControl);
+    
+    zoomSquareControl.handler.stopDown = stop;
+    zoomSquareControl.handler.stopUp = stop;   
+    zoomSquareControl.events.register('featureadded', this, goToExtentSquare);
 }
 
 function getStringLayerToShow(listLayer) {

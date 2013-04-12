@@ -34,6 +34,11 @@ $(function(){
 	}).click(function(){
 		getLayersToSearch();
 	});
+    
+	// Inizializzazione tasto funzione zoom square
+	$('#zoomButton').button().click(function(){
+		toogleStateButton($(this));
+	});
 	
 	// Inizializzazione tasto funzione get info
 	$('#infoButton').button().click(function(){
@@ -83,7 +88,6 @@ $(function(){
 	
 	// Print panel
 	$("#wg-printPanelContainer").hide();
-	
 	var isAnimating = false;
 	
 	$("#wg-containerPrintTemplate").mouseover(function(){
@@ -92,9 +96,11 @@ $(function(){
 			$(this).find(".containerPrintValuesCombo").show("fast", function(){
 				setTimeout(function () { isAnimating = false; }, 100);
 			});
+			$(this).find(".printImg").css("opacity", "0.5");
 		}
 	}).mouseleave(function(){
 		$(this).find(".containerPrintValuesCombo").hide("fast");
+		$(this).find(".printImg").css("opacity", "1");
 	});
 	$("#wg-containerPrintScale").mouseover(function(){
 		if(!isAnimating) {
@@ -102,9 +108,11 @@ $(function(){
 			$(this).find(".containerPrintValuesCombo").show("fast", function(){
 				setTimeout(function () { isAnimating = false; }, 100);
 			});
+			$(this).find(".printImg").css("opacity", "0.5");
 		}
 	}).mouseleave(function(){
 		$(this).find(".containerPrintValuesCombo").hide("fast");
+		$(this).find(".printImg").css("opacity", "1");
 	});
 	$("#wg-containerPrintDpi").mouseover(function(){
 		if(!isAnimating) {
@@ -112,9 +120,11 @@ $(function(){
 			$(this).find(".containerPrintValuesCombo").show("fast", function(){
 				setTimeout(function () { isAnimating = false; }, 100);
 			});
+			$(this).find(".printImg").css("opacity", "0.5");
 		}
 	}).mouseleave(function(){
 		$(this).find(".containerPrintValuesCombo").hide("fast");
+		$(this).find(".printImg").css("opacity", "1");
 	});
 	$("#wg-containerPrintFormat").mouseover(function(){
 		if(!isAnimating) {
@@ -122,9 +132,11 @@ $(function(){
 			$(this).find(".containerPrintValuesCombo").show("fast", function(){
 				setTimeout(function () { isAnimating = false; }, 100);
 			});
+			$(this).find(".printImg").css("opacity", "0.5");
 		}
 	}).mouseleave(function(){
 		$(this).find(".containerPrintValuesCombo").hide("fast");
+		$(this).find(".printImg").css("opacity", "1");
 	});
 	$("#buttonPrint").button({ label: "Print" }).click(function(){
 		getPrint();
