@@ -4,6 +4,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=8;FF=3;OtherUA=4" />
 	<title>WEBGIS</title>
 	
 	<!-- Jquery CSS -->
@@ -132,6 +133,7 @@
 		<div id="wg-MapPanelContainer" class="centerPanel">
 			<div id="wg-headerMapPanel" class="bgGray">MAPPA</div>
 	    	<div id="toolbarMap" class="bgGray">
+	    		<button id="zoomButton" class="toolbarButton ui-icon-custom" title="Zoom to square"></button>
 	    		<button id="infoButton" class="toolbarButton ui-icon-custom" title="Abilita Modalità  Info Mappa"></button>
 	    		<button id="measureDistance" class="toolbarButton ui-icon-custom" title="Abilita Misura Distanza"></button>
 	    		<button id="measureArea" class="toolbarButton ui-icon-custom" title="Abilita Misura Aree"></button>
@@ -169,10 +171,12 @@
 			<div id="wg-containerPrintScale"></div>
 			<div id="wg-containerPrintDpi"></div>
 			<div id="wg-containerPrintFormat"></div>
+			<div id="wg-containerPrintCheckRotation"></div>
 		</div>
 		<div id="wg-divButtonPrint"><button id="buttonPrint"></button></div>
 	</div>
 	
 	<div id="wg-containerScaleRange" class="box-shadow"></div>
+	<div id="wg-windowPdfDownload"></div>
 </body>
 </html>

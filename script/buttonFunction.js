@@ -15,6 +15,19 @@ function removeStateActiveButtons() {
 
 function activateDeactivateControl() {
 	$('#toolbarMap').find('button').each(function(){
+		
+		if($(this).attr('id') == 'zoomButton') {
+			if($(this).hasClass('ui-state-pressed')) {
+				zoomSquareControl.activate();
+				$(this).attr('title', 'Disable zooming to');
+				$('#panelModText').html('Zooming to enabled');
+			}
+			else {
+				zoomSquareControl.deactivate();
+				$(this).attr('title', 'Enable zooming to');
+			}
+		}
+		
 		if($(this).attr('id') == 'infoButton') {
 			if($(this).hasClass('ui-state-pressed')) {
 				infoControls.click.activate();
@@ -89,6 +102,8 @@ function activateDeactivateControl() {
 				$(this).attr('title', 'Open print panel');
 				closePrintPanel();
 				editableLayer.removeAllFeatures();
+				clearRotationSetting();
+				removeRotationControl();
 				controlMod.deactivate();
 			}
 		}
