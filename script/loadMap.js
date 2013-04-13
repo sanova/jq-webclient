@@ -447,6 +447,7 @@ function handleMeasurements(event) {
 }
 
 function createListInfoAccordion(data) {
+	highlightLayer.removeAllFeatures();
 	
 	// Create accordion with info elements
 	$(data.text).find('Layer').each(function(){

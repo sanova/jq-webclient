@@ -14,17 +14,18 @@ function setFieldLayerCmbo(layer) {
 		dataType: 'xml',
 		data: {
 	         'SERVICE': 'WFS',
-	         'VERSION': '1.1.1',
+	         'VERSION': '1.3',
 	         'REQUEST': 'DescribeFeatureType',
 	         'TYPENAME': layer
 		},
 		success:	function(response) {
-			if( $(response).find('sequence').find('element').length == 0 ) {
+			if( $(response).find('sequence').find('element').length == 0 && $("#wb-formFilter").find(".warnignText").length == 0) {
 				$("#wb-valueFieldLayerInputDiv").prepend(
 					$("<div>").attr("class", "warnignText").text("You have to enable WFS request for the layer in qgs project")
 				);
 			}
-			else {	
+			else {
+				$($("#wb-formFilter").find(".warnignText")[0]).remove();
 				$(response).find('sequence').find('element').each(function(){
 					if(typeof($(this).attr('alias')) != 'undefined')
 						$('select#wb-fieldLayerCombo').append($('<option />').attr('value', $(this).attr('name')).text($(this).attr('alias')));
