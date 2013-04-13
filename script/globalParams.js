@@ -28,7 +28,13 @@ var nameProject = "polygon2.qgs";
  * This is the epsg code for the coordinates you want to display on map
  * Leave empty if you want to display coordinates in the same epsg of project 
 */
-var epsgcode_display = ""; //
+var epsgcode_display = "";
+/*
+ * This is the REAL epsg code of layers. If layers of project and project qgs have different 
+ * epsg you can set here the real epsg for layers. 
+ * It will be used for hilight features during WFS request
+ */
+var epsgcode_layers = "";
 
 /* BBOX
  * If your qgis project has a bbox configured you can leave these parameters empty.

@@ -5,6 +5,7 @@ var activeLayer = "";
 var EPSGdefault = "";
 var BBOXMap = "";
 var SRSMap = "";
+var SRSLayersProject = "";
 var listTemplatePrint = {};
 
 // Correction zoom on bound
@@ -149,7 +150,7 @@ function clearCache() {
 function viewMapLayer(listLayer) {
 	var layersList = new Array();
 	
-	if(epsgcode_display == "") SRSMapDisplay = SRSMap 
+	if(epsgcode_display == "") SRSMapDisplay = SRSMap; 
 	else SRSMapDisplay = new OpenLayers.Projection("EPSG:"+epsgcode_display);
 	
 	var mapOptions = {
@@ -304,17 +305,21 @@ function createEditableLayer() {
 }
 
 function createHighLightLayer() {
+	
+	if(epsgcode_layers == "") SRSLayersProject = SRSMap;
+	else SRSLayersProject = new OpenLayers.Projection("EPSG:"+epsgcode_layers);
+	
 	var highLightLayer = new OpenLayers.Layer.Vector("attribHighLight",
 		{
 			projection: SRSMap,
 			isBaseLayer: false, 
 			displayInLayerSwitcher: true, 
-			styleMap: styleMapHighLightLayer
-//			eventListeners: {
-//				'beforefeatureadded': function(feature) {
-//					feature.feature.geometry.transform(new OpenLayers.Projection("EPSG:32632"),SRSMap);
-//				}
-//			}
+			styleMap: styleMapHighLightLayer,
+			eventListeners: {
+				'beforefeatureadded': function(feature) {
+					feature.feature.geometry.transform(SRSLayersProject,SRSMap);
+				}
+			}
 		}
 	);
 	
@@ -454,16 +459,33 @@ function createListInfoAccordion(data) {
 				layersInfoContainer
 			)
 		);
-
-		for(var i=0; i<this.children.length; i++) {
-			for(var j=0; j<$(this.children[i]).find('ATTRIBUTE').length - 1; j++) {
-				layersInfoContainer.append(
-					$("<div>").attr('class', 'divAttributes')
-						.html($($(this.children[i]).find('ATTRIBUTE')[j].outerHTML).attr('name') + ': ' 
-							 +$($(this.children[i]).find('ATTRIBUTE')[j].outerHTML).attr('value'))
-				);
-			}
-		}
+	    
+	    $(this).find("Feature").each(function(){
+	    	var featureInfoContainer = $("<div>").attr("id", 'featureInfoContainer_'+this.attributes[0].value).attr("class", "containerFeature");
+	    	layersInfoContainer.append(featureInfoContainer);
+//				for(var i=0; i<this.children.length; i++) {
+//					for(var j=0; j<$(this.children[i]).find('ATTRIBUTE').length - 1; j++) {
+//						featureInfoContainer.append(
+//							$("<div>").attr('class', 'divAttributes')
+//								.html($($(this.children[i]).find('ATTRIBUTE')[j].outerHTML).attr('name') + ': ' 
+//									 +$($(this.children[i]).find('ATTRIBUTE')[j].outerHTML).attr('value'))
+//						);
+//					}
+//				}
+	    	var containerAttributes = $("<div>").attr("class", "containerAttributes");
+	    	featureInfoContainer.append(
+	    		$("<div>").attr("class", "titleFeatureInfo").text("Feature: " + this.attributes[0].value),
+	    		containerAttributes
+	    	)
+	    	$(this).find("ATTRIBUTE").each(function() {
+	    		if($(this).attr('name') != "geometry") {
+	    			containerAttributes.append(
+		    			$("<div>").attr('class', 'divAttributes')
+		    			.html($(this).attr('name') + ": " + $(this).attr("value"))
+		    		)
+	    		}
+	    	});
+	    });
 	});
 	
 	$('#wg-layerInfo').accordion(propertyAccordion);
