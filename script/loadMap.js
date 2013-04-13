@@ -463,15 +463,6 @@ function createListInfoAccordion(data) {
 	    $(this).find("Feature").each(function(){
 	    	var featureInfoContainer = $("<div>").attr("id", 'featureInfoContainer_'+this.attributes[0].value).attr("class", "containerFeature");
 	    	layersInfoContainer.append(featureInfoContainer);
-//				for(var i=0; i<this.children.length; i++) {
-//					for(var j=0; j<$(this.children[i]).find('ATTRIBUTE').length - 1; j++) {
-//						featureInfoContainer.append(
-//							$("<div>").attr('class', 'divAttributes')
-//								.html($($(this.children[i]).find('ATTRIBUTE')[j].outerHTML).attr('name') + ': ' 
-//									 +$($(this.children[i]).find('ATTRIBUTE')[j].outerHTML).attr('value'))
-//						);
-//					}
-//				}
 	    	var containerAttributes = $("<div>").attr("class", "containerAttributes");
 	    	featureInfoContainer.append(
 	    		$("<div>").attr("class", "titleFeatureInfo").text("Feature: " + this.attributes[0].value),
@@ -483,6 +474,10 @@ function createListInfoAccordion(data) {
 		    			$("<div>").attr('class', 'divAttributes')
 		    			.html($(this).attr('name') + ": " + $(this).attr("value"))
 		    		)
+	    		}
+	    		else {
+	    			var featureGeom = new OpenLayers.Feature.Vector(OpenLayers.Geometry.fromWKT($(this).attr("value")));
+	    			highlightLayer.addFeatures([featureGeom]);
 	    		}
 	    	});
 	    });

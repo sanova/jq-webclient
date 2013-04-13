@@ -72,6 +72,7 @@ $(function(){
 	
 	// Inizializzazione tasto chiusura pannello info elementi mappa
 	$('#closeInfoDiv').button().click(function(){
+		highlightLayer.removeAllFeatures();
 		$('#wg-layerInfoContainer').toggle('slide', {direction: 'right'}, 400);
 	});
 	
