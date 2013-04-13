@@ -7,7 +7,7 @@ function getListVisibleLayer() {
 }
 
 function getLegendLayer(layer) {	
-	var imageUrl = serverURI+'&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetLegendGraphics&FORMAT=image/png&EXCEPTIONS=application/vnd.ogc.se_inimage&WIDTH=195&LAYERS='+layer;
+	var imageUrl = serverURI+'&SERVICE=WMS&VERSION=1.3&REQUEST=GetLegendGraphics&FORMAT=image/png&EXCEPTIONS=application/vnd.ogc.se_inimage&WIDTH=195&LAYERS='+layer;
 	$('#wg-layerLegendContainer').append(
 		$('<div>').attr('class', 'recordLegend').append(
 			$('<img>').attr('id', 'img-'+layer).attr('src', imageUrl)

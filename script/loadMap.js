@@ -35,7 +35,7 @@ function getListLayers() {
         dataType: "xml",
         data: {
           'SERVICE': 'WMS',
-          'VERSION': '1.1.1',
+          'VERSION': '1.3',
           'REQUEST': 'GetCapabilities'
         },
         method: 'GET',
@@ -50,7 +50,7 @@ function getListLayers() {
         	
         	listTemplatePrint = getTemplatesPrint(response);
         	if(listTemplatePrint == false)
-        		$("#printFunc").disable();
+        		$("#printFunc").attr("disabled", "disabled");
         	else
         		setPanelPrint(listTemplatePrint);
         	
@@ -309,7 +309,7 @@ function createHighLightLayer() {
 			projection: SRSMap,
 			isBaseLayer: false, 
 			displayInLayerSwitcher: true, 
-			styleMap: styleMapHighLightLayer,
+			styleMap: styleMapHighLightLayer
 //			eventListeners: {
 //				'beforefeatureadded': function(feature) {
 //					feature.feature.geometry.transform(new OpenLayers.Projection("EPSG:32632"),SRSMap);
@@ -544,7 +544,7 @@ function setBboxFromConfig() {
 
 function getBboxFromProject(data) {
 	var bboxObj = {};
-	// <BoundingBox maxx="1.01957e+06" minx="958453" maxy="5.75244e+06" miny="5.64631e+06" SRS="EPSG:3785"/>
+	// <BoundingBox maxx="1.01957e+06" minx="958453" maxy="5.75244e+06" miny="5.64631e+06" CRS="EPSG:3785"/>
 	var bbox = $(data).find('BoundingBox')[0].attributes;
 	
 	for(var i=0; i<bbox.length; i++) {
@@ -552,7 +552,7 @@ function getBboxFromProject(data) {
 		if(bbox[i].localName == "maxy") bboxObj[bbox[i].localName] = bbox[i].value;
 		if(bbox[i].localName == "minx") bboxObj[bbox[i].localName] = bbox[i].value;
 		if(bbox[i].localName == "miny") bboxObj[bbox[i].localName] = bbox[i].value;
-		if(bbox[i].localName == "SRS") bboxObj[bbox[i].localName] = bbox[i].value;
+		if(bbox[i].localName == "CRS" || bbox[i].localName == "SRS") bboxObj["CRS"] = bbox[i].value;
 	}
 	
 	return bboxObj;
@@ -569,8 +569,8 @@ function getBboxMap(bboxFromProj) {
 }
 
 function getSRSMap(bboxFromProj) {
-	EPSGdefault = bboxFromProj['SRS'];
-	var srs = new OpenLayers.Projection(bboxFromProj['SRS']);
+	EPSGdefault = bboxFromProj['CRS'];
+	var srs = new OpenLayers.Projection(bboxFromProj['CRS']);
 	
 	return srs;
 }
