@@ -93,6 +93,7 @@ h3.ui-corner-top.ui-state-hover a {color:    #000000 !important; }
                               
 .containerLayer{cursor: pointer;}
 
+/* FILTER PANEL */
 #wb-Filter { position: absolute; right: 0px; left: 0px; top: 30px; bottom: 0px; z-index: 1001; }
 #wb-formFilter{ position: relative; right: 0px; left: 0px; height: 190px; z-index: 1001; }
 #execFilter{ position: relative; right: 5px; margin-top: 10px; }
@@ -108,7 +109,7 @@ h3.ui-corner-top.ui-state-hover a {color:    #000000 !important; }
 #divLoading{ position:absolute; z-index: 4; background: white; top: 40%; left: 40%; right: 40%; display: none; height: 40px; }
 
 #wb-Filter .titleItem { width: 100%; }
-#wb-Filter .containerValuesCombo { width: 250px; }
+#wb-Filter .containerValuesCombo { width: 250px; max-height: 350px; overflow: auto; display: block; }
 .filterDesc { width: 50px; }
 .filterValue { width: 195px; font-weight: 700; }
 #wb-valueFieldLayerInputDiv input { width: 189px; }
