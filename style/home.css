@@ -99,7 +99,7 @@ h3.ui-corner-top.ui-state-hover a {color:    #000000 !important; }
 #execFilter{ position: relative; right: 5px; margin-top: 10px; }
 #wb-formSearch{ position: relative; top: 10px; height: 70px; }
 #wb-SeacrhResultsDiv{ position: absolute; border-top: 1px solid lightGray; margin-top: 30px; top:100px; bottom:0px; left: 1px; right: 0px; }
-#wb-filterResultsDiv{ bottom: 0px; position: absolute; border-top: 1px solid lightgray; top: 200px; right: 0px; left: 0px; }
+#wb-filterResultsDiv{ bottom: 0px; position: absolute; border-top: 1px solid lightgray; top: 210px; right: 0px; left: 0px; }
 #wb-SeacrhResults{ display: none; margin-top: 10px; margin-bottom: 3px; } /* IE */
 #wb-filterResults{ display: none; margin-top: 10px; margin-bottom: 3px; } /* IE */
 #execSeacrh{ position: relative; right: 5px; margin-top: 10px; }
@@ -109,14 +109,14 @@ h3.ui-corner-top.ui-state-hover a {color:    #000000 !important; }
 #divLoading{ position:absolute; z-index: 4; background: white; top: 40%; left: 40%; right: 40%; display: none; height: 40px; }
 
 #wb-Filter .titleItem { width: 100%; }
-#wb-Filter .containerValuesCombo { width: 250px; max-height: 350px; overflow: auto; display: block; }
+#wb-Filter .containerValuesCombo { width: 250px; max-height: 350px; overflow: auto; }
 .filterDesc { width: 50px; }
 .filterValue { width: 195px; font-weight: 700; }
 #wb-valueFieldLayerInputDiv input { width: 189px; }
 #containerInfoInput { padding-left: 57px; }
 
 /* Warning text */
-#wb-formFilter .warnignText { margin-top: 1px; margin-bottom: 5px; height: auto; }
+#wb-formFilter .warnignText { display: none; margin-top: 5px; margin-bottom: 7px; height: auto; }
 
 /* COORDINATES */
 #wg-coordinateContainer { float: left; margin-right: 20px; width: auto; }

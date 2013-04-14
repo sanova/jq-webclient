@@ -10,6 +10,9 @@ function setFieldLayerCmbo(layer) {
 	$("#wb-fieldLayerComboDiv").find(".containerValuesCombo").children().remove();
 	var valueFieldsFilter = $("#wb-fieldLayerComboDiv").find(".filterValue");
 	
+	valueFieldsFilter.text("");
+	valueFieldsFilter.parent().find("input").val("");
+	
     $.ajax({
 		type: 'GET',
 		url: serverURI,
@@ -21,13 +24,14 @@ function setFieldLayerCmbo(layer) {
 	         'TYPENAME': layer
 		},
 		success:	function(response) {
-			if( $(response).find('sequence').find('element').length == 0 && $("#wb-formFilter").find(".warnignText").length == 0) {
-				$("#wb-fieldLayerComboDiv").find(".titleItem").append(
-					$("<div>").attr("class", "warnignText").text("You have to enable WFS request for the layer in qgs project")
-				);
+			if( $(response).find('sequence').find('element').length == 0) {
+				if(!$("#wb-formFilter").find(".warnignText").is(":visible")) {
+					$("#wb-formFilter").find(".warnignText").show("fast");
+					$('#execFilter').attr('disabled', 'disabled');
+				}
 			}
 			else {
-				$($("#wb-formFilter").find(".warnignText")[0]).remove();
+				$("#wb-formFilter").find(".warnignText").hide("fast");
 				$(response).find('sequence').find('element').each(function(){
 					if(typeof($(this).attr('alias')) != 'undefined' && $(this).attr('name') != "geometry") {
 						if(valueFieldsFilter.text() == "") {
@@ -47,6 +51,7 @@ function setFieldLayerCmbo(layer) {
 					}
 				});
 			}
+			enableDisableButtonFilter();
 		}
 	});	
 }

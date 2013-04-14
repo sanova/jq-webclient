@@ -488,13 +488,16 @@ function createPanelFilter() {
 				$("<img>").attr("src", pathImageDown)
 			)
 		),
-		$("<div>").attr("class", "containerValuesCombo").addClass("box-shadow-combo")
+		$("<div>").attr("class", "containerValuesCombo").addClass("box-shadow-combo"),
+		$("<div>").attr("class", "warnignText").text("You have to enable WFS request for the layer in qgs project")
 	)
 	
 	$("#wb-valueFieldLayerInputDiv").append(
 		$("<div>").attr("class", "titleItem").append(
 			$("<div>").attr("class", "filterDesc").text("Value"),
-			$("<input>").attr("class", "filterValue")
+			$("<input>").attr("class", "filterValue").keyup(function(){
+				enableDisableButtonFilter();
+			})
 		),
 	    $("<div>").attr("id", "containerInfoInput").append(
 	    	$("<span>").attr("id", "wb-infoInputValueFilter").text("(case sensitive)")
@@ -545,6 +548,14 @@ function addItemsToComboLayerField(val, alias) {
 				$("<input>").attr("class", "valueFieldHidden").attr("type", "hidden").val(val)
 			)	
 		)		
+	}
+}
+
+function enableDisableButtonFilter() {
+	if($("#wb-valueFieldLayerInputDiv").find(".filterValue").val() != "" && $("#wb-fieldLayerComboDiv").find(".titleItem").find("input").val() != "")
+		$("#execFilter").button("option", "disabled", false);
+	else {
+		$("#execFilter").button("option", "disabled", true);
 	}
 }
 

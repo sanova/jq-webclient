@@ -25,7 +25,8 @@ $(function(){
     });
     // Tasto Submit filter
     $('#execFilter').button({
-    	label: "Esegui"
+    	label: "Esegui",
+    	disabled: true
 	}).click(function(){
 		getFeatureFilter();
 	});
