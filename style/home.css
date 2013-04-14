@@ -94,19 +94,21 @@ h3.ui-corner-top.ui-state-hover a {color:    #000000 !important; }
 .containerLayer{cursor: pointer;}
 
 .containerLayer{cursor: pointer;}
-#wb-formFilter{position: relative; right: 5px; }
-#execFilter{position: relative; right: 5px; margin-top: 10px;}
-#wb-formSearch{position: relative; top: 10px; height: 70px;}
-#wb-SeacrhResultsDiv{position: absolute; border-top: 1px solid lightGray; margin-top: 30px; top:100px; bottom:0px; left: 1px; right: 0px;}
-#wb-filterResultsDiv{position: absolute; border-top: 1px solid lightGray; margin-top: 30px; top:170px; bottom:0px; left: 1px; right: 0px;}
-#wb-SeacrhResults{display: none; margin-top: 10px; margin-bottom: 3px;} /* IE */
-#wb-filterResults{display: none; margin-top: 10px; margin-bottom: 3px;} /* IE */
-#execSeacrh{position: relative; right: 5px; margin-top: 10px;}
-.itemForm{margin-bottom: 7px;}
-#wb-SeacrhResultsAcoordion{position: absolute; overflow: auto; left: 0px; right: 0px; top: 25px; bottom: 0px;}
-#wb-filterResultsAcoordion{position: absolute; overflow: auto; left: 0px; right: 0px; top: 0px; bottom: 0px;}
-.layerFindContainer{top: 0px; bottom: 0px; overflow: auto;}
-#divLoading{position:absolute; z-index: 4; background: white; top: 40%; left: 40%; right: 40%; display: none; height: 40px;}
+
+#wb-Filter { position: absolute; right: 0px; left: 0px; top: 30px; bottom: 0px; z-index: 1001; }
+#wb-formFilter{ position: relative; right: 0px; left: 0px; height: 170px; z-index: 1001; }
+#execFilter{ position: relative; right: 5px; margin-top: 10px; }
+#wb-formSearch{ position: relative; top: 10px; height: 70px; }
+#wb-SeacrhResultsDiv{ position: absolute; border-top: 1px solid lightGray; margin-top: 30px; top:100px; bottom:0px; left: 1px; right: 0px; }
+#wb-filterResultsDiv{ bottom: 0px; position: absolute; height: auto; top: 180px; right: 0px; left: 0px; }
+#wb-SeacrhResults{ display: none; margin-top: 10px; margin-bottom: 3px; } /* IE */
+#wb-filterResults{ display: none; margin-top: 10px; margin-bottom: 3px; } /* IE */
+#execSeacrh{ position: relative; right: 5px; margin-top: 10px; }
+.itemForm{ margin-bottom: 7px; }
+#wb-SeacrhResultsAcoordion{ position: absolute; overflow: auto; left: 0px; right: 0px; top: 25px; bottom: 0px; }
+#wb-filterResultsAcoordion{ position: absolute; overflow: auto; left: 0px; right: 0px; top: 0px; bottom: 0px; }
+.layerFindContainer{ top: 0px; bottom: 0px; overflow: auto; }
+#divLoading{ position:absolute; z-index: 4; background: white; top: 40%; left: 40%; right: 40%; display: none; height: 40px; }
 
 #containerInfoInput { padding-left: 50px; }
 
