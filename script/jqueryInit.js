@@ -3,8 +3,10 @@ $(function(){
 	$('#wg-leftTabTop').tabs();
 	// Evento cambio tab (da layer a filtro e viceversa). Ripulisce la combo dei campi layer
 	$( "#wg-leftTabTop" ).bind( "tabsselect", function(event, ui) {
-		$('select#wb-fieldLayerCombo option').remove();
-		$('#wb-valueFieldLayerInput').val("");
+		$("#wb-fieldLayerComboDiv").find(".containerValuesCombo").children().remove();
+		$("#wb-fieldLayerComboDiv").find(".titleItem").find("input").val("");
+		$("#wb-fieldLayerComboDiv").find(".filterValue").text("");
+		$('#wb-valueFieldLayerInputDiv').find("input").val("");
 		$('#wb-valueSeacrh').val("");
 		highlightLayer.removeAllFeatures();
 		changeToFilterTab(event, ui);
@@ -101,53 +103,80 @@ $(function(){
 	$("#wg-containerPrintTemplate").mouseover(function(){
 		if(!isAnimating) {
 			isAnimating = true;
-			$(this).find(".containerPrintValuesCombo").show("fast", function(){
+			$(this).find(".containerValuesCombo").show("fast", function(){
 				setTimeout(function () { isAnimating = false; }, 100);
 			});
 			$(this).find(".printImg").css("opacity", "0.5");
 		}
 	}).mouseleave(function(){
-		$(this).find(".containerPrintValuesCombo").hide("fast");
+		$(this).find(".containerValuesCombo").hide("fast");
 		$(this).find(".printImg").css("opacity", "1");
 	});
 	$("#wg-containerPrintScale").mouseover(function(){
 		if(!isAnimating) {
 			isAnimating = true;
-			$(this).find(".containerPrintValuesCombo").show("fast", function(){
+			$(this).find(".containerValuesCombo").show("fast", function(){
 				setTimeout(function () { isAnimating = false; }, 100);
 			});
 			$(this).find(".printImg").css("opacity", "0.5");
 		}
 	}).mouseleave(function(){
-		$(this).find(".containerPrintValuesCombo").hide("fast");
+		$(this).find(".containerValuesCombo").hide("fast");
 		$(this).find(".printImg").css("opacity", "1");
 	});
 	$("#wg-containerPrintDpi").mouseover(function(){
 		if(!isAnimating) {
 			isAnimating = true;
-			$(this).find(".containerPrintValuesCombo").show("fast", function(){
+			$(this).find(".containerValuesCombo").show("fast", function(){
 				setTimeout(function () { isAnimating = false; }, 100);
 			});
 			$(this).find(".printImg").css("opacity", "0.5");
 		}
 	}).mouseleave(function(){
-		$(this).find(".containerPrintValuesCombo").hide("fast");
+		$(this).find(".containerValuesCombo").hide("fast");
 		$(this).find(".printImg").css("opacity", "1");
 	});
 	$("#wg-containerPrintFormat").mouseover(function(){
 		if(!isAnimating) {
 			isAnimating = true;
-			$(this).find(".containerPrintValuesCombo").show("fast", function(){
+			$(this).find(".containerValuesCombo").show("fast", function(){
 				setTimeout(function () { isAnimating = false; }, 100);
 			});
 			$(this).find(".printImg").css("opacity", "0.5");
 		}
 	}).mouseleave(function(){
-		$(this).find(".containerPrintValuesCombo").hide("fast");
+		$(this).find(".containerValuesCombo").hide("fast");
 		$(this).find(".printImg").css("opacity", "1");
 	});
 	$("#buttonPrint").button({ label: "Print" }).click(function(){
 		getPrint();
+	});
+	
+	// FILTER PANEL
+	$("#wb-layerComboDiv").mouseover(function(){
+		if(!isAnimating) {
+			isAnimating = true;
+			$(this).find(".containerValuesCombo").show("fast", function(){
+				setTimeout(function () { isAnimating = false; }, 100);
+			});
+			$(this).find(".filterImg").css("opacity", "0.5");
+		}		
+	}).mouseleave(function(){
+		$(this).find(".containerValuesCombo").hide("fast");
+		$(this).find(".filterImg").css("opacity", "1");
+	});
+	
+	$("#wb-fieldLayerComboDiv").mouseover(function(){
+		if(!isAnimating) {
+			isAnimating = true;
+			$(this).find(".containerValuesCombo").show("fast", function(){
+				setTimeout(function () { isAnimating = false; }, 100);
+			});
+			$(this).find(".filterImg").css("opacity", "0.5");
+		}		
+	}).mouseleave(function(){
+		$(this).find(".containerValuesCombo").hide("fast");
+		$(this).find(".filterImg").css("opacity", "1");
 	});
 
 });

@@ -30,11 +30,13 @@ function activateDeactivateControl() {
 		
 		if($(this).attr('id') == 'infoButton') {
 			if($(this).hasClass('ui-state-pressed')) {
+				highlightLayer.removeAllFeatures();
 				infoControls.click.activate();
 				$(this).attr('title', 'Disabilita Modalità Info Mappa');
 				$('#panelModText').html('Modalità Info Attiva');
 			}
 			else {
+				highlightLayer.removeAllFeatures();
 				infoControls.click.deactivate();
 				$(this).attr('title', 'Abilita Modalità Info Mappa');
 				if($('#wg-layerInfoContainer').is(':visible'))

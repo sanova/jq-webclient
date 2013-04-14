@@ -1,13 +1,15 @@
 function changeToFilterTab(event, ui) {
 	switch (ui.index) {
 	    case 1:
-	    	setFieldLayerCmbo($('select#wb-layerCombo').val());
+	    	setFieldLayerCmbo($("#wb-layerComboDiv").find(".filterValue").text());
 	        break;
 	}
 }
 
 function setFieldLayerCmbo(layer) {
-	$('select#wb-fieldLayerCombo option').remove();
+	$("#wb-fieldLayerComboDiv").find(".containerValuesCombo").children().remove();
+	var valueFieldsFilter = $("#wb-fieldLayerComboDiv").find(".filterValue");
+	
     $.ajax({
 		type: 'GET',
 		url: serverURI,
@@ -20,18 +22,28 @@ function setFieldLayerCmbo(layer) {
 		},
 		success:	function(response) {
 			if( $(response).find('sequence').find('element').length == 0 && $("#wb-formFilter").find(".warnignText").length == 0) {
-				$("#wb-valueFieldLayerInputDiv").prepend(
+				$("#wb-fieldLayerComboDiv").find(".titleItem").append(
 					$("<div>").attr("class", "warnignText").text("You have to enable WFS request for the layer in qgs project")
 				);
 			}
 			else {
 				$($("#wb-formFilter").find(".warnignText")[0]).remove();
 				$(response).find('sequence').find('element').each(function(){
-					if(typeof($(this).attr('alias')) != 'undefined')
-						$('select#wb-fieldLayerCombo').append($('<option />').attr('value', $(this).attr('name')).text($(this).attr('alias')));
+					if(typeof($(this).attr('alias')) != 'undefined' && $(this).attr('name') != "geometry") {
+						if(valueFieldsFilter.text() == "") {
+							valueFieldsFilter.text($(this).attr('alias'));
+							valueFieldsFilter.parent().find("input").val($(this).attr('name'));
+						}
+						addItemsToComboLayerField($(this).attr('name'), $(this).attr('alias'));
+					}
 					else {
-						if(typeof($(this).attr('name')) != 'undefined')
-							$('select#wb-fieldLayerCombo').append($('<option />').attr('value', $(this).attr('name')).text($(this).attr('name')));
+						if(typeof($(this).attr('name')) != 'undefined' && $(this).attr('name') != "geometry") {
+							if($("#wb-fieldLayerComboDiv").find(".filterValue").text() == "") {
+								valueFieldsFilter.text($(this).attr('name'));
+								valueFieldsFilter.parent().find("input").val($(this).attr('name'));
+							}							
+							addItemsToComboLayerField($(this).attr('name'), null);
+						}
 					}
 				});
 			}
@@ -43,9 +55,9 @@ function getFeatureFilter () {
 	$('#wb-filterResultsAcoordion').accordion('destroy');
 	$('#wb-filterResultsAcoordion').children().remove();
 	
-	var layer = $('select#wb-layerCombo').val();
-	var field = $('select#wb-fieldLayerCombo').val();
-	var value = $('#wb-valueFieldLayerInput').val();
+	var layer = $("#wb-layerComboDiv").find(".filterValue").text();
+	var field = $("#wb-fieldLayerComboDiv").find(".titleItem").find("input").val();
+	var value = $("#wb-valueFieldLayerInputDiv").find("input").val();
 	
 	var gmlOptions = {
 	    featureType: "polygon",

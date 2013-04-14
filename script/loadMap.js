@@ -33,7 +33,7 @@ function getListLayers() {
 	
     $.ajax ({
         url: serverURI,
-        dataType: "xml",
+        dataType: ($.browser.msie) ? "text" : "xml", // text for IE, xml for the rest
         data: {
           'SERVICE': 'WMS',
           'VERSION': '1.3',
@@ -44,20 +44,34 @@ function getListLayers() {
         success: function (response) {
         	setBboxFromConfig();
         	
+        	var data = parseXml(response);
+        	
         	// Set bbox map and projection map
-        	var BBOXFrosmProject = getBboxFromProject(response);
+        	var BBOXFrosmProject = getBboxFromProject(data);
         	BBOXMap = getBboxMap(BBOXFrosmProject);
         	SRSMap = getSRSMap(BBOXFrosmProject);
         	
-        	listTemplatePrint = getTemplatesPrint(response);
+        	listTemplatePrint = getTemplatesPrint(data);
         	if(listTemplatePrint == false)
         		$("#printFunc").attr("disabled", "disabled");
         	else
         		setPanelPrint(listTemplatePrint);
         	
-        	createListLayerAccordion(response);
+        	createListLayerAccordion(data);
         }
     });
+}
+
+
+function parseXml(xml) {
+	if (jQuery.browser.msie) {
+//		var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+//		xmlDoc.loadXML(xml);
+//		xml = xmlDoc;
+	    var xmlDoc = $.parseXML( xml );
+	    xml = $( xmlDoc );
+	}
+	return xml;
 }
 
 function createListLayerAccordion(data) {
@@ -74,9 +88,8 @@ function createListLayerAccordion(data) {
 	
 	for(var i=1; i < $(data).find('Layer').length; i++) {
 		// Get layer for combo filter 
-		$('select#wb-layerCombo').append($('<option />').attr('value', $(data).find('Layer')[i].firstElementChild.textContent)
-				.text($(data).find('Layer')[i].firstElementChild.textContent)
-		);
+		addItemsToComboLayer($(data).find('Layer')[i].firstElementChild.textContent);
+		
 		layersContainer.append(
 			$("<div>").attr('class', 'containerLayer').append(
 				$("<div>").attr('class', 'layerCheckBox').append(
@@ -407,9 +420,7 @@ function addZoomingSquareControl() {
     )
     
     map.addControl(zoomSquareControl);
-    
-    zoomSquareControl.handler.stopDown = stop;
-    zoomSquareControl.handler.stopUp = stop;   
+      
     zoomSquareControl.events.register('featureadded', this, goToExtentSquare);
 }
 

@@ -102,14 +102,14 @@ function setPanelPrint(list) {
 					$("<img>").attr("src", pathImageDown)
 				)
 			),
-			$("<div>").attr("class", "containerPrintValuesCombo").addClass("box-shadow-combo")
+			$("<div>").attr("class", "containerValuesCombo").addClass("box-shadow-combo")
 		)
 		break;
 	}
 	
 	for(var key in list) {
 		var mapPrint = list[key];
-		$("#wg-containerPrintTemplate").find(".containerPrintValuesCombo").append(
+		$("#wg-containerPrintTemplate").find(".containerValuesCombo").append(
 			$("<div>").attr("class", "itemsValuesTemplate").addClass("map-"+mapPrint).text(key).click(function() {
 				$(this).parent().parent().find(".printValue").text($(this).text());
 			})
@@ -127,14 +127,14 @@ function setPanelPrint(list) {
 				$("<img>").attr("src", pathImageDown)
 			)
 		),
-		$("<div>").attr("class", "containerPrintValuesCombo").addClass("box-shadow-combo")
+		$("<div>").attr("class", "containerValuesCombo").addClass("box-shadow-combo")
 	)
 	
 	for(var key in scaleArray) {
 		var valueScale = scaleArray[key];
 		var denomScale = valueScale.split(":")[1];
 		if(parseInt(denomScale) < parseInt(minScale)) {
-			$("#wg-containerPrintScale").find(".containerPrintValuesCombo").append(
+			$("#wg-containerPrintScale").find(".containerValuesCombo").append(
 				$("<div>").attr("class", "itemsValuesScale").text(valueScale).click(function() {
 					$(this).parent().parent().find(".printValue").text($(this).text());
 	
@@ -152,7 +152,7 @@ function setPanelPrint(list) {
 			)
 		}
 	}
-	$("#wg-containerPrintScale").find(".containerPrintValuesCombo").append(
+	$("#wg-containerPrintScale").find(".containerValuesCombo").append(
 		$("<div>").attr("class", "itemsValuesScale").text("1:"+minScale).click(function() {
 			$(this).parent().parent().find(".printValue").text($(this).text());
 
@@ -182,12 +182,12 @@ function setPanelPrint(list) {
 				$("<img>").attr("src", pathImageDown)
 			)
 		),
-		$("<div>").attr("class", "containerPrintValuesCombo").addClass("box-shadow-combo")
+		$("<div>").attr("class", "containerValuesCombo").addClass("box-shadow-combo")
 	)
 	
 	for(var i=0; i<dpiArray.length; i++) {
 		var dpiVal = dpiArray[i];
-		$("#wg-containerPrintDpi").find(".containerPrintValuesCombo").append(
+		$("#wg-containerPrintDpi").find(".containerValuesCombo").append(
 			$("<div>").attr("class", "itemsValuesDpi").text(dpiVal).click(function() {
 				$(this).parent().parent().find(".printValue").text($(this).text());			
 			})
@@ -208,9 +208,9 @@ function setPanelPrint(list) {
 				$("<img>").attr("src", pathImageDown)
 			)
 		),
-		$("<div>").attr("class", "containerPrintValuesCombo").addClass("box-shadow-combo")
+		$("<div>").attr("class", "containerValuesCombo").addClass("box-shadow-combo")
 	)
-	$("#wg-containerPrintFormat").find(".containerPrintValuesCombo").append(
+	$("#wg-containerPrintFormat").find(".containerValuesCombo").append(
 		$("<div>").attr("class", "itemsValuesDpi").text(pdfFromat).click(function() {
 			$(this).parent().parent().find(".printValue").text($(this).text());			
 		}),
@@ -463,3 +463,88 @@ function getPrint() {
 function getCurrentScaleMap() {
 	return map.getScale();
 }
+
+/*
+ * CREATE PANEL FILTER STRUCTURE 
+ */
+function createPanelFilter() {
+	$("#wb-layerComboDiv").append(
+		$("<div>").attr("class", "titleItem").append(
+			$("<div>").attr("class", "filterDesc").text("Layer"),
+			$("<div>").attr("class", "filterValue").text(""),
+			$("<div>").attr("class", "filterImg").append(
+				$("<img>").attr("src", pathImageDown)
+			)
+		),
+		$("<div>").attr("class", "containerValuesCombo").addClass("box-shadow-combo")
+	)
+	
+	$("#wb-fieldLayerComboDiv").append(
+		$("<div>").attr("class", "titleItem").append(
+			$("<div>").attr("class", "filterDesc").text("Field"),
+			$("<div>").attr("class", "filterValue"),
+			$("<input>").attr("class", "valueFieldHidden").attr("type", "hidden"),
+			$("<div>").attr("class", "filterImg").append(
+				$("<img>").attr("src", pathImageDown)
+			)
+		),
+		$("<div>").attr("class", "containerValuesCombo").addClass("box-shadow-combo")
+	)
+	
+	$("#wb-valueFieldLayerInputDiv").append(
+		$("<div>").attr("class", "titleItem").append(
+			$("<div>").attr("class", "filterDesc").text("Value"),
+			$("<input>").attr("class", "filterValue")
+		),
+	    $("<div>").attr("id", "containerInfoInput").append(
+	    	$("<span>").attr("id", "wb-infoInputValueFilter").text("(case sensitive)")
+	    )
+	)
+}
+/*
+ * LOAD LAYERS IN PANEL FILTER (COMBO)
+ */
+function addItemsToComboLayer(item) {
+	var divFilterValue = $("#wb-layerComboDiv").find(".filterValue");
+	var divContCombo = $("#wb-layerComboDiv").find(".containerValuesCombo");
+	
+	if(divFilterValue.text() == "")
+		divFilterValue.text(item);
+
+	divContCombo.append(
+		$("<div>").attr("class", "itemComboFilter").text(item).click(function(){
+			divFilterValue.text($(this).text());
+			divContCombo.hide("fast");
+			setFieldLayerCmbo($(this).text())
+		})
+	)
+}
+
+function addItemsToComboLayerField(val, alias) {
+	var divContCombo = $("#wb-fieldLayerComboDiv").find(".containerValuesCombo");
+	var divFilterValue = $("#wb-fieldLayerComboDiv").find(".filterValue");
+	
+	if(alias == null) {
+		divContCombo.append(
+			$("<div>").attr("class", "itemComboFilter").text(val).click(function(){
+				divFilterValue.text($(this).text());
+				divFilterValue.parent().find("input").val($(this).find("input").val());
+				divContCombo.hide("fast");
+			}).append(
+				$("<input>").attr("class", "valueFieldHidden").attr("type", "hidden").val(val)
+			)	
+		)
+	}
+	else {
+		divContCombo.append(
+			$("<div>").attr("class", "itemComboFilter").text(alias).click(function(){
+				divFilterValue.text($(this).text());
+				divFilterValue.parent().find("input").val($(this).find("input").val());
+				divContCombo.hide("fast");
+			}).append(
+				$("<input>").attr("class", "valueFieldHidden").attr("type", "hidden").val(val)
+			)	
+		)		
+	}
+}
+
