@@ -500,7 +500,7 @@ function createPanelFilter() {
 			})
 		),
 	    $("<div>").attr("id", "containerInfoInput").append(
-	    	$("<span>").attr("id", "wb-infoInputValueFilter").text("(case sensitive)")
+	    	$("<span>").attr("id", "wb-infoInputValueFilter").text("(case sensitive and exactly match)")
 	    )
 	)
 }

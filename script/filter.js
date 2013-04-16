@@ -73,26 +73,27 @@ function getFeatureFilter () {
 	
 	if(value != "") {
 		var filter =         	  	
-			"<Filter>" +
-				"<PropertyIsLike%20wildcard%3D%27*%27%20singleChar%3D%27.%27%20escape%3D%27!%27>" +
-					"<PropertyName>"+ field +"</PropertyName>" +
-					"<Literal>"+ value +"*</Literal>" +
-				"</PropertyIsLike>" +
-			"</Filter>";
+//			"<Filter>" +
+//				"<PropertyIsLike%20wildcard%3D%27*%27%20singleChar%3D%27.%27%20escape%3D%27!%27>" +
+//					"<PropertyName>"+ field +"</PropertyName>" +
+//					"<Literal>"+ value +".*</Literal>" +
+//				"</PropertyIsLike>" +
+//			"</Filter>";
 		
-//		"<Filter>" +
-//			"<PropertyIsEqualTo>" +
-//				"<PropertyName>"+ field +"</PropertyName>" +
-//				"<Literal>"+ value +"</Literal>" +
-//			"</PropertyIsEqualTo>" +
-//		"</Filter>";
+		"<Filter>" +
+			"<PropertyIsEqualTo>" +
+				"<PropertyName>"+ field +"</PropertyName>" +
+				"<Literal>"+ value +"</Literal>" +
+			"</PropertyIsEqualTo>" +
+		"</Filter>";
 	}
 	else
 		return;
 	
 	$.ajax({
 		type: 'GET',
-		url: serverURI+"&filter="+filter,
+		//url: serverURI+"&filter="+filter,
+		url: serverURI,
 		dataType: 'xml',
 		data: {         
 	          'SERVICE': 'WFS',
@@ -101,8 +102,8 @@ function getFeatureFilter () {
 	          'REQUEST': 'GetFeature',
 	          'MAXFEATURES': '5000',
 	          'OUTPUTFORMAT': 'GML3',
-	          'SRS': EPSGdefault
-	          //'Filter': filter
+	          'SRS': EPSGdefault,
+	          'FILTER': filter
 		},
 		success:	function(response) {
 	       	var format = new OpenLayers.Format.GML(gmlOptions);
