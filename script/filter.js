@@ -19,7 +19,7 @@ function setFieldLayerCmbo(layer) {
 		dataType: 'xml',
 		data: {
 	         'SERVICE': 'WFS',
-	         'VERSION': '1.3',
+	         'VERSION': '1.0.0',
 	         'REQUEST': 'DescribeFeatureType',
 	         'TYPENAME': layer
 		},
@@ -74,29 +74,35 @@ function getFeatureFilter () {
 	if(value != "") {
 		var filter =         	  	
 			"<Filter>" +
-				"<PropertyIsEqualTo>" +
+				"<PropertyIsLike%20wildcard%3D%27*%27%20singleChar%3D%27.%27%20escape%3D%27!%27>" +
 					"<PropertyName>"+ field +"</PropertyName>" +
-					"<Literal>"+ value +"</Literal>" +
-				"</PropertyIsEqualTo>" +
-			"</Filter>";			
+					"<Literal>"+ value +"*</Literal>" +
+				"</PropertyIsLike>" +
+			"</Filter>";
+		
+//		"<Filter>" +
+//			"<PropertyIsEqualTo>" +
+//				"<PropertyName>"+ field +"</PropertyName>" +
+//				"<Literal>"+ value +"</Literal>" +
+//			"</PropertyIsEqualTo>" +
+//		"</Filter>";
 	}
 	else
 		return;
 	
 	$.ajax({
 		type: 'GET',
-		url: serverURI,
+		url: serverURI+"&filter="+filter,
 		dataType: 'xml',
 		data: {         
 	          'SERVICE': 'WFS',
-	          'VERSION': '1.1.1',
+	          'VERSION': '1.1.0',
 	          'TYPENAME': layer,
 	          'REQUEST': 'GetFeature',
 	          'MAXFEATURES': '5000',
 	          'OUTPUTFORMAT': 'GML3',
-	          'SRS': EPSGdefault,
-	          //'FEATUREID': idFeature
-	          'FILTER': filter
+	          'SRS': EPSGdefault
+	          //'Filter': filter
 		},
 		success:	function(response) {
 	       	var format = new OpenLayers.Format.GML(gmlOptions);

@@ -559,3 +559,12 @@ function enableDisableButtonFilter() {
 	}
 }
 
+function toggleComboObj(obj) {
+	$(".containerValuesCombo").each(function(){
+		$(this).hide("fast");
+	})
+	if(obj.is(":visible"))
+		obj.hide("fast");
+	else
+		obj.show("fast");
+}

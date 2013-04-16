@@ -99,85 +99,36 @@ $(function(){
 	
 	// Print panel
 	$("#wg-printPanelContainer").hide();
-	var isAnimating = false;
 	
-	$("#wg-containerPrintTemplate").mouseover(function(){
-		if(!isAnimating) {
-			isAnimating = true;
-			$(this).find(".containerValuesCombo").show("fast", function(){
-				setTimeout(function () { isAnimating = false; }, 100);
-			});
-			$(this).find(".printImg").css("opacity", "0.5");
-		}
-	}).mouseleave(function(){
-		$(this).find(".containerValuesCombo").hide("fast");
-		$(this).find(".printImg").css("opacity", "1");
+	$("#wg-containerPrintTemplate").click(function(){
+		toggleComboObj($(this).find(".containerValuesCombo"));
+		$(this).find(".printImg").css("opacity", "0.5");
 	});
-	$("#wg-containerPrintScale").mouseover(function(){
-		if(!isAnimating) {
-			isAnimating = true;
-			$(this).find(".containerValuesCombo").show("fast", function(){
-				setTimeout(function () { isAnimating = false; }, 100);
-			});
-			$(this).find(".printImg").css("opacity", "0.5");
-		}
-	}).mouseleave(function(){
-		$(this).find(".containerValuesCombo").hide("fast");
-		$(this).find(".printImg").css("opacity", "1");
+	$("#wg-containerPrintScale").click(function(){
+		toggleComboObj($(this).find(".containerValuesCombo"));
+		$(this).find(".printImg").css("opacity", "0.5");
 	});
-	$("#wg-containerPrintDpi").mouseover(function(){
-		if(!isAnimating) {
-			isAnimating = true;
-			$(this).find(".containerValuesCombo").show("fast", function(){
-				setTimeout(function () { isAnimating = false; }, 100);
-			});
-			$(this).find(".printImg").css("opacity", "0.5");
-		}
-	}).mouseleave(function(){
-		$(this).find(".containerValuesCombo").hide("fast");
-		$(this).find(".printImg").css("opacity", "1");
+	$("#wg-containerPrintDpi").click(function(){
+		toggleComboObj($(this).find(".containerValuesCombo"));
+		$(this).find(".printImg").css("opacity", "0.5");
 	});
-	$("#wg-containerPrintFormat").mouseover(function(){
-		if(!isAnimating) {
-			isAnimating = true;
-			$(this).find(".containerValuesCombo").show("fast", function(){
-				setTimeout(function () { isAnimating = false; }, 100);
-			});
-			$(this).find(".printImg").css("opacity", "0.5");
-		}
-	}).mouseleave(function(){
-		$(this).find(".containerValuesCombo").hide("fast");
-		$(this).find(".printImg").css("opacity", "1");
+	$("#wg-containerPrintFormat").click(function(){
+		toggleComboObj($(this).find(".containerValuesCombo"));
+		$(this).find(".printImg").css("opacity", "0.5");
 	});
 	$("#buttonPrint").button({ label: "Print" }).click(function(){
 		getPrint();
 	});
 	
 	// FILTER PANEL
-	$("#wb-layerComboDiv").mouseover(function(){
-		if(!isAnimating) {
-			isAnimating = true;
-			$(this).find(".containerValuesCombo").show("fast", function(){
-				setTimeout(function () { isAnimating = false; }, 100);
-			});
-			$(this).find(".filterImg").css("opacity", "0.5");
-		}		
-	}).mouseleave(function(){
-		$(this).find(".containerValuesCombo").hide("fast");
-		$(this).find(".filterImg").css("opacity", "1");
+	$("#wb-layerComboDiv").click(function(){
+		toggleComboObj($(this).find(".containerValuesCombo"));
+		$(this).find(".filterImg").css("opacity", "0.5");	
 	});
 	
-	$("#wb-fieldLayerComboDiv").mouseover(function(){
-		if(!isAnimating) {
-			isAnimating = true;
-			$(this).find(".containerValuesCombo").show("fast", function(){
-				setTimeout(function () { isAnimating = false; }, 100);
-			});
-			$(this).find(".filterImg").css("opacity", "0.5");
-		}		
-	}).mouseleave(function(){
-		$(this).find(".containerValuesCombo").hide("fast");
-		$(this).find(".filterImg").css("opacity", "1");
+	$("#wb-fieldLayerComboDiv").click(function(){
+		toggleComboObj($(this).find(".containerValuesCombo"));
+		$(this).find(".filterImg").css("opacity", "0.5");		
 	});
 
 });
